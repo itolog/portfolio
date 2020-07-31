@@ -1,16 +1,16 @@
 import Link from 'next/link'
 
-export default function Home() {
+export default function About() {
   return (
     <ul>
       <li>
-        <Link href="/b" as="/a">
-          <a>a</a>
+        <Link href="/">
+          <a>Home</a>
         </Link>
       </li>
       <li>
-        <Link href="/a" as="/b">
-          <a>b</a>
+        <Link href="/about">
+          <a>About Us</a>
         </Link>
       </li>
     </ul>
