@@ -38,3 +38,6 @@ yarn-error.log*
 /.idea
 # VS CODE
 .vscode
+
+
+/dist
