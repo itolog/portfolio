@@ -1,0 +1,83 @@
+@import '../styles/mixins.scss';
+
+#__next {
+  height: 100%;
+}
+
+html {
+  height: 100%;
+  user-select: none;
+  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 18px;
+  word-spacing: 1px;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: url('/fon.jpg') no-repeat center center fixed;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  @include tablets() {
+    background-color: #ffffff;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' %3E%3Cdefs%3E%3ClinearGradient id='a' x1='0' x2='0' y1='0' y2='1'%3E%3Cstop offset='0' stop-color='%2380F'/%3E%3Cstop offset='1' stop-color='%23f40'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpattern id='b' width='24' height='24' patternUnits='userSpaceOnUse'%3E%3Ccircle fill='%23ffffff' cx='12' cy='12' r='12'/%3E%3C/pattern%3E%3Crect width='100%25' height='100%25' fill='url(%23a)'/%3E%3Crect width='100%25' height='100%25' fill='url(%23b)' fill-opacity='0.1'/%3E%3C/svg%3E");
+  }
+}
+.subtitle {
+  color: aqua;
+  margin-bottom: 20px;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+  color: #b3387e;
+  text-align: center;
+  padding: 5px 0 5px 0;
+  font-size: 150%;
+  &:hover {
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+  }
+}
+
+.active {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 5px;
+    height: 100%;
+    background: rgb(252, 94, 199);
+  }
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+//  ERRORS
+.errorBoundary {
+  color: #ff686f;
+}
+.notFound {
+  color: wheat;
+}

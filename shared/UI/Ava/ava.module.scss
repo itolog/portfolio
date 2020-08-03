@@ -1,0 +1,33 @@
+@import '../../../shared/styles/mixins.scss';
+@import '../../../shared/styles/variables.scss';
+
+.hero {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include tablets() {
+    width: 100px;
+    background: $main-color;
+    justify-content: space-between;
+    padding: 2px 0 5px 10px;
+  }
+}
+.hero__ava {
+  width: 145px;
+  height: 145px;
+  border-radius: 50%;
+  border: 1px solid white;
+  overflow: hidden;
+  width: 140px;
+  height: 140px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  @include tablets() {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+}

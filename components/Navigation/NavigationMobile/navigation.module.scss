@@ -1,0 +1,18 @@
+@import '../../../shared//styles/variables.scss';
+@import '../../../shared//styles/mixins.scss';
+
+.navigationContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  @include notTablets() {
+    display: none;
+  }
+}
+
+.menuContainer {
+  position: absolute;
+  width: 100vw;
+  top: $header-height;
+}

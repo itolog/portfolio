@@ -1,0 +1,19 @@
+@import '../../shared/styles/mixins.scss';
+@import '../../shared/styles/variables.scss';
+
+.header {
+  position: relative;
+  z-index: 3;
+  flex: 1;
+  display: flex;
+  flex-flow: column;
+  background: $main-color;
+  color: aliceblue;
+  @include tablets() {
+    width: 100%;
+    height: $header-height;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+}
