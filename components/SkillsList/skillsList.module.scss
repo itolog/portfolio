@@ -1,0 +1,16 @@
+.skillsListContainer {
+  text-align: center;
+  margin-bottom: 1%;
+  border-bottom: 3px solid yellow;
+}
+
+.skillsList {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.skillItem {
+  padding: 1%;
+  margin: 1%;
+  background: rgb(61, 68, 61);
+}

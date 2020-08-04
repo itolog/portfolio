@@ -1,0 +1,28 @@
+{
+  "name": "itologjs",
+  "short_name": "itologjs",
+  "start_url": "/",
+  "lang": "ru-RU",
+  "orientation": "portrait-primary",
+  "theme_color": "#ffffff",
+  "background_color": "#19142E",
+  "display": "standalone",
+  "description": "Frontend developer",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

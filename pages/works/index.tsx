@@ -8,8 +8,15 @@ import Error from '../../shared/components/Error/Error';
 import WorkLoaderSkeleton from '../../shared/UI/WorkLoaderSkeleton/WorkLoaderSkeleton';
 import { Work } from '../../shared/interfaces/work';
 
-const Works = memo(() => {
-  const { data, loading, error } = useFetch(`${process.env.API_URL}/works`);
+interface Props {
+  works: Work[];
+}
+
+const Works: React.FC<Props> = memo(({ works }) => {
+  const { data, loading, error } = useFetch(
+    `${process.env.API_URL}/works`,
+    works,
+  );
 
   return (
     <MainLayout title='Works'>
@@ -36,5 +43,20 @@ const Works = memo(() => {
     </MainLayout>
   );
 });
+
+export async function getStaticProps() {
+  // Call an external API endpoint to get posts.
+  // You can use any data fetching library
+  const res = await fetch(`${process.env.API_URL}/works`);
+  const works: Work[] = await res.json();
+
+  // By returning { props: posts }, the Blog component
+  // will receive `posts` as a prop at build time
+  return {
+    props: {
+      works,
+    },
+  };
+}
 
 export default Works;
