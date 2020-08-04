@@ -1,21 +1,18 @@
 import { useEffect, useState, useCallback, memo } from 'react';
+import Skeleton from 'react-loading-skeleton';
 
 import MainLayout from '../shared/Layouts/MainLayout';
+import Error from '../shared/components/Error/Error';
 import cites from '../shared/data/cites';
+import { useFetch } from 'shared/hooks/use-fetch';
 
 import styles from './index.module.scss';
-interface Props {
-  description: [
-    {
-      _id: string;
-      description: string;
-    },
-  ];
-}
 
-const Home: React.FC<Props> = memo(({ description }) => {
+const Home = memo(() => {
   const [msage, setMesg] = useState('');
   const [cite, setSite] = useState(0);
+
+  const { data, loading, error } = useFetch(`${process.env.API_URL}/home`);
 
   const getRandomCites = useCallback((): number => {
     const max = cites.length;
@@ -23,8 +20,10 @@ const Home: React.FC<Props> = memo(({ description }) => {
   }, []);
 
   useEffect(() => {
-    setMesg(description[0].description);
-  }, [description]);
+    if (data) {
+      setMesg(data[0].description);
+    }
+  }, [data]);
 
   useEffect(() => {
     setSite(getRandomCites());
@@ -33,11 +32,14 @@ const Home: React.FC<Props> = memo(({ description }) => {
   return (
     <MainLayout title='Javascript Fullstack Developer'>
       <section className={styles.conteiner}>
+        {!loading && error && <Error error={error.message} />}
         <h1 className={styles.title}>
           Сергей Романиченко<span className={styles.title__dot}>.</span>
         </h1>
         <h2 className={styles.subtitle}>Front-end разработчик</h2>
-        <p className={styles.descriptionText}>{msage}</p>
+        <p className={styles.descriptionText}>
+          {msage || <Skeleton count={2} />}
+        </p>
 
         {/* Cites */}
         <div className={styles.cites}>&rdquo;{cites[cite]}&rdquo;</div>
@@ -45,16 +47,5 @@ const Home: React.FC<Props> = memo(({ description }) => {
     </MainLayout>
   );
 });
-
-export const getStaticProps = async () => {
-  const res = await fetch(`${process.env.API_URL}/home`);
-  const description = await res.json();
-
-  return {
-    props: {
-      description,
-    },
-  };
-};
 
 export default Home;

@@ -1,5 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
+// @ts-ignore
+import NextNprogress from 'nextjs-progressbar';
 import { AppProps } from 'next/app';
 
 import '../shared/styles/root.scss';
@@ -16,7 +18,12 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         />
         <title>Javascript Fullstack Developer</title>
       </Head>
-
+      <NextNprogress
+        color='#FC5EC7'
+        startPosition='0.3'
+        stopDelayMs='200'
+        height='4'
+      />
       <Component {...pageProps} />
     </ErrorBoundary>
   );
