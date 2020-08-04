@@ -1,0 +1,10 @@
+.works {
+  display: flex;
+  flex-direction: column;
+}
+
+.worksContainer {
+  display: flex;
+  justify-content: space-around;
+  flex-flow: wrap;
+}

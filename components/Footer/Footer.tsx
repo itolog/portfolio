@@ -14,7 +14,6 @@ const Footer = memo(() => {
     <footer className={styles.footer}>
       <ul className={styles.navSocial}>
         <li>
-          {' '}
           <a
             href='https://github.com/itolog'
             target='_blank'
