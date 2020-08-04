@@ -1,0 +1,12 @@
+@import '../../styles/mixins.scss';
+
+.workLSkeleton {
+  display: flex;
+  flex-flow: column;
+  flex-basis: 200px;
+  height: 200px;
+  margin: 0 10px 30px 0;
+  @include phones() {
+    flex-basis: auto;
+  }
+}

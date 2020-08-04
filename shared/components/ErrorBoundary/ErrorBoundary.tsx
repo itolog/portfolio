@@ -11,7 +11,7 @@ interface Props {
 }
 
 class ErrorBoundary extends PureComponent<Props, State> {
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
     this.state = { hasError: false, errInfo: '' };
   }
@@ -21,7 +21,7 @@ class ErrorBoundary extends PureComponent<Props, State> {
     return { hasError: true, errInfo: error.message };
   }
 
-  componentDidCatch(error: Error, errorInfo: any) {
+  componentDidCatch() {
     // Можно также сохранить информацию об ошибке в соответствующую службу журнала ошибок
     // console.log(error, errorInfo);
   }

@@ -4,23 +4,22 @@ import MainLayout from '../../shared/Layouts/MainLayout';
 
 import styles from './works.module.scss';
 import WorkCard from '../../components/WorkCard/WorkCard';
+import Error from '../../shared/components/Error/Error';
+import WorkLoaderSkeleton from '../../shared/UI/WorkLoaderSkeleton/WorkLoaderSkeleton';
 import { Work } from '../../shared/interfaces/work';
 
 const Works = memo(() => {
   const { data, loading, error } = useFetch(`${process.env.API_URL}/works`);
 
-  if (error) {
-    return <h2>{error.message}</h2>;
-  }
-
   return (
     <MainLayout title='Works'>
       <section className={styles.works}>
-        <h1>Works</h1>
-        {loading && (
-          <div style={{ color: 'lime', fontSize: '100px' }}>loading...</div>
-        )}
+        <h1 className='subtitle'>Works</h1>
+        {/* ERROR */}
+        {error && <Error error={error.message} />}
+
         <ul className={styles.worksContainer}>
+          {loading && <WorkLoaderSkeleton />}
           {data?.map((item: Work) => {
             return (
               <WorkCard

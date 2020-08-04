@@ -23,11 +23,11 @@
   overflow: hidden;
   img {
     height: 100%;
-    transition: 2s;
+    transition: 1.2s;
   }
   &:hover {
-    transition: 2s;
-    .works__img__description {
+    transition: 1.2s;
+    .workImgDescription {
       transform: translateY(0);
     }
     img {
@@ -51,5 +51,7 @@
   background: #000;
   opacity: 0.8;
   transform: translateY(-500px);
-  transition: 1s;
+  transition: 0.8s;
+  color: rgb(255, 255, 255);
+  text-align: center;
 }
