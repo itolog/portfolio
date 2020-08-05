@@ -12,6 +12,7 @@
   margin: 0 auto;
   @include tablets() {
     justify-content: start;
+    height: auto;
   }
 }
 

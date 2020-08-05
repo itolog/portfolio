@@ -1,8 +1,11 @@
 import { memo, useEffect, useState } from 'react';
 
+import { motion } from 'framer-motion';
+
 import MainLayout from 'shared/Layouts/MainLayout';
 import SkillsList from '../../components/SkillsList/SkillsList';
 import Error from '../../shared/components/Error/Error';
+import SubTitle from '../../shared/UI/SubTitle/SubTitle';
 import { useFetch } from 'shared/hooks/use-fetch';
 
 import styles from './skills.module.scss';
@@ -24,8 +27,12 @@ const index = memo(() => {
 
   return (
     <MainLayout title='Skills'>
-      <section className={styles.skills}>
-        <h1 className='subtitle'>Навыки</h1>
+      <motion.section
+        initial='exit'
+        animate='enter'
+        exit='exit'
+        className={styles.skills}>
+        <SubTitle title='Навыки' />
 
         {!loading && error && <Error error={error.message} />}
 
@@ -33,7 +40,7 @@ const index = memo(() => {
         <SkillsList loading={loading} title='CSS' skills={css} />
         <SkillsList loading={loading} title='JS' skills={js} />
         <SkillsList loading={loading} title='OTHER' skills={other} />
-      </section>
+      </motion.section>
     </MainLayout>
   );
 });

@@ -4,6 +4,8 @@ import Head from 'next/head';
 import NextNprogress from 'nextjs-progressbar';
 import { AppProps } from 'next/app';
 
+import { AnimatePresence } from 'framer-motion';
+
 import '../shared/styles/root.scss';
 import ErrorBoundary from 'shared/components/ErrorBoundary/ErrorBoundary';
 
@@ -37,6 +39,11 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <link rel='manifest' href='/site.webmanifest' />
         <meta name='theme-color' content='#ffffff' />
 
+        <meta
+          name='description'
+          content='Веб разработка.Создание сайтов.Оптимизация вашего сайта.Разработка гибридных и нативных мобильных приложений'
+        />
+
         <title>Javascript Fullstack Developer</title>
       </Head>
       <NextNprogress
@@ -45,7 +52,9 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         stopDelayMs={200}
         height={4}
       />
-      <Component {...pageProps} />
+      <AnimatePresence exitBeforeEnter initial={false}>
+        <Component {...pageProps} />
+      </AnimatePresence>
     </ErrorBoundary>
   );
 }

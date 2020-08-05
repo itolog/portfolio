@@ -1,11 +1,15 @@
 import React, { memo } from 'react';
+import { motion } from 'framer-motion';
+
 import { useFetch } from '../../shared/hooks/use-fetch';
 import MainLayout from '../../shared/Layouts/MainLayout';
-
-import styles from './works.module.scss';
 import WorkCard from '../../components/WorkCard/WorkCard';
 import Error from '../../shared/components/Error/Error';
 import WorkLoaderSkeleton from '../../shared/UI/WorkLoaderSkeleton/WorkLoaderSkeleton';
+import SubTitle from 'shared/UI/SubTitle/SubTitle';
+
+import styles from './works.module.scss';
+
 import { Work } from '../../shared/interfaces/work';
 
 interface Props {
@@ -20,8 +24,12 @@ const Works: React.FC<Props> = memo(({ works }) => {
 
   return (
     <MainLayout title='Works'>
-      <section className={styles.works}>
-        <h1 className='subtitle'>Works</h1>
+      <motion.section
+        initial='exit'
+        animate='enter'
+        exit='exit'
+        className={styles.works}>
+        <SubTitle title='Работы' />
         {/* ERROR */}
         {error && <Error error={error.message} />}
 
@@ -39,7 +47,7 @@ const Works: React.FC<Props> = memo(({ works }) => {
             );
           })}
         </ul>
-      </section>
+      </motion.section>
     </MainLayout>
   );
 });
