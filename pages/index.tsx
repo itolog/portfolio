@@ -8,8 +8,14 @@ import { useFetch } from 'shared/hooks/use-fetch';
 
 import styles from './index.module.scss';
 
+interface UserInfo {
+  _id: string;
+  description: string;
+  title: string;
+}
+
 const Home = memo(() => {
-  const [msage, setMesg] = useState('');
+  const [dataUser, setDataUser] = useState<UserInfo>();
   const [cite, setSite] = useState(0);
 
   const { data, loading, error } = useFetch(`${process.env.API_URL}/home`);
@@ -21,7 +27,7 @@ const Home = memo(() => {
 
   useEffect(() => {
     if (data) {
-      setMesg(data[0].description);
+      setDataUser(data[0]);
     }
   }, [data]);
 
@@ -36,9 +42,11 @@ const Home = memo(() => {
         <h1 className={styles.title}>
           Сергей Романиченко<span className={styles.title__dot}>.</span>
         </h1>
-        <h2 className={styles.subtitle}>Front-end разработчик</h2>
+        <h2 className={styles.subtitle}>
+          {dataUser?.title || <Skeleton count={1} />}
+        </h2>
         <p className={styles.descriptionText}>
-          {msage || <Skeleton count={2} />}
+          {dataUser?.description || <Skeleton count={2} />}
         </p>
 
         {/* Cites */}

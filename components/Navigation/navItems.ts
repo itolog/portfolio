@@ -14,6 +14,11 @@ const navItems = [
     title: 'Навыки',
     path: '/skills',
   },
+  {
+    id: 4,
+    title: 'Контакты',
+    path: '/contacts',
+  },
 ];
 
 export default navItems;
