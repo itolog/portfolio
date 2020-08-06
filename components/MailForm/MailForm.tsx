@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import { Formik, FormikHelpers } from 'formik';
 import { FaAt } from 'react-icons/fa';
 import { FaUser } from 'react-icons/fa';
@@ -25,15 +26,30 @@ const MailForm = () => {
 
   const onSubmit = (
     values: Values,
-    { setSubmitting }: FormikHelpers<Values>,
+    { setSubmitting, resetForm }: FormikHelpers<Values>,
   ) => {
-    console.log('values', values);
     setOpenTast(true);
     setToastType('info');
     setToastMsg('идёт отправка');
-    setTimeout(() => {
-      setSubmitting(false);
-    }, 1000);
+    axios
+      .post(`${process.env.API_URL}/mail`)
+      .then(() => {
+        setOpenTast(true);
+        setToastType('success');
+        setToastMsg('письмо отправленно');
+        resetForm();
+      })
+      .catch(() => {
+        setOpenTast(true);
+        setToastType('error');
+        setToastMsg('ошибка отправки');
+      })
+      .finally(() => {
+        setSubmitting(false);
+        setTimeout(() => {
+          setOpenTast(false);
+        }, 2000);
+      });
   };
 
   return (

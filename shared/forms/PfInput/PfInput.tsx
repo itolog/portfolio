@@ -12,19 +12,27 @@ interface Props {
   as?: string;
 }
 
-const PfInput: React.FC<Props> = memo(({ name, icon, as = 'input' }, props) => {
-  const [field, meta] = useField(name);
-  return (
-    <div className={styles.pfInputContainer}>
-      <div className={styles.inputWrapp}>
-        <label htmlFor={name}>{icon}</label>
-        <Field {...field} {...props} className={styles.textInput} as={as} />
+const PfInput: React.FC<Props> = memo(
+  ({ name, icon, as = 'input', placeholder }, props) => {
+    const [field, meta] = useField(name);
+    return (
+      <div className={styles.pfInputContainer}>
+        <div className={styles.inputWrapp}>
+          <label htmlFor={name}>{icon}</label>
+          <Field
+            {...field}
+            {...props}
+            placeholder={placeholder}
+            className={styles.textInput}
+            as={as}
+          />
+        </div>
+        <div className={styles.error}>
+          {meta.touched && meta.error && meta.error}
+        </div>
       </div>
-      <div className={styles.error}>
-        {meta.touched && meta.error && meta.error}
-      </div>
-    </div>
-  );
-});
+    );
+  },
+);
 
 export default PfInput;

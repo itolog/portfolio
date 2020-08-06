@@ -1,6 +1,9 @@
 .toastContainer {
   position: absolute;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
   flex-direction: column;
   top: 0;
   width: 100%;
@@ -9,6 +12,13 @@
   font-weight: 900;
   text-transform: uppercase;
   color: white;
+}
+
+.close {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  cursor: pointer;
 }
 
 .success {

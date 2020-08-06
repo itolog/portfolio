@@ -25,6 +25,9 @@
   padding: 5%;
   overflow-y: auto;
   background: #19142ee8;
+  @include tablets() {
+    margin-bottom: 10%;
+  }
 }
 
 .content {
