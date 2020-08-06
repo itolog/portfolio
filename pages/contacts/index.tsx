@@ -1,30 +1,23 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import MailForm from '../../components/MailForm/MailForm';
 
 import MainLayout from '../../shared/Layouts/MainLayout';
 import SubTitle from '../../shared/UI/SubTitle/SubTitle';
-import axios from 'axios';
+
+import styles from './contacts.module.scss';
 
 const index = () => {
-  const handleSend = () => {
-    axios
-      .post(`${process.env.API_URL}/mail`, {
-        from: 'mydick@test.ru',
-        text: 'BY SLUT',
-        name: 'Gamonya',
-      })
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((e) => {
-        console.log(e.message);
-      });
-  };
   return (
     <MainLayout title='Contacts'>
-      <motion.section initial='exit' animate='enter' exit='exit'>
+      <motion.section
+        initial='exit'
+        animate='enter'
+        exit='exit'
+        className={styles.contactsContainer}>
         <SubTitle title='Контакты' />
-        <button onClick={handleSend}>send</button>
+
+        <MailForm />
       </motion.section>
     </MainLayout>
   );

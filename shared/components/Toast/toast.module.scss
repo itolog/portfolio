@@ -1,0 +1,24 @@
+.toastContainer {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 1.1em;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: white;
+}
+
+.success {
+  background: #6bbd6e;
+}
+
+.info {
+  background: #47a8f5;
+}
+
+.error {
+  background: #f66359;
+}

@@ -8,9 +8,11 @@ import styles from './navigation.module.scss';
 
 const variants = {
   open: {
+    y: 0,
     transition: { staggerChildren: 0.07, delayChildren: 0.2 },
   },
   closed: {
+    y: -300,
     transition: { staggerChildren: 0.05, staggerDirection: -1 },
   },
 };
