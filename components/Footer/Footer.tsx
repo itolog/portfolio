@@ -33,7 +33,7 @@ const Footer = memo(() => {
         </li>
         <li>
           <a
-            href='https://web.telegram.org/#/im?p=@Itolog'
+            href='https://telegram.im/@Itolog'
             target='_blank'
             rel='noreferrer'
             aria-label='Telegram'>

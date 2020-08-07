@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import axios from 'axios';
 import { Formik, FormikHelpers } from 'formik';
 import { FaAt } from 'react-icons/fa';
@@ -19,7 +19,7 @@ interface Values {
   message: string;
 }
 
-const MailForm = () => {
+const MailForm = memo(() => {
   const [openToast, setOpenTast] = useState(false);
   const [toastType, setToastType] = useState<ToastType>();
   const [toastMsg, setToastMsg] = useState('');
@@ -92,6 +92,6 @@ const MailForm = () => {
       </Formik>
     </div>
   );
-};
+});
 
 export default MailForm;
