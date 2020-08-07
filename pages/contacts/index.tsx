@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import MailForm from '../../components/MailForm/MailForm';
 
 import MainLayout from '../../shared/Layouts/MainLayout';
+import MyMap from '../../components/MyMap/MyMap';
 import SubTitle from '../../shared/UI/SubTitle/SubTitle';
 
 import styles from './contacts.module.scss';
@@ -18,6 +19,8 @@ const index = () => {
         <SubTitle title='Контакты' />
 
         <MailForm />
+
+        <MyMap />
       </motion.section>
     </MainLayout>
   );

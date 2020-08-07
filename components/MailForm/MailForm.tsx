@@ -24,7 +24,7 @@ const MailForm = () => {
   const [toastType, setToastType] = useState<ToastType>();
   const [toastMsg, setToastMsg] = useState('');
 
-  const onSubmit = (
+  const handleSubmit = (
     values: Values,
     { setSubmitting, resetForm }: FormikHelpers<Values>,
   ) => {
@@ -58,7 +58,7 @@ const MailForm = () => {
       <Formik
         initialValues={{ email: '', name: '', message: '' }}
         validationSchema={MailSchema}
-        onSubmit={onSubmit}>
+        onSubmit={handleSubmit}>
         {({ handleSubmit, isSubmitting }) => (
           <form onSubmit={handleSubmit} className={styles.mailForm}>
             <PfInput

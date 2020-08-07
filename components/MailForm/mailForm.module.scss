@@ -2,12 +2,13 @@
 
 .mailFormContainer {
   position: relative;
+  margin-bottom: 10%;
 }
 
 .mailForm {
   background: $black-transparent;
   padding: 3%;
-  padding-top: 80px;
+  padding-top: 50px;
   padding-bottom: 30px;
   overflow: hidden;
   display: flex;
