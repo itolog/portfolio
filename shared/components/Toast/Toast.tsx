@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 import { FaWindowClose } from 'react-icons/fa';
 import styles from './toast.module.scss';
 
@@ -10,7 +10,7 @@ interface Props {
   type?: ToastType;
 }
 
-const Toast: React.FC<Props> = ({ type = 'info', isOpen, message }) => {
+const Toast: React.FC<Props> = memo(({ type = 'info', isOpen, message }) => {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -31,6 +31,6 @@ const Toast: React.FC<Props> = ({ type = 'info', isOpen, message }) => {
       ) : null}
     </>
   );
-};
+});
 
 export default Toast;

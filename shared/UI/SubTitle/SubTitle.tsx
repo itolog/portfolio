@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import { motion } from 'framer-motion';
 
@@ -18,12 +18,12 @@ const backVariants = {
   enter: { x: 0, opacity: 1, transition: { delay: 0.5, ...transition } },
 };
 
-const SubTitle: React.FC<Props> = ({ title }) => {
+const SubTitle: React.FC<Props> = memo(({ title }) => {
   return (
     <motion.h1 variants={backVariants} className={styles.subtitle}>
       {title}
     </motion.h1>
   );
-};
+});
 
 export default SubTitle;

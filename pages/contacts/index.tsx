@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { motion } from 'framer-motion';
 import MailForm from '../../components/MailForm/MailForm';
 
@@ -8,7 +8,7 @@ import SubTitle from '../../shared/UI/SubTitle/SubTitle';
 
 import styles from './contacts.module.scss';
 
-const index = () => {
+const index = memo(() => {
   return (
     <MainLayout title='Contacts'>
       <motion.section
@@ -24,6 +24,6 @@ const index = () => {
       </motion.section>
     </MainLayout>
   );
-};
+});
 
 export default index;

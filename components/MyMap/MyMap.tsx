@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import styles from './myMap.module.scss';
 
-const MyMap = () => {
+const MyMap = memo(() => {
   return (
     <section className={styles.map}>
       <iframe
@@ -14,6 +14,6 @@ const MyMap = () => {
         allowFullScreen></iframe>
     </section>
   );
-};
+});
 
 export default MyMap;

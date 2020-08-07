@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { memo } from 'react';
 import Skeleton from 'react-loading-skeleton';
 
 import styles from './workLoaderSkeleton.module.scss';
 
-const WorkLoaderSkeleton = () => {
+const WorkLoaderSkeleton = memo(() => {
   const iterator = [1, 2, 3, 4, 5, 6];
   return (
     <>
@@ -20,6 +20,6 @@ const WorkLoaderSkeleton = () => {
       })}
     </>
   );
-};
+});
 
 export default WorkLoaderSkeleton;

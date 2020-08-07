@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Work } from '../../shared/interfaces/work';
 
 import styles from './workCard.module.scss';
 
-const WorkCard: React.FC<Work> = ({ title, description, href, img }) => {
+const WorkCard: React.FC<Work> = memo(({ title, description, href, img }) => {
   return (
     <li className={styles.workLi}>
       <div className={styles.workImg}>
-        <img src={img} alt={title} />
+        <img loading='lazy' src={img} alt={title} />
         <p className={styles.workImgDescription}>{description}</p>
       </div>
       <a href={href} target='_balnk' className={styles.workHref}>
@@ -15,6 +15,6 @@ const WorkCard: React.FC<Work> = ({ title, description, href, img }) => {
       </a>
     </li>
   );
-};
+});
 
 export default WorkCard;
