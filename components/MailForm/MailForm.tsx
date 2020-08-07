@@ -32,7 +32,7 @@ const MailForm = memo(() => {
     setToastType('info');
     setToastMsg('идёт отправка');
     axios
-      .post(`${process.env.API_URL}/mail`)
+      .post(`${process.env.API_URL}/mail`, values)
       .then(() => {
         setOpenTast(true);
         setToastType('success');
