@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 
 interface Props {
@@ -7,12 +7,14 @@ interface Props {
   highlightColor: string;
 }
 
-const SkeletonLoader: React.FC<Props> = ({ color, count, highlightColor }) => {
-  return (
-    <SkeletonTheme color={color} highlightColor={highlightColor}>
-      <Skeleton count={count} />
-    </SkeletonTheme>
-  );
-};
+const SkeletonLoader: React.FC<Props> = memo(
+  ({ color, count, highlightColor }) => {
+    return (
+      <SkeletonTheme color={color} highlightColor={highlightColor}>
+        <Skeleton count={count} />
+      </SkeletonTheme>
+    );
+  },
+);
 
 export default SkeletonLoader;
