@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback, memo } from 'react';
-import Skeleton from 'react-loading-skeleton';
+import SkeletonLoader from '../shared/UI/SkeletonLoader/SkeletonLoader';
 
 import MainLayout from '../shared/Layouts/MainLayout';
 import Error from '../shared/components/Error/Error';
@@ -43,11 +43,15 @@ const Home = memo(() => {
           Сергей Романиченко<span className={styles.title__dot}>.</span>
         </h1>
         <h2 className={styles.subtitle}>
-          {dataUser?.title || <Skeleton count={1} />}
+          {dataUser?.title || (
+            <SkeletonLoader color='#ff68b6' highlightColor='grey' count={1} />
+          )}
         </h2>
-        <p className={styles.descriptionText}>
-          {dataUser?.description || <Skeleton count={2} />}
-        </p>
+        <div className={styles.descriptionText}>
+          {dataUser?.description || (
+            <SkeletonLoader color='white' highlightColor='grey' count={2} />
+          )}
+        </div>
 
         {/* Cites */}
         <div className={styles.cites}>&rdquo;{cites[cite]}&rdquo;</div>

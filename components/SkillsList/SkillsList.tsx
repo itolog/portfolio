@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
+import SkeletonLoader from '../../shared/UI/SkeletonLoader/SkeletonLoader';
 
 import styles from './skillsList.module.scss';
 
@@ -16,11 +16,7 @@ const SkillsList: React.FC<Props> = memo(({ title, skills, loading }) => {
 
       <ul className={styles.skillsList}>
         {loading && skills?.length === 0 && (
-          <SkeletonTheme color='#202020' highlightColor='#444'>
-            <p>
-              <Skeleton count={2} />
-            </p>
-          </SkeletonTheme>
+          <SkeletonLoader color='#202020' highlightColor='#444' count={2} />
         )}
         {skills &&
           skills.map((item, index) => {
