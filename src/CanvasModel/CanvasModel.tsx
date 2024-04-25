@@ -1,8 +1,10 @@
-import { Center, OrbitControls } from "@react-three/drei";
+import { Center, CubeCamera, Environment, OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 
-import DroidLab from "@/components/Models/DroidLab/DroidLab.tsx";
+import DroidLab from "@/components/DroidLab/DroidLab.tsx";
+// import CanvasEffects from "@/components/effects/CanvasEffects/CanvasEffects.tsx";
+import Rings from "@/components/Rings/Rings.tsx";
 
 const CanvasModel = () => {
 	return (
@@ -19,10 +21,18 @@ const CanvasModel = () => {
 					intensity={Math.PI}
 				/>
 				<pointLight castShadow position={[-10, -10, -10]} decay={0} intensity={Math.PI} />
-
-				<Center>
-					<DroidLab />
-				</Center>
+				<Rings />
+				{/* <CanvasEffects /> */}
+				<CubeCamera resolution={256} frames={Infinity}>
+					{(texture) => (
+						<>
+							<Environment map={texture} />
+							<Center>
+								<DroidLab />
+							</Center>
+						</>
+					)}
+				</CubeCamera>
 			</Canvas>
 		</Suspense>
 	);

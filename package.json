@@ -13,6 +13,7 @@
   "dependencies": {
     "@react-three/drei": "^9.105.4",
     "@react-three/fiber": "^8.16.2",
+    "@react-three/postprocessing": "^2.16.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "three": "^0.163.0"
@@ -34,6 +35,7 @@
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
+    "leva": "^0.9.35",
     "npm-check-updates": "^16.14.18",
     "oxlint": "^0.3.1",
     "prettier": "^3.2.5",
@@ -48,7 +50,6 @@
     "vite-plugin-oxlint": "^1.0.2",
     "vite-plugin-pwa": "^0.19.8",
     "vite-plugin-stylelint": "^5.3.1",
-    "vite-plugin-webfont-dl": "^3.9.3",
-    "leva": "^0.9.35"
+    "vite-plugin-webfont-dl": "^3.9.3"
   }
 }
