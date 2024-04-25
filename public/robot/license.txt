@@ -1,0 +1,11 @@
+Model Information:
+* title:	Robot Huggy Wuggy 2.0
+* source:	https://sketchfab.com/3d-models/robot-huggy-wuggy-20-c3f72234a167435ebd3cd24d9abaed10
+* author:	ArachnoBoy (https://sketchfab.com/vang807)
+
+Model License:
+* license type:	CC-BY-NC-SA-4.0 (http://creativecommons.org/licenses/by-nc-sa/4.0/)
+* requirements:	Author must be credited. No commercial use. Modified versions must have the same license.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Robot Huggy Wuggy 2.0" (https://sketchfab.com/3d-models/robot-huggy-wuggy-20-c3f72234a167435ebd3cd24d9abaed10) by ArachnoBoy (https://sketchfab.com/vang807) licensed under CC-BY-NC-SA-4.0 (http://creativecommons.org/licenses/by-nc-sa/4.0/)

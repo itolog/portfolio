@@ -22,6 +22,7 @@ const CanvasEffects = () => {
 			/>
 			<ChromaticAberration
 				blendFunction={BlendFunction.NORMAL} // blend mode
+				// @ts-ignore
 				offset={[0.0005, 0.0012]} // color offset
 			/>
 		</EffectComposer>

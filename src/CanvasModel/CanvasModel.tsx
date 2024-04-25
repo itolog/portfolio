@@ -3,6 +3,7 @@ import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 
 import DroidLab from "@/components/DroidLab/DroidLab.tsx";
+import Hero from "@/components/Hero/Hero.tsx";
 // import CanvasEffects from "@/components/effects/CanvasEffects/CanvasEffects.tsx";
 import Rings from "@/components/Rings/Rings.tsx";
 
@@ -27,6 +28,7 @@ const CanvasModel = () => {
 					{(texture) => (
 						<>
 							<Environment map={texture} />
+							<Hero />
 							<Center>
 								<DroidLab />
 							</Center>
