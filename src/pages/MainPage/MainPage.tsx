@@ -1,48 +1,66 @@
-import { Physics } from "@react-three/cannon";
-import { Center, CubeCamera, Environment, OrbitControls } from "@react-three/drei";
+import {
+	Center,
+	CubeCamera,
+	Environment,
+	KeyboardControls,
+	OrbitControls,
+} from "@react-three/drei";
+import { Physics } from "@react-three/rapier";
+import { useMemo } from "react";
 
-import { IS_DEV } from "@/constants";
+import { Controls, IS_DEV } from "@/constants";
 import PerformanceMonitor from "@/utils/PerformanceMonitor/PerformanceMonitor.tsx";
 
 import AppCanvas from "@/components/AppCanvas/AppCanvas.tsx";
 import DroidLab from "@/components/AppCanvas/componnets/DroidLab/DroidLab.tsx";
-import Hero from "@/components/AppCanvas/componnets/Hero/Hero.tsx";
-// import Rings from "@/components/AppCanvas/componnets/Rings/Rings.tsx";
+import HeroController from "@/components/AppCanvas/componnets/HeroController/HeroController.tsx";
 import SkyBox from "@/components/AppCanvas/componnets/SkyBox/SkyBox.tsx";
 
 const MainPage = () => {
+	const map = useMemo(
+		() => [
+			{ name: Controls.forward, keys: ["ArrowUp", "KeyW"] },
+			{ name: Controls.back, keys: ["ArrowDown", "KeyS"] },
+			{ name: Controls.left, keys: ["ArrowLeft", "KeyA"] },
+			{ name: Controls.right, keys: ["ArrowRight", "KeyD"] },
+			{ name: Controls.jump, keys: ["Space"] },
+		],
+		[],
+	);
 	return (
-		<AppCanvas>
-			{IS_DEV && <PerformanceMonitor />}
-			<SkyBox />
-			<Physics>
-				<OrbitControls target={[0, 0.35, 1]} maxPolarAngle={1.45} minZoom={1} />
-				<ambientLight intensity={3} />
-				<spotLight
-					castShadow
-					position={[0, 10, 10]}
-					angle={0.15}
-					penumbra={1}
-					decay={0}
-					intensity={Math.PI}
-				/>
-				<pointLight castShadow position={[-10, -10, -10]} decay={0} intensity={Math.PI} />
-				{/* <Rings /> */}
-				<Hero />
+		<KeyboardControls map={map}>
+			<AppCanvas>
+				{IS_DEV && <PerformanceMonitor />}
+				<SkyBox />
+				<Physics debug>
+					<OrbitControls target={[0, 0.35, 1]} maxPolarAngle={1.45} minZoom={1} />
+					<ambientLight intensity={3} />
+					<spotLight
+						castShadow
+						position={[0, 10, 10]}
+						angle={0.15}
+						penumbra={1}
+						decay={0}
+						intensity={Math.PI}
+					/>
+					<pointLight castShadow position={[-10, -10, -10]} decay={0} intensity={Math.PI} />
 
-				<CubeCamera resolution={256} frames={Infinity}>
-					{(texture) => (
-						<>
-							<Environment map={texture} />
+					<HeroController />
 
-							<Center>
-								<DroidLab />
-							</Center>
-						</>
-					)}
-				</CubeCamera>
-			</Physics>
-		</AppCanvas>
+					<CubeCamera resolution={256} frames={Infinity}>
+						{(texture) => (
+							<>
+								<Environment map={texture} />
+
+								<Center>
+									<DroidLab />
+								</Center>
+							</>
+						)}
+					</CubeCamera>
+				</Physics>
+			</AppCanvas>
+		</KeyboardControls>
 	);
 };
 
