@@ -1,7 +1,7 @@
-import CanvasModel from "@/CanvasModel/CanvasModel.tsx";
+import MainPage from "@/pages/MainPage/MainPage.tsx";
 
 function App() {
-	return <CanvasModel />;
+	return <MainPage />;
 }
 
 export default App;

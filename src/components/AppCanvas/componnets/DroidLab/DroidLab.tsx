@@ -1,8 +1,10 @@
-import { PerspectiveCamera, useGLTF } from "@react-three/drei";
+import { useGLTF } from "@react-three/drei";
+import { useLoader } from "@react-three/fiber";
 
-import { useControls } from "leva";
 import * as THREE from "three";
 import { GLTF } from "three-stdlib";
+// @ts-ignore
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
 type GLTFResult = GLTF & {
 	nodes: {
@@ -54,17 +56,11 @@ type GLTFResult = GLTF & {
 };
 
 const DroidLab = (props: JSX.IntrinsicElements["group"]) => {
-	const { nodes, materials } = useGLTF("/drone_lab/scene.gltf") as GLTFResult;
-
-	const { cameraPos, cameraFov } = useControls("options", {
-		cameraFov: 10,
-		cameraPos: [22, 40, -60],
-	});
+	const { nodes, materials } = useLoader(GLTFLoader, "models/drone_lab/scene.gltf") as GLTFResult;
 
 	return (
 		<>
-			<PerspectiveCamera makeDefault fov={cameraFov} position={cameraPos} />
-			<group {...props}>
+			<group scale={1.1} {...props}>
 				<group name="Sketchfab_Scene">
 					<group name="Sketchfab_model" rotation={[-Math.PI / 2, 0, 0]} scale={0.007}>
 						<group name="Drone_lab_table_and_holographic_computerobjcleanermaterialmergergles">
