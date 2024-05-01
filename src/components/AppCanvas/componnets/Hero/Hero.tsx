@@ -1,8 +1,8 @@
 import { useAnimations, useGLTF } from "@react-three/drei";
 import { useLoader } from "@react-three/fiber";
-import { MutableRefObject, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 
-import { ANIMATIONS_TYPE } from "@/constants";
+// import { ANIMATIONS_TYPE } from "@/constants";
 // @ts-ignore
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
@@ -21,6 +21,7 @@ const Hero = ({ animationType, ...props }: JSX.IntrinsicElements["group"] | Prop
 	const { actions } = useAnimations(animations, group);
 
 	useEffect(() => {
+		// console.log(animationType);
 		actions?.[animationType]?.reset().play();
 
 		// return () => {
