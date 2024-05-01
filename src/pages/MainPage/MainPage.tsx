@@ -4,15 +4,18 @@ import {
 	Environment,
 	KeyboardControls,
 	OrbitControls,
+	PerspectiveCamera,
 } from "@react-three/drei";
 import { Physics } from "@react-three/rapier";
 import { useMemo } from "react";
 
+import { heroConfig } from "@/config";
 import { Controls, IS_DEV } from "@/constants";
 import PerformanceMonitor from "@/utils/PerformanceMonitor/PerformanceMonitor.tsx";
+import { useControls } from "leva";
 
 import AppCanvas from "@/components/AppCanvas/AppCanvas.tsx";
-import DroidLab from "@/components/AppCanvas/componnets/DroidLab/DroidLab.tsx";
+import { Ground } from "@/components/AppCanvas/componnets/Ground/Ground.tsx";
 import HeroController from "@/components/AppCanvas/componnets/HeroController/HeroController.tsx";
 import SkyBox from "@/components/AppCanvas/componnets/SkyBox/SkyBox.tsx";
 
@@ -27,13 +30,27 @@ const MainPage = () => {
 		],
 		[],
 	);
+
+	const { cameraPos, near, far, fov } = useControls("options", {
+		near: heroConfig.cameraConfig.near,
+		far: heroConfig.cameraConfig.far,
+		cameraPos: heroConfig.cameraConfig.cameraPosition,
+		fov: heroConfig.cameraConfig.fov,
+	});
+
 	return (
 		<KeyboardControls map={map}>
 			<AppCanvas>
 				{IS_DEV && <PerformanceMonitor />}
+
+				<PerspectiveCamera makeDefault fov={fov} near={near} far={far} position={cameraPos} />
 				<SkyBox />
 				<Physics debug>
-					<OrbitControls target={[0, 0.35, 1]} maxPolarAngle={1.45} minZoom={1} />
+					<OrbitControls
+						target={[1, 0.3, 1]}
+						// maxPolarAngle={1.45}
+						// minZoom={1}
+					/>
 					<ambientLight intensity={3} />
 					<spotLight
 						castShadow
@@ -43,17 +60,14 @@ const MainPage = () => {
 						decay={0}
 						intensity={Math.PI}
 					/>
-					<pointLight castShadow position={[-10, -10, -10]} decay={0} intensity={Math.PI} />
-
-					<HeroController />
-
+					<pointLight castShadow position={[-10, -10, -10]} decay={0} intensity={Math.PI} />E
 					<CubeCamera resolution={256} frames={Infinity}>
 						{(texture) => (
 							<>
 								<Environment map={texture} />
-
+								<HeroController />
 								<Center>
-									<DroidLab />
+									<Ground />
 								</Center>
 							</>
 						)}

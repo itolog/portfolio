@@ -1,12 +1,13 @@
-import { PerspectiveCamera, useKeyboardControls } from "@react-three/drei";
+import { useKeyboardControls } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { CuboidCollider, RigidBody } from "@react-three/rapier";
+import { CuboidCollider, RigidBody, useRapier } from "@react-three/rapier";
 import { RapierRigidBody } from "@react-three/rapier/dist/declarations/src/types";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 import { heroConfig } from "@/config";
 import { ANIMATIONS_TYPE, Controls } from "@/constants";
-import { useControls } from "leva";
+import * as THREE from "three";
+import { Group } from "three";
 
 import Hero from "@/components/AppCanvas/componnets/Hero/Hero.tsx";
 
@@ -22,13 +23,28 @@ const HeroController = () => {
 	const forwardPressed = useKeyboardControls((state) => state[Controls.forward]);
 	const rigidBody = useRef<RapierRigidBody>(null);
 	const isOnFloor = useRef(true);
-	const character = useRef(null);
+	const character = useRef<Group>(null);
 	const animationType = useRef(ANIMATIONS_TYPE.IDLE);
 
-	useFrame(() => {
-		const impulse = { x: 0, y: 0, z: 0 };
+	const { world } = useRapier();
 
-		if (!rigidBody?.current) return;
+	const characterController = world.createCharacterController(0.01);
+	characterController.setApplyImpulsesToDynamicBodies(true);
+	characterController.enableAutostep(5, 0.1, false);
+	characterController.enableSnapToGround(1);
+
+	useEffect(() => {
+		if (!rigidBody?.current || !character.current) return;
+		const worldPosition = character.current.getWorldPosition(new THREE.Vector3());
+		const worldRotation = character.current.getWorldQuaternion(new THREE.Quaternion());
+		rigidBody.current.setTranslation(worldPosition, true);
+		rigidBody.current.setRotation(worldRotation, true);
+	}, []);
+
+	useFrame(() => {
+		const impulse = new THREE.Vector3(0, 0, 0);
+
+		if (!rigidBody?.current || !character.current) return;
 
 		const linvel = rigidBody.current.linvel();
 		let changeRotation = false;
@@ -57,45 +73,32 @@ const HeroController = () => {
 		}
 
 		rigidBody.current.applyImpulse(impulse, true);
-
+		characterController.computeColliderMovement(rigidBody.current.collider(0), impulse);
 		if (changeRotation && character?.current) {
-			// @ts-ignore
 			character.current.rotation.y = Math.atan2(linvel.x, linvel.z);
 		}
 	});
 
-	const { cameraPos, near, far, fov, heroPos } = useControls("options", {
-		near: heroConfig.cameraConfig.near,
-		far: heroConfig.cameraConfig.far,
-		cameraPos: heroConfig.cameraConfig.cameraPosition,
-		fov: heroConfig.cameraConfig.fov,
-		heroPos: heroConfig.heroPosition,
-	});
-
 	return (
-		<>
-			<PerspectiveCamera makeDefault fov={fov} near={near} far={far} position={cameraPos} />
-
-			<RigidBody
-				ref={rigidBody}
-				colliders={false}
-				enabledRotations={[false, false, false]}
-				onCollisionEnter={({ other }) => {
-					if (other.rigidBodyObject?.name === "floor") {
-						isOnFloor.current = true;
-					}
-				}}
-				onCollisionExit={({ other }) => {
-					if (other.rigidBodyObject?.name === "floor") {
-						isOnFloor.current = false;
-					}
-				}}>
-				<group ref={character}>
-					<CuboidCollider args={heroConfig.colliderConfig.args} />
-					<Hero animationType={animationType.current} position={heroPos} />
-				</group>
-			</RigidBody>
-		</>
+		<RigidBody
+			ref={rigidBody}
+			colliders={false}
+			enabledRotations={[false, false, false]}
+			onCollisionEnter={({ other }) => {
+				if (other.rigidBodyObject?.name === "floor") {
+					isOnFloor.current = true;
+				}
+			}}
+			onCollisionExit={({ other }) => {
+				if (other.rigidBodyObject?.name === "floor") {
+					isOnFloor.current = false;
+				}
+			}}>
+			<group ref={character}>
+				<CuboidCollider position={[0, 1, 0]} args={heroConfig.colliderConfig.args} />
+				<Hero animationType={animationType.current} />
+			</group>
+		</RigidBody>
 	);
 };
 

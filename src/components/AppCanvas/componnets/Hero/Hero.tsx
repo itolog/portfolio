@@ -12,6 +12,7 @@ interface Props {
 	animationType: string;
 }
 
+// @ts-ignore
 const Hero = ({ animationType, ...props }: JSX.IntrinsicElements["group"] | Props) => {
 	const group = useRef(null);
 	const { nodes, materials, animations } = useLoader(

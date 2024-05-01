@@ -36,7 +36,6 @@
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.6",
-    "gl-bench": "^1.0.42",
     "leva": "^0.9.35",
     "npm-check-updates": "^16.14.20",
     "oxlint": "^0.3.1",

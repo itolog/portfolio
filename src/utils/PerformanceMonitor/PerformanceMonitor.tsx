@@ -1,20 +1,7 @@
-import { useThree } from "@react-three/fiber";
-
-import GLBench from "gl-bench/dist/gl-bench";
+import { StatsGl } from "@react-three/drei";
 
 const PerformanceMonitor = () => {
-	const { gl } = useThree();
-
-	const bench = new GLBench(gl.getContext());
-	const draw = (now: number) => {
-		bench.begin();
-		bench.end();
-		bench.nextFrame(now);
-	};
-
-	gl.setAnimationLoop((now) => draw(now));
-
-	return null;
+	return <StatsGl className="stats" />;
 };
 
 export default PerformanceMonitor;
