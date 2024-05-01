@@ -78,7 +78,6 @@ const HeroController = () => {
 			character.current.rotation.y = Math.atan2(linvel.x, linvel.z);
 		}
 	});
-	console.log(animationType);
 
 	return (
 		<RigidBody
