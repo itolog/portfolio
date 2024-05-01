@@ -2,7 +2,7 @@ import { useKeyboardControls } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { CuboidCollider, RigidBody, useRapier } from "@react-three/rapier";
 import { RapierRigidBody } from "@react-three/rapier/dist/declarations/src/types";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 import { heroConfig } from "@/config";
 import { ANIMATIONS_TYPE, Controls } from "@/constants";
@@ -10,8 +10,11 @@ import { Group, Quaternion, Vector3 } from "three";
 
 import Hero from "@/components/AppCanvas/componnets/Hero/Hero.tsx";
 
+import useAnimationStore from "@/store/animations.ts";
+import createSelectors from "@/store/createSelectors.ts";
+
 const JUMP_FORCE = 3;
-const MOVEMENT_SPEED = 0.05;
+const MOVEMENT_SPEED = 0.06;
 const MAX_VEL = 3;
 
 const HeroController = () => {
@@ -23,7 +26,8 @@ const HeroController = () => {
 	const rigidBody = useRef<RapierRigidBody>(null);
 	const isOnFloor = useRef(true);
 	const character = useRef<Group>(null);
-	const [animationType, seyAnimationType] = useState(ANIMATIONS_TYPE.IDLE);
+	const updateAnimType = createSelectors(useAnimationStore).use.updateAnimationType();
+	// useAnimationStore((state) => state.updateAnimationType);
 
 	const { world } = useRapier();
 
@@ -49,27 +53,27 @@ const HeroController = () => {
 		const linvel = rigidBody.current.linvel();
 		let changeRotation = false;
 		if (rightPressed && linvel.x < MAX_VEL) {
-			seyAnimationType(ANIMATIONS_TYPE.RUN);
+			updateAnimType(ANIMATIONS_TYPE.RUN);
 			impulse.x -= MOVEMENT_SPEED;
 			changeRotation = true;
 		} else if (leftPressed && linvel.x > -MAX_VEL) {
-			seyAnimationType(ANIMATIONS_TYPE.RUN);
+			updateAnimType(ANIMATIONS_TYPE.RUN);
 			impulse.x += MOVEMENT_SPEED;
 			changeRotation = true;
 		} else if (backPressed && linvel.z < MAX_VEL) {
-			seyAnimationType(ANIMATIONS_TYPE.RUN);
+			updateAnimType(ANIMATIONS_TYPE.RUN);
 			impulse.z -= MOVEMENT_SPEED;
 			changeRotation = true;
 		} else if (forwardPressed && linvel.z > -MAX_VEL) {
-			seyAnimationType(ANIMATIONS_TYPE.RUN);
+			updateAnimType(ANIMATIONS_TYPE.RUN);
 			impulse.z += MOVEMENT_SPEED;
 			changeRotation = true;
 		} else if (jumpPressed && isOnFloor.current) {
-			seyAnimationType(ANIMATIONS_TYPE.JUMP);
+			updateAnimType(ANIMATIONS_TYPE.JUMP);
 			impulse.y += JUMP_FORCE;
 			isOnFloor.current = false;
 		} else {
-			seyAnimationType(ANIMATIONS_TYPE.IDLE);
+			updateAnimType(ANIMATIONS_TYPE.IDLE);
 		}
 
 		rigidBody.current.applyImpulse(impulse, true);
@@ -99,7 +103,7 @@ const HeroController = () => {
 					position={heroConfig.colliderConfig.pos}
 					args={heroConfig.colliderConfig.args}
 				/>
-				<Hero animationType={animationType} />
+				<Hero />
 			</group>
 		</RigidBody>
 	);

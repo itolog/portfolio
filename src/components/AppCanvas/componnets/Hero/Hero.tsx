@@ -2,32 +2,30 @@ import { useAnimations, useGLTF } from "@react-three/drei";
 import { useLoader } from "@react-three/fiber";
 import { useEffect, useRef } from "react";
 
-// import { ANIMATIONS_TYPE } from "@/constants";
 // @ts-ignore
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
 import { GLTFResult } from "@/components/AppCanvas/componnets/Hero/types.ts";
 
-interface Props {
-	animationType: string;
-}
+import useAnimationStore from "@/store/animations.ts";
+import createSelectors from "@/store/createSelectors.ts";
 
-// @ts-ignore
-const Hero = ({ animationType, ...props }: JSX.IntrinsicElements["group"] | Props) => {
+const Hero = ({ ...props }: JSX.IntrinsicElements["group"]) => {
 	const group = useRef(null);
 	const { nodes, materials, animations } = useLoader(
 		GLTFLoader,
 		"models/robot/scene.gltf",
 	) as GLTFResult;
 	const { actions } = useAnimations(animations, group);
+	const animType = createSelectors(useAnimationStore).use.animationType();
 
 	useEffect(() => {
-		actions?.[animationType]?.reset().play();
+		actions?.[animType]?.reset().play();
 
 		return () => {
-			actions?.[animationType]?.fadeOut(0.2);
+			actions?.[animType]?.fadeOut(0.2);
 		};
-	}, [actions, animationType]);
+	}, [actions, animType]);
 
 	return (
 		<group ref={group} {...props} dispose={null}>
