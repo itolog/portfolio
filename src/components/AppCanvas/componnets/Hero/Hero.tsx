@@ -22,12 +22,11 @@ const Hero = ({ animationType, ...props }: JSX.IntrinsicElements["group"] | Prop
 	const { actions } = useAnimations(animations, group);
 
 	useEffect(() => {
-		// console.log(animationType);
 		actions?.[animationType]?.reset().play();
 
-		// return () => {
-		// 	actions[characterState].fadeOut(0.2);
-		// };
+		return () => {
+			actions?.[animationType]?.fadeOut(0.2);
+		};
 	}, [actions, animationType]);
 
 	return (
