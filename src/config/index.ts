@@ -1,9 +1,10 @@
 import { Config } from "@/types";
+import { Vector3 } from "three";
 
 export const heroConfig: Config = {
-	heroPosition: [0, 0, 0],
 	colliderConfig: {
-		args: [0.7, 1, 0.7],
+		args: [0.5, 0.5, 0.5],
+		pos: new Vector3(0, 0.5, 0),
 	},
 	cameraConfig: {
 		fov: 95,

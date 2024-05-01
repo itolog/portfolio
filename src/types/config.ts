@@ -1,7 +1,10 @@
 import { CuboidArgs } from "@react-three/rapier/dist/declarations/src/types";
 
+import { Vector3 } from "three";
+
 interface ColliderConfig {
 	args: CuboidArgs;
+	pos: Vector3;
 }
 
 interface CameraConfig {
@@ -12,7 +15,7 @@ interface CameraConfig {
 }
 
 export interface Config {
-	heroPosition: [number, number, number];
+	heroPosition?: [number, number, number];
 	colliderConfig: ColliderConfig;
 	cameraConfig: CameraConfig;
 }

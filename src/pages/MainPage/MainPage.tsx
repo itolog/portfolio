@@ -10,8 +10,7 @@ import { Physics } from "@react-three/rapier";
 import { useMemo } from "react";
 
 import { heroConfig } from "@/config";
-import { Controls, IS_DEV } from "@/constants";
-import PerformanceMonitor from "@/utils/PerformanceMonitor/PerformanceMonitor.tsx";
+import { Controls } from "@/constants";
 import { useControls } from "leva";
 
 import AppCanvas from "@/components/AppCanvas/AppCanvas.tsx";
@@ -41,16 +40,10 @@ const MainPage = () => {
 	return (
 		<KeyboardControls map={map}>
 			<AppCanvas>
-				{IS_DEV && <PerformanceMonitor />}
-
 				<PerspectiveCamera makeDefault fov={fov} near={near} far={far} position={cameraPos} />
 				<SkyBox />
-				<Physics debug>
-					<OrbitControls
-						target={[1, 0.3, 1]}
-						// maxPolarAngle={1.45}
-						// minZoom={1}
-					/>
+				<Physics gravity={[0, -9.81, 0]} debug>
+					<OrbitControls target={[1, 0.3, 1]} maxPolarAngle={1.45} minZoom={1} />
 					<ambientLight intensity={3} />
 					<spotLight
 						castShadow
@@ -60,12 +53,13 @@ const MainPage = () => {
 						decay={0}
 						intensity={Math.PI}
 					/>
-					<pointLight castShadow position={[-10, -10, -10]} decay={0} intensity={Math.PI} />E
+					<pointLight castShadow position={[-10, -10, -10]} decay={0} intensity={Math.PI} />
+					<HeroController />
 					<CubeCamera resolution={256} frames={Infinity}>
 						{(texture) => (
 							<>
 								<Environment map={texture} />
-								<HeroController />
+
 								<Center>
 									<Ground />
 								</Center>

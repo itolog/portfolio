@@ -6,12 +6,11 @@ import { useEffect, useRef } from "react";
 
 import { heroConfig } from "@/config";
 import { ANIMATIONS_TYPE, Controls } from "@/constants";
-import * as THREE from "three";
-import { Group } from "three";
+import { Group, Quaternion, Vector3 } from "three";
 
 import Hero from "@/components/AppCanvas/componnets/Hero/Hero.tsx";
 
-const JUMP_FORCE = 1;
+const JUMP_FORCE = 3;
 const MOVEMENT_SPEED = 0.05;
 const MAX_VEL = 3;
 
@@ -35,14 +34,15 @@ const HeroController = () => {
 
 	useEffect(() => {
 		if (!rigidBody?.current || !character.current) return;
-		const worldPosition = character.current.getWorldPosition(new THREE.Vector3());
-		const worldRotation = character.current.getWorldQuaternion(new THREE.Quaternion());
+
+		const worldPosition = character.current.getWorldPosition(new Vector3());
+		const worldRotation = character.current.getWorldQuaternion(new Quaternion());
 		rigidBody.current.setTranslation(worldPosition, true);
 		rigidBody.current.setRotation(worldRotation, true);
 	}, []);
 
 	useFrame(() => {
-		const impulse = new THREE.Vector3(0, 0, 0);
+		const impulse = new Vector3(0, 0, 0);
 
 		if (!rigidBody?.current || !character.current) return;
 
@@ -95,7 +95,10 @@ const HeroController = () => {
 				}
 			}}>
 			<group ref={character}>
-				<CuboidCollider position={[0, 1, 0]} args={heroConfig.colliderConfig.args} />
+				<CuboidCollider
+					position={heroConfig.colliderConfig.pos}
+					args={heroConfig.colliderConfig.args}
+				/>
 				<Hero animationType={animationType.current} />
 			</group>
 		</RigidBody>
