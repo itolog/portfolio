@@ -1,6 +1,6 @@
 import { useKeyboardControls } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { CuboidCollider, RigidBody, useRapier } from "@react-three/rapier";
+import { CuboidCollider, RigidBody } from "@react-three/rapier";
 import { RapierRigidBody } from "@react-three/rapier/dist/declarations/src/types";
 import { useEffect, useRef } from "react";
 
@@ -9,6 +9,7 @@ import { ANIMATIONS_TYPE, Controls } from "@/constants";
 import { Group, Quaternion, Vector3 } from "three";
 
 import Hero from "@/components/AppCanvas/componnets/Hero/Hero.tsx";
+import useCharacterController from "@/components/AppCanvas/componnets/HeroController/hooks/useCharacterController.tsx";
 
 import useAnimationStore from "@/store/animations.ts";
 import createSelectors from "@/store/createSelectors.ts";
@@ -27,14 +28,8 @@ const HeroController = () => {
 	const isOnFloor = useRef(true);
 	const character = useRef<Group>(null);
 	const updateAnimType = createSelectors(useAnimationStore).use.updateAnimationType();
-	// useAnimationStore((state) => state.updateAnimationType);
 
-	const { world } = useRapier();
-
-	const characterController = world.createCharacterController(0.01);
-	characterController.setApplyImpulsesToDynamicBodies(true);
-	characterController.enableAutostep(5, 0.1, false);
-	characterController.enableSnapToGround(1);
+	const { characterController } = useCharacterController();
 
 	useEffect(() => {
 		if (!rigidBody?.current || !character.current) return;

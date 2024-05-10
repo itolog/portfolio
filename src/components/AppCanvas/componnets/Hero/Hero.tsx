@@ -1,21 +1,16 @@
 import { useAnimations, useGLTF } from "@react-three/drei";
-import { useLoader } from "@react-three/fiber";
 import { useEffect, useRef } from "react";
 
-// @ts-ignore
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import * as THREE from "three";
 
 import { GLTFResult } from "@/components/AppCanvas/componnets/Hero/types.ts";
 
 import useAnimationStore from "@/store/animations.ts";
 import createSelectors from "@/store/createSelectors.ts";
 
-const Hero = ({ ...props }: JSX.IntrinsicElements["group"]) => {
-	const group = useRef(null);
-	const { nodes, materials, animations } = useLoader(
-		GLTFLoader,
-		"models/robot/scene.gltf",
-	) as GLTFResult;
+const Hero = (props: JSX.IntrinsicElements["group"]) => {
+	const group = useRef<THREE.Group>(null);
+	const { nodes, materials, animations } = useGLTF("/models/rick.glb") as GLTFResult;
 	const { actions } = useAnimations(animations, group);
 	const animType = createSelectors(useAnimationStore).use.animationType();
 
@@ -28,67 +23,152 @@ const Hero = ({ ...props }: JSX.IntrinsicElements["group"]) => {
 	}, [actions, animType]);
 
 	return (
-		<group ref={group} {...props} dispose={null}>
-			<group name="Sketchfab_Scene">
-				<group name="Sketchfab_model" rotation={[-Math.PI / 2, 0, 0]} scale={5.079}>
-					<group name="root">
-						<group name="GLTF_SceneRootNode" rotation={[Math.PI / 2, 0, 0]}>
-							<group name="Sketchfab_model_0" rotation={[-Math.PI / 2, 0, 0]}>
-								<group
-									name="d44709362ceb4426bad5754e98994db6fbx_1"
-									rotation={[Math.PI / 2, 0, 0]}
-									scale={0.01}>
-									<group name="Object_2_2">
-										<group name="RootNode_3">
-											<group
-												name="SK_Huggy_RobotNewao_4"
-												rotation={[-Math.PI / 2, 0, 0]}
-												scale={100}>
-												<group name="Object_5_5">
-													<group name="GLTF_created_0">
-														<primitive object={nodes.GLTF_created_0_rootJoint} />
-														<skinnedMesh
-															name="Object_109"
-															geometry={nodes.Object_109.geometry}
-															material={materials.MI_RobotHuggyLower}
-															skeleton={nodes.Object_109.skeleton}
-														/>
-														<skinnedMesh
-															name="Object_112"
-															geometry={nodes.Object_112.geometry}
-															material={materials.MI_RobotHuggyUpper}
-															skeleton={nodes.Object_112.skeleton}
-														/>
-														<skinnedMesh
-															name="Object_115"
-															geometry={nodes.Object_115.geometry}
-															material={materials.MI_RobotHuggyEye}
-															skeleton={nodes.Object_115.skeleton}
-														/>
-														<group name="Object_103_103_correction">
-															<group name="Object_103_103" />
-														</group>
-														<group name="Object_104_104_correction">
-															<group name="Object_104_104" />
-														</group>
-														<group name="Object_105_105_correction">
-															<group name="Object_105_105" />
-														</group>
-													</group>
-												</group>
-											</group>
-										</group>
-									</group>
-								</group>
-							</group>
-						</group>
+		<group ref={group} scale={0.5} {...props} dispose={null}>
+			<group name="Scene">
+				<group name="Armature">
+					<group name="Rick">
+						<skinnedMesh
+							name="Sphere002"
+							geometry={nodes.Sphere002.geometry}
+							material={materials["Shoes and Eyes"]}
+							skeleton={nodes.Sphere002.skeleton}
+						/>
+						<skinnedMesh
+							name="Sphere002_1"
+							geometry={nodes.Sphere002_1.geometry}
+							material={materials.Skin}
+							skeleton={nodes.Sphere002_1.skeleton}
+						/>
+						<skinnedMesh
+							name="Sphere002_2"
+							geometry={nodes.Sphere002_2.geometry}
+							material={materials.Hair}
+							skeleton={nodes.Sphere002_2.skeleton}
+						/>
+						<skinnedMesh
+							name="Sphere002_3"
+							geometry={nodes.Sphere002_3.geometry}
+							material={materials.White}
+							skeleton={nodes.Sphere002_3.skeleton}
+						/>
+						<skinnedMesh
+							name="Sphere002_4"
+							geometry={nodes.Sphere002_4.geometry}
+							material={materials.Shirt}
+							skeleton={nodes.Sphere002_4.skeleton}
+						/>
+						<skinnedMesh
+							name="Sphere002_5"
+							geometry={nodes.Sphere002_5.geometry}
+							material={materials.Belt}
+							skeleton={nodes.Sphere002_5.skeleton}
+						/>
+						<skinnedMesh
+							name="Sphere002_6"
+							geometry={nodes.Sphere002_6.geometry}
+							material={materials.Buckle}
+							skeleton={nodes.Sphere002_6.skeleton}
+						/>
+						<skinnedMesh
+							name="Sphere002_7"
+							geometry={nodes.Sphere002_7.geometry}
+							material={materials.Trousers}
+							skeleton={nodes.Sphere002_7.skeleton}
+						/>
+						<skinnedMesh
+							name="Sphere002_8"
+							geometry={nodes.Sphere002_8.geometry}
+							material={materials.Socks}
+							skeleton={nodes.Sphere002_8.skeleton}
+						/>
 					</group>
+					<primitive object={nodes.mixamorigHips} />
+					<primitive object={nodes.Ctrl_Master} />
+					<primitive object={nodes.Ctrl_ArmPole_IK_Left} />
+					<primitive object={nodes.Ctrl_Hand_IK_Left} />
+					<primitive object={nodes.Ctrl_ArmPole_IK_Right} />
+					<primitive object={nodes.Ctrl_Hand_IK_Right} />
+					<primitive object={nodes.Ctrl_Foot_IK_Left} />
+					<primitive object={nodes.Ctrl_LegPole_IK_Left} />
+					<primitive object={nodes.Ctrl_Foot_IK_Right} />
+					<primitive object={nodes.Ctrl_LegPole_IK_Right} />
+				</group>
+				<group name="cs_grp">
+					<group name="cs_arm_fk" position={[1.5, 8.5, 0]} scale={0.822} />
+					<group name="cs_calf_fk" position={[0.5, 8.5, 0]} scale={0.822} />
+					<group name="cs_circle" position={[0.5, 4.5, 0]} scale={0.206} />
+					<group name="cs_circle001" position={[0.5, 4.5, 0]} scale={0.206} />
+					<group name="cs_circle_025" position={[2.5, 4.5, 0]} scale={0.206} />
+					<group
+						name="cs_foot"
+						position={[0.5, 10.5, 0]}
+						rotation={[-Math.PI, 0, 0]}
+						scale={0.308}
+					/>
+					<group
+						name="cs_foot001"
+						position={[0.5, 10.5, 0]}
+						rotation={[-Math.PI, 0, 0]}
+						scale={0.308}
+					/>
+					<group
+						name="cs_foot002"
+						position={[0.5, 10.5, 0]}
+						rotation={[-Math.PI, 0, 0]}
+						scale={0.308}
+					/>
+					<group
+						name="cs_foot_01"
+						position={[0.5, 18.5, 0]}
+						rotation={[0, Math.PI / 2, 0]}
+						scale={2.186}
+					/>
+					<group name="cs_foot_roll" position={[0.5, 12.5, 0]} scale={0.592} />
+					<group name="cs_forearm_fk" position={[2.5, 8.5, 0]} scale={0.822} />
+					<group
+						name="cs_hand"
+						position={[0.5, 19.5, 0]}
+						rotation={[-Math.PI, 0, 0]}
+						scale={0.308}
+					/>
+					<group name="cs_head" position={[0.5, 13.5, 0]} scale={0.206} />
+					<group name="cs_hips" position={[0.5, 11.5, 0]} scale={0.206} />
+					<group name="cs_master" position={[0.5, 17.5, 0]} scale={0.1} />
+					<group name="cs_neck" position={[0.5, 14.5, 0]} scale={0.206} />
+					<group
+						name="cs_shoulder_left"
+						position={[0.5, 15.5, 0]}
+						rotation={[-Math.PI, -Math.PI / 2, 0]}
+						scale={1.038}
+					/>
+					<group
+						name="cs_shoulder_right"
+						position={[0.5, 16.5, 0]}
+						rotation={[-Math.PI, -Math.PI / 2, 0]}
+						scale={1.038}
+					/>
+					<group name="cs_sphere" position={[0.5, 2.5, 0]} scale={0.206} />
+					<group name="cs_sphere_012" position={[3.5, 2.5, 0]} scale={0.206} />
+					<group
+						name="cs_square"
+						position={[1.5, 1.497, 0]}
+						rotation={[-Math.PI, 0, 0]}
+						scale={0.154}
+					/>
+					<group
+						name="cs_square_2"
+						position={[0.5, 1.497, 0]}
+						rotation={[-Math.PI, 0, 0]}
+						scale={0.154}
+					/>
+					<group name="cs_thigh_fk" position={[0.5, 7.5, 0]} scale={0.822} />
+					<group name="cs_toe" position={[0.5, 9.5, 0]} scale={0.429} />
 				</group>
 			</group>
 		</group>
 	);
 };
 
-useGLTF.preload("/robot/scene.gltf");
+useGLTF.preload("/models/rick.glb");
 
 export default Hero;

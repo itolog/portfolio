@@ -6,7 +6,7 @@ import {
 	OrbitControls,
 	PerspectiveCamera,
 } from "@react-three/drei";
-import { Physics } from "@react-three/rapier";
+import { Physics, RigidBody } from "@react-three/rapier";
 import { useMemo } from "react";
 
 import { heroConfig } from "@/config";
@@ -55,6 +55,14 @@ const MainPage = () => {
 					/>
 					<pointLight castShadow position={[-10, -10, -10]} decay={0} intensity={Math.PI} />
 					<HeroController />
+
+					<RigidBody type={"fixed"} position={[-3, -0.3, 0]}>
+						<mesh>
+							<boxGeometry />
+							<meshStandardMaterial />
+						</mesh>
+					</RigidBody>
+
 					<CubeCamera resolution={256} frames={Infinity}>
 						{(texture) => (
 							<>

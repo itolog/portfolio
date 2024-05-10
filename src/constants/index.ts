@@ -11,7 +11,8 @@ export const Controls = {
 };
 
 export const ANIMATIONS_TYPE: AnimationType = {
-	RUN: "SK_Huggy_RobotNew.ao|A_Huggy_Run",
-	IDLE: "SK_Huggy_RobotNew.ao|A_Huggy_Idle",
-	JUMP: "SK_Huggy_RobotNew.ao|A_Huggy_Jump",
+	RUN: "run",
+	IDLE: "idle",
+	JUMP: "jump",
+	WALK: "walk",
 };
