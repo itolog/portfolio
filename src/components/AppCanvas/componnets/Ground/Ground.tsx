@@ -5,7 +5,7 @@ import { useEffect } from "react";
 
 import { RepeatWrapping, TextureLoader } from "three";
 
-export function Ground() {
+const Ground = () => {
 	const [roughness, normal] = useLoader(TextureLoader, [
 		"textures/terrain-roughness.jpg",
 		"textures/terrain-normal.jpg",
@@ -46,4 +46,6 @@ export function Ground() {
 			</mesh>
 		</RigidBody>
 	);
-}
+};
+
+export default Ground;
