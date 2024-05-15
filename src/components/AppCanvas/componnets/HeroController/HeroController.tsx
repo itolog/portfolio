@@ -14,8 +14,8 @@ import useCharacterController from "@/components/AppCanvas/componnets/HeroContro
 import useAnimationStore from "@/store/animations.ts";
 import createSelectors from "@/store/createSelectors.ts";
 
-const JUMP_FORCE = 3;
-const MOVEMENT_SPEED = 0.06;
+const JUMP_FORCE = 1;
+const MOVEMENT_SPEED = 0.03;
 const MAX_VEL = 3;
 
 const HeroController = () => {
@@ -40,10 +40,17 @@ const HeroController = () => {
 		rigidBody.current.setRotation(worldRotation, true);
 	}, []);
 
+	const jump = (impulse: Vector3) => {
+		updateAnimType(ANIMATIONS_TYPE.JUMP);
+		impulse.y += JUMP_FORCE;
+		isOnFloor.current = false;
+	};
+
 	useFrame(() => {
 		const impulse = new Vector3(0, 0, 0);
 
 		if (!rigidBody?.current || !character.current) return;
+		const isJump = jumpPressed && isOnFloor.current;
 
 		const linvel = rigidBody.current.linvel();
 		let changeRotation = false;
@@ -51,22 +58,36 @@ const HeroController = () => {
 			updateAnimType(ANIMATIONS_TYPE.RUN);
 			impulse.x -= MOVEMENT_SPEED;
 			changeRotation = true;
+
+			if (isJump) {
+				jump(impulse);
+			}
 		} else if (leftPressed && linvel.x > -MAX_VEL) {
 			updateAnimType(ANIMATIONS_TYPE.RUN);
 			impulse.x += MOVEMENT_SPEED;
 			changeRotation = true;
+
+			if (isJump) {
+				jump(impulse);
+			}
 		} else if (backPressed && linvel.z < MAX_VEL) {
 			updateAnimType(ANIMATIONS_TYPE.RUN);
 			impulse.z -= MOVEMENT_SPEED;
 			changeRotation = true;
+
+			if (isJump) {
+				jump(impulse);
+			}
 		} else if (forwardPressed && linvel.z > -MAX_VEL) {
 			updateAnimType(ANIMATIONS_TYPE.RUN);
 			impulse.z += MOVEMENT_SPEED;
 			changeRotation = true;
-		} else if (jumpPressed && isOnFloor.current) {
-			updateAnimType(ANIMATIONS_TYPE.JUMP);
-			impulse.y += JUMP_FORCE;
-			isOnFloor.current = false;
+
+			if (isJump) {
+				jump(impulse);
+			}
+		} else if (isJump) {
+			jump(impulse);
 		} else {
 			updateAnimType(ANIMATIONS_TYPE.IDLE);
 		}

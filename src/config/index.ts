@@ -3,7 +3,7 @@ import { Vector3 } from "three";
 
 export const heroConfig: Config = {
 	colliderConfig: {
-		args: [0.5, 0.5, 0.5],
+		args: [0.3, 0.5, 0.3],
 		pos: new Vector3(0, 0.5, 0),
 	},
 	cameraConfig: {
