@@ -21,7 +21,7 @@ const Ground = () => {
 	}, [normal, roughness]);
 
 	return (
-		<RigidBody type="fixed" name="floor">
+		<RigidBody type="fixed" colliders="trimesh" ccd name="floor">
 			<mesh rotation-x={-Math.PI * 0.5} castShadow receiveShadow>
 				<planeGeometry args={[10, 10, 10]} />
 				<MeshReflectorMaterial

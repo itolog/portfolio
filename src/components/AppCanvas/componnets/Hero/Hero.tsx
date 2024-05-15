@@ -23,7 +23,7 @@ const Hero = (props: JSX.IntrinsicElements["group"]) => {
 	}, [actions, animType]);
 
 	return (
-		<group ref={group} scale={0.5} {...props} dispose={null}>
+		<group position={[0, -0.9, 0]} ref={group} {...props} dispose={null}>
 			<group name="Scene">
 				<group name="Armature">
 					<group name="Rick">

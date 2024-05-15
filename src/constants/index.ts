@@ -4,10 +4,11 @@ export const IS_DEV = process.env.NODE_ENV !== "production";
 
 export const Controls = {
 	forward: "forward",
-	back: "back",
-	left: "left",
-	right: "right",
+	back: "backward",
+	left: "leftward",
+	right: "rightward",
 	jump: "jump",
+	run: "run",
 };
 
 export const ANIMATIONS_TYPE: AnimationType = {
