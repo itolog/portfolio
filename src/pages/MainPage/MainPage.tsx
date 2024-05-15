@@ -10,11 +10,13 @@ import { Physics, RigidBody } from "@react-three/rapier";
 import { useMemo } from "react";
 
 import { heroConfig } from "@/config";
-import { Controls } from "@/constants";
+import { Controls, IS_DEV } from "@/constants";
+import PerformanceMonitor from "@/utils/PerformanceMonitor/PerformanceMonitor.tsx";
 import { useControls } from "leva";
 
 import AppCanvas from "@/components/AppCanvas/AppCanvas.tsx";
-import { Ground } from "@/components/AppCanvas/componnets/Ground/Ground.tsx";
+import Fence from "@/components/AppCanvas/componnets/Fence/Fence.tsx";
+import Ground from "@/components/AppCanvas/componnets/Ground/Ground.tsx";
 import HeroController from "@/components/AppCanvas/componnets/HeroController/HeroController.tsx";
 import SkyBox from "@/components/AppCanvas/componnets/SkyBox/SkyBox.tsx";
 
@@ -40,6 +42,7 @@ const MainPage = () => {
 	return (
 		<KeyboardControls map={map}>
 			<AppCanvas>
+				{IS_DEV && <PerformanceMonitor />}
 				<PerspectiveCamera makeDefault fov={fov} near={near} far={far} position={cameraPos} />
 				<SkyBox />
 				<Physics gravity={[0, -9.81, 0]} debug>
@@ -62,6 +65,8 @@ const MainPage = () => {
 							<meshStandardMaterial />
 						</mesh>
 					</RigidBody>
+
+					<Fence />
 
 					<CubeCamera resolution={256} frames={Infinity}>
 						{(texture) => (
