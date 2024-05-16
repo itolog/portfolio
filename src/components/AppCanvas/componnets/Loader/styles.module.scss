@@ -1,0 +1,60 @@
+$color-black: hsl(0deg 0% 5%);
+$color-scss: hsl(300deg 100% 60%);
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: $color-black;
+}
+
+.containerProgressbars {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  min-width: 270px;
+  width: 100%;
+  min-height: 100%;
+}
+
+.progressbar {
+  position: relative;
+  width: 170px;
+  height: 170px;
+  margin: 1em;
+  transform: rotate(-90deg);
+}
+
+.progressbarSvg {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.progressbarSvgCircle {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke-width: 10;
+  stroke-dasharray: 440;
+  stroke: hsl(0deg 0% 100%);
+  stroke-linecap: round;
+  transform: translate(5px, 5px);
+}
+
+.shadowScss {
+  filter: drop-shadow(0 0 5px $color-scss);
+}
+
+.progressbarText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 0.25em 0.5em;
+  color: hsl(0deg 0% 100%);
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 0.25em;
+  transform: translate(-50%, -50%) rotate(90deg);
+}
