@@ -1,26 +1,13 @@
-import { useAnimations, useGLTF } from "@react-three/drei";
-import { useEffect, useRef } from "react";
+import { useGLTF } from "@react-three/drei";
+import { useRef } from "react";
 
 import * as THREE from "three";
 
 import { GLTFResult } from "@/components/AppCanvas/componnets/Hero/types.ts";
 
-import useAnimationStore from "@/store/animations.ts";
-import createSelectors from "@/store/createSelectors.ts";
-
 const Hero = (props: JSX.IntrinsicElements["group"]) => {
 	const group = useRef<THREE.Group>(null);
-	const { nodes, materials, animations } = useGLTF("/models/rick.glb") as GLTFResult;
-	const { actions } = useAnimations(animations, group);
-	const animType = createSelectors(useAnimationStore).use.animationType();
-
-	useEffect(() => {
-		actions?.[animType]?.reset().play();
-
-		return () => {
-			actions?.[animType]?.fadeOut(0.2);
-		};
-	}, [actions, animType]);
+	const { nodes, materials } = useGLTF("/models/rick.glb") as GLTFResult;
 
 	return (
 		<group position={[0, -0.9, 0]} ref={group} {...props} dispose={null}>

@@ -30,6 +30,7 @@ const MainPage = () => {
 		<AppCanvas>
 			{IS_DEV && <PerformanceMonitor />}
 			<SkyBox />
+
 			<Physics gravity={[0, -9.81, 0]}>
 				<OrbitControls target={[1, 0.3, 1]} maxPolarAngle={1.45} minZoom={1} />
 				<ambientLight intensity={3} />

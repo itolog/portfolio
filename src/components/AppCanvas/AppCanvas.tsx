@@ -17,7 +17,7 @@ const AppCanvas: FC<PropsWithChildren<Props>> = ({ children }) => {
 
 	return (
 		<Suspense fallback={<Loader />}>
-			{(!isLoading || hasTouchSupport()) && <EcctrlJoystick />}
+			{!isLoading && hasTouchSupport() && <EcctrlJoystick />}
 			<Canvas shadows>{children}</Canvas>
 		</Suspense>
 	);
