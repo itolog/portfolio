@@ -7,7 +7,8 @@ const animationSet = {
 	walk: "walk",
 	run: "run",
 	jumpIdle: "jump",
-	// TODO: idle, walk, run, jump, jumpIdle, jumpLand and fall names are essential
+	jumpLand: "jumpLand",
+	jump: "jumpIdle",
 };
 const characterURL = "./models/rick.glb";
 
