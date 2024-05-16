@@ -2,7 +2,7 @@ import { useKeyboardControls } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 
 import { ANIMATIONS_TYPE, Controls } from "@/constants";
-import Ecctrl from "ecctrl";
+import Ecctrl, { useJoystickControls } from "ecctrl";
 
 import Hero from "@/components/AppCanvas/componnets/Hero/Hero.tsx";
 
@@ -16,21 +16,26 @@ const HeroController = () => {
 	const backPressed = useKeyboardControls((state) => state[Controls.back]);
 	const forwardPressed = useKeyboardControls((state) => state[Controls.forward]);
 	const runPressed = useKeyboardControls((state) => state[Controls.run]);
+	const curButton1Pressed = useJoystickControls((state) => state.curButton1Pressed);
+	const curRunState = useJoystickControls((state) => state.curRunState);
+	const curJoystickAng = useJoystickControls((state) => state.curJoystickAng);
+	const curJoystickDis = useJoystickControls((state) => state.curJoystickDis);
+	const isRun = curRunState || curJoystickAng > 0 || curJoystickDis > 0;
 
 	const updateAnimType = createSelectors(useAnimationStore).use.updateAnimationType();
 
 	useFrame(() => {
-		if (rightPressed || leftPressed || backPressed || forwardPressed) {
+		if (rightPressed || leftPressed || backPressed || forwardPressed || isRun) {
 			updateAnimType(ANIMATIONS_TYPE.WALK);
 
 			if (!jumpPressed && runPressed) {
 				updateAnimType(ANIMATIONS_TYPE.RUN);
 			}
 
-			if (jumpPressed) {
+			if (jumpPressed || curButton1Pressed) {
 				updateAnimType(ANIMATIONS_TYPE.WALK);
 			}
-		} else if (jumpPressed) {
+		} else if (jumpPressed || curButton1Pressed) {
 			updateAnimType(ANIMATIONS_TYPE.WALK);
 		} else {
 			updateAnimType(ANIMATIONS_TYPE.IDLE);
