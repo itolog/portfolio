@@ -10,7 +10,7 @@ const LinkedinLogo = (props: JSX.IntrinsicElements["group"]) => {
 	const { nodes, materials } = useGLTF("/models/3d_linkedin_logo/scene.gltf") as GLTFResult;
 
 	const { position, rotation } = useControls("opt", {
-		position: [-4, 0.1, 3],
+		position: [-4, 0.23, 3],
 		rotation: [0, Math.PI, 0],
 	});
 

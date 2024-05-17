@@ -12,7 +12,7 @@ const GitLogo = (props: JSX.IntrinsicElements["group"]) => {
 		<RigidBody type={"fixed"} name={RigidItem.GIT}>
 			<group
 				scale={10}
-				position={[-3, 0.2, 3]}
+				position={[-3, 0.32, 3]}
 				rotation={[0, Math.PI, 0]}
 				{...props}
 				dispose={null}>

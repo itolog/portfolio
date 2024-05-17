@@ -1,10 +1,4 @@
-import {
-	Center,
-	CubeCamera,
-	Environment,
-	KeyboardControls,
-	OrbitControls,
-} from "@react-three/drei";
+import { Center, KeyboardControls, OrbitControls } from "@react-three/drei";
 import { Physics } from "@react-three/rapier";
 
 import { Controls, IS_DEV } from "@/constants";
@@ -57,17 +51,10 @@ const MainPage = () => {
 				<LinkedinLogo />
 
 				<HeroTitle />
-				<CubeCamera resolution={256} frames={Infinity}>
-					{(texture) => (
-						<>
-							<Environment map={texture} />
 
-							<Center>
-								<Ground />
-							</Center>
-						</>
-					)}
-				</CubeCamera>
+				<Center>
+					<Ground />
+				</Center>
 			</Physics>
 		</AppCanvas>
 	);

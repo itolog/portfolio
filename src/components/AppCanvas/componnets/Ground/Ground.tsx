@@ -22,9 +22,10 @@ const Ground = () => {
 	}, [normal, roughness]);
 
 	return (
-		<RigidBody type="fixed" colliders="trimesh" name={RigidItem.FLOOR}>
+		<RigidBody type="fixed" colliders={"trimesh"} args={[10, 10, 10]} name={RigidItem.FLOOR}>
 			<mesh rotation-x={-Math.PI * 0.5} castShadow receiveShadow>
 				<planeGeometry args={[10, 10, 10]} />
+
 				<MeshReflectorMaterial
 					envMapIntensity={0}
 					normalMap={normal}
