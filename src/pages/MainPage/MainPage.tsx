@@ -31,15 +31,6 @@ const MainPage = () => {
 			<Physics gravity={[0, -9.81, 0]}>
 				<OrbitControls target={[1, 0.3, 1]} maxPolarAngle={1.45} minZoom={1} />
 				<ambientLight intensity={3} />
-				<spotLight
-					castShadow
-					position={[0, 10, 10]}
-					angle={0.15}
-					penumbra={1}
-					decay={0}
-					intensity={Math.PI}
-				/>
-				<pointLight castShadow position={[-10, -10, -10]} decay={0} intensity={Math.PI} />
 
 				<KeyboardControls map={map}>
 					<HeroController />

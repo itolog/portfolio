@@ -1,22 +1,31 @@
+import { animated } from "@react-spring/three";
 import { useGLTF } from "@react-three/drei";
 import { RigidBody } from "@react-three/rapier";
 
 import { RigidItem } from "@/constants";
-import { useControls } from "leva";
 
+import useSocialAnim from "@/components/AppCanvas/componnets/Social/hooks/useSocialAnim.tsx";
 import { GLTFResult } from "@/components/AppCanvas/componnets/Social/LinkedinLogo/types.ts";
 
 const LinkedinLogo = (props: JSX.IntrinsicElements["group"]) => {
 	const { nodes, materials } = useGLTF("/models/3d_linkedin_logo/scene.gltf") as GLTFResult;
 
-	const { position, rotation } = useControls("opt", {
-		position: [-4, 0.23, 3],
-		rotation: [0, Math.PI, 0],
-	});
+	const { intensity } = useSocialAnim(RigidItem.LINKEDIN);
 
 	return (
 		<RigidBody type={"fixed"} name={RigidItem.LINKEDIN}>
-			<group scale={0.28} position={position} dispose={null} rotation={rotation} {...props}>
+			<animated.pointLight
+				color={"lime"}
+				position={[-4.3, 0.23, 3]}
+				distance={2}
+				intensity={intensity}
+			/>
+			<group
+				scale={0.28}
+				position={[-4, 0.23, 3]}
+				dispose={null}
+				rotation={[0, Math.PI, 0]}
+				{...props}>
 				<mesh
 					castShadow
 					receiveShadow
