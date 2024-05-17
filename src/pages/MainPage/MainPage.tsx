@@ -5,7 +5,7 @@ import {
 	KeyboardControls,
 	OrbitControls,
 } from "@react-three/drei";
-import { Physics, RigidBody } from "@react-three/rapier";
+import { Physics } from "@react-three/rapier";
 
 import { Controls, IS_DEV } from "@/constants";
 import PerformanceMonitor from "@/utils/PerformanceMonitor/PerformanceMonitor.tsx";
@@ -16,6 +16,8 @@ import Ground from "@/components/AppCanvas/componnets/Ground/Ground.tsx";
 import HeroController from "@/components/AppCanvas/componnets/HeroController/HeroController.tsx";
 import HeroTitle from "@/components/AppCanvas/componnets/HeroTitle/HeroTitle.tsx";
 import SkyBox from "@/components/AppCanvas/componnets/SkyBox/SkyBox.tsx";
+import GitLogo from "@/components/AppCanvas/componnets/Social/GitLogo/GitLogo.tsx";
+import LinkedinLogo from "@/components/AppCanvas/componnets/Social/LinkedinLogo/LinkedinLogo.tsx";
 
 const map = [
 	{ name: Controls.forward, keys: ["ArrowUp", "KeyW"] },
@@ -44,18 +46,15 @@ const MainPage = () => {
 					intensity={Math.PI}
 				/>
 				<pointLight castShadow position={[-10, -10, -10]} decay={0} intensity={Math.PI} />
+
 				<KeyboardControls map={map}>
 					<HeroController />
 				</KeyboardControls>
 
-				<RigidBody type={"fixed"} position={[-3, -0.3, 0]}>
-					<mesh>
-						<boxGeometry />
-						<meshStandardMaterial />
-					</mesh>
-				</RigidBody>
-
 				<Fence />
+
+				<GitLogo />
+				<LinkedinLogo />
 
 				<HeroTitle />
 				<CubeCamera resolution={256} frames={Infinity}>

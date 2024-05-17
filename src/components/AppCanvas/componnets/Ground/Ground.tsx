@@ -3,6 +3,7 @@ import { useLoader } from "@react-three/fiber";
 import { RigidBody } from "@react-three/rapier";
 import { useEffect } from "react";
 
+import { RigidItem } from "@/constants";
 import { RepeatWrapping, TextureLoader } from "three";
 
 const Ground = () => {
@@ -21,7 +22,7 @@ const Ground = () => {
 	}, [normal, roughness]);
 
 	return (
-		<RigidBody type="fixed" colliders="trimesh" ccd name="floor">
+		<RigidBody type="fixed" colliders="trimesh" name={RigidItem.FLOOR}>
 			<mesh rotation-x={-Math.PI * 0.5} castShadow receiveShadow>
 				<planeGeometry args={[10, 10, 10]} />
 				<MeshReflectorMaterial
