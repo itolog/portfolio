@@ -1,4 +1,4 @@
-import { Center, KeyboardControls, OrbitControls, PerspectiveCamera } from "@react-three/drei";
+import { Center, KeyboardControls } from "@react-three/drei";
 import { Physics } from "@react-three/rapier";
 
 import { Controls, IS_DEV } from "@/constants";
@@ -29,9 +29,8 @@ const MainPage = () => {
 			<SkyBox />
 
 			<Physics gravity={[0, -9.81, 0]}>
-				<OrbitControls target={[1, 0.3, 1]} maxPolarAngle={1.45} minZoom={1} />
 				<ambientLight intensity={3} />
-				<PerspectiveCamera makeDefault fov={95} near={0.1} far={75} position={[0, 5, 0]} />
+
 				<KeyboardControls map={map}>
 					<HeroController />
 				</KeyboardControls>

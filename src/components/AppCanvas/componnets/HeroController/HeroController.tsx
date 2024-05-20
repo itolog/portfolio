@@ -22,6 +22,10 @@ const HeroController = () => {
 	return (
 		<Ecctrl
 			ccd
+			capsuleHalfHeight={0.6}
+			camTargetPos={{ x: 0, y: 4, z: -1 }}
+			camInitDis={-8}
+			camMaxDis={-11}
 			onCollisionEnter={({ other }) => {
 				if (other.rigidBodyObject?.name === RigidItem.GIT) {
 					updateSocialActive(RigidItem.GIT);
