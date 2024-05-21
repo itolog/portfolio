@@ -1,10 +1,6 @@
-import { RigidItem } from "@/constants";
 import Ecctrl, { EcctrlAnimation } from "ecctrl";
 
 import Hero from "@/components/AppCanvas/componnets/Hero/Hero.tsx";
-
-import useAnimationStore from "@/store/animationsStore.ts";
-import createSelectors from "@/store/createSelectors.ts";
 
 const animationSet = {
 	idle: "idle",
@@ -17,8 +13,6 @@ const animationSet = {
 const characterURL = "./models/rick.glb";
 
 const HeroController = () => {
-	const updateSocialActive = createSelectors(useAnimationStore).use.updateSocialActive();
-
 	return (
 		<Ecctrl
 			ccd
@@ -26,22 +20,6 @@ const HeroController = () => {
 			camTargetPos={{ x: 0, y: 4, z: -1 }}
 			camInitDis={-8}
 			camMaxDis={-11}
-			onCollisionEnter={({ other }) => {
-				if (other.rigidBodyObject?.name === RigidItem.GIT) {
-					updateSocialActive(RigidItem.GIT);
-				}
-				if (other.rigidBodyObject?.name === RigidItem.LINKEDIN) {
-					updateSocialActive(RigidItem.LINKEDIN);
-				}
-			}}
-			onCollisionExit={({ other }) => {
-				if (
-					other.rigidBodyObject?.name === RigidItem.GIT ||
-					other.rigidBodyObject?.name === RigidItem.LINKEDIN
-				) {
-					updateSocialActive("");
-				}
-			}}
 			animated>
 			<EcctrlAnimation characterURL={characterURL} animationSet={animationSet}>
 				<Hero scale={0.5} />
