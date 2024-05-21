@@ -7,6 +7,7 @@ export const Controls = {
 	right: "rightward",
 	jump: "jump",
 	run: "run",
+	enter: "enter",
 };
 
 export const RigidItem = {

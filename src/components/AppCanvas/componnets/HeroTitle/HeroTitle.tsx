@@ -1,8 +1,9 @@
 import { Text3D } from "@react-three/drei";
 
+import { fontUrl } from "@/config";
+
 const rotationX = 0.3;
 const rotationY = -Math.PI;
-const fontUrl = "/fonts/rick_font.json";
 
 const HeroTitle = () => {
 	return (

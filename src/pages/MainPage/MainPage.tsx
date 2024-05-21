@@ -20,6 +20,7 @@ const map = [
 	{ name: Controls.right, keys: ["ArrowRight", "KeyD"] },
 	{ name: Controls.jump, keys: ["Space"] },
 	{ name: Controls.run, keys: ["Shift"] },
+	{ name: Controls.enter, keys: ["Enter"] },
 ];
 
 const MainPage = () => {
@@ -32,13 +33,12 @@ const MainPage = () => {
 				<ambientLight intensity={3} />
 
 				<KeyboardControls map={map}>
+					<GitLogo />
+					<LinkedinLogo />
 					<HeroController />
 				</KeyboardControls>
 
 				<Fence />
-
-				<GitLogo />
-				<LinkedinLogo />
 
 				<HeroTitle />
 
