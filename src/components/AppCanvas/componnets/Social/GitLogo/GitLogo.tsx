@@ -1,20 +1,20 @@
 import { a } from "@react-spring/three";
 import { useGLTF } from "@react-three/drei";
 import { Euler } from "@react-three/fiber";
-import { CapsuleCollider, CuboidCollider, RigidBody } from "@react-three/rapier";
+import { CuboidCollider, RigidBody } from "@react-three/rapier";
 
 import { RigidItem } from "@/constants";
 
-import PoText3D from "@/components/AppCanvas/componnets/PoText3d/PoText3d.tsx";
 import { GLTFResult } from "@/components/AppCanvas/componnets/Social/GitLogo/types.ts";
 import useSocialAnim from "@/components/AppCanvas/componnets/Social/hooks/useSocialAnim.tsx";
+import StarPortal from "@/components/AppCanvas/componnets/StarPortal/StarPortal.tsx";
 
 import useAnimationStore from "@/store/animationsStore.ts";
 import createSelectors from "@/store/createSelectors.ts";
 
 const GitLogo = (props: JSX.IntrinsicElements["group"]) => {
 	const { nodes, materials } = useGLTF("/models/3d_github_logo/scene.gltf") as GLTFResult;
-	const { intensity, rotation, positionY, color, textVisible } = useSocialAnim(RigidItem.GIT);
+	const { intensity, rotation, positionY, active } = useSocialAnim(RigidItem.GIT);
 
 	const updateSocialActive = createSelectors(useAnimationStore).use.updateSocialActive();
 
@@ -31,16 +31,7 @@ const GitLogo = (props: JSX.IntrinsicElements["group"]) => {
 	};
 
 	return (
-		<RigidBody type={"fixed"} colliders={false} name={RigidItem.GIT}>
-			<CapsuleCollider position={[4, 0.8, 4]} args={[0.8, 0.3]}>
-				<PoText3D
-					textVisible={textVisible}
-					color={color}
-					text={"Enter"}
-					vertical
-					position={[0.1, 1.6, 0]}
-				/>
-			</CapsuleCollider>
+		<group>
 			<CuboidCollider
 				args={[0.8, 0.4, 1]}
 				position={[4, 0.4, 4]}
@@ -48,7 +39,6 @@ const GitLogo = (props: JSX.IntrinsicElements["group"]) => {
 				onIntersectionEnter={handleIntersectionEnter}
 				onIntersectionExit={handleIntersectionExit}
 			/>
-
 			<a.group
 				onClick={handleOpen}
 				scale={10}
@@ -73,7 +63,10 @@ const GitLogo = (props: JSX.IntrinsicElements["group"]) => {
 					material={materials.github}
 				/>
 			</a.group>
-		</RigidBody>
+			<RigidBody type={"fixed"} position={[4, 0, 4]} colliders={"hull"} name={RigidItem.GIT}>
+				<StarPortal playAnimation={active === RigidItem.GIT} />
+			</RigidBody>
+		</group>
 	);
 };
 

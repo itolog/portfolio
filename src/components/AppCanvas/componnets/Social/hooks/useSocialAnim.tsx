@@ -11,8 +11,7 @@ interface ReturnType {
 	intensity: SpringValue<number>;
 	rotation: SpringValue<number[]>;
 	positionY: SpringValue<number>;
-	textVisible: SpringValue<boolean>;
-	color: SpringValue<string>;
+	active: string;
 }
 
 const useSocialAnim = (name: string): ReturnType => {
@@ -33,12 +32,10 @@ const useSocialAnim = (name: string): ReturnType => {
 		);
 	}, [active, sub]);
 
-	const { intensity, rotation, positionY, textVisible, color } = useSpring({
+	const { intensity, rotation, positionY } = useSpring({
 		intensity: active === name ? 20 : 1,
 		rotation: active === name ? [-1.4, Math.PI, 0] : [0, Math.PI, 0],
-		positionY: active === name ? 3 : 0.3,
-		textVisible: active === name,
-		color: active === name ? "rgb(214,24,236)" : "rgb(0,0,0)",
+		positionY: active === name ? 3 : 0.5,
 		config: config.molasses,
 	});
 
@@ -46,8 +43,7 @@ const useSocialAnim = (name: string): ReturnType => {
 		intensity,
 		rotation,
 		positionY,
-		textVisible,
-		color,
+		active,
 	};
 };
 

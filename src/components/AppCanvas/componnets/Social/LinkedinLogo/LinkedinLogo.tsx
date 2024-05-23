@@ -1,13 +1,13 @@
-import { animated } from "@react-spring/three";
+import { a } from "@react-spring/three";
 import { useGLTF } from "@react-three/drei";
 import { Euler } from "@react-three/fiber";
-import { CapsuleCollider, CuboidCollider, RigidBody } from "@react-three/rapier";
+import { CuboidCollider, RigidBody } from "@react-three/rapier";
 
 import { RigidItem } from "@/constants";
 
-import PoText3D from "@/components/AppCanvas/componnets/PoText3d/PoText3d.tsx";
 import useSocialAnim from "@/components/AppCanvas/componnets/Social/hooks/useSocialAnim.tsx";
 import { GLTFResult } from "@/components/AppCanvas/componnets/Social/LinkedinLogo/types.ts";
+import StarPortal from "@/components/AppCanvas/componnets/StarPortal/StarPortal.tsx";
 
 import useAnimationStore from "@/store/animationsStore.ts";
 import createSelectors from "@/store/createSelectors.ts";
@@ -15,7 +15,7 @@ import createSelectors from "@/store/createSelectors.ts";
 const LinkedinLogo = (props: JSX.IntrinsicElements["group"]) => {
 	const { nodes, materials } = useGLTF("/models/3d_linkedin_logo/scene.gltf") as GLTFResult;
 
-	const { intensity, rotation, positionY, textVisible, color } = useSocialAnim(RigidItem.LINKEDIN);
+	const { intensity, rotation, positionY, active } = useSocialAnim(RigidItem.LINKEDIN);
 	const updateSocialActive = createSelectors(useAnimationStore).use.updateSocialActive();
 
 	const handleOpen = () => {
@@ -31,16 +31,7 @@ const LinkedinLogo = (props: JSX.IntrinsicElements["group"]) => {
 	};
 
 	return (
-		<RigidBody type={"fixed"} colliders={false} name={RigidItem.LINKEDIN}>
-			<CapsuleCollider position={[-4, 0.8, 4]} args={[0.8, 0.3]}>
-				<PoText3D
-					textVisible={textVisible}
-					color={color}
-					text={"Enter"}
-					vertical
-					position={[0.1, 1.6, 0]}
-				/>
-			</CapsuleCollider>
+		<group>
 			<CuboidCollider
 				args={[0.8, 0.4, 1]}
 				position={[-4, 0.4, 4]}
@@ -49,7 +40,7 @@ const LinkedinLogo = (props: JSX.IntrinsicElements["group"]) => {
 				onIntersectionExit={handleIntersectionExit}
 			/>
 
-			<animated.group
+			<a.group
 				onClick={handleOpen}
 				scale={0.28}
 				position-x={-4}
@@ -58,7 +49,7 @@ const LinkedinLogo = (props: JSX.IntrinsicElements["group"]) => {
 				dispose={null}
 				rotation={rotation as unknown as Euler}
 				{...props}>
-				<animated.pointLight color={"lime"} distance={2} intensity={intensity} />
+				<a.pointLight color={"lime"} distance={2} intensity={intensity} />
 				<mesh
 					castShadow
 					receiveShadow
@@ -71,8 +62,11 @@ const LinkedinLogo = (props: JSX.IntrinsicElements["group"]) => {
 					geometry={nodes.Object_5.geometry}
 					material={materials.glossy_putih}
 				/>
-			</animated.group>
-		</RigidBody>
+			</a.group>
+			<RigidBody type={"fixed"} position={[-4, 0, 4]} colliders={"hull"} name={RigidItem.LINKEDIN}>
+				<StarPortal playAnimation={active === RigidItem.LINKEDIN} />
+			</RigidBody>
+		</group>
 	);
 };
 
