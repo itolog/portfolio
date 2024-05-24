@@ -8,10 +8,12 @@ export const Controls = {
 	jump: "jump",
 	run: "run",
 	enter: "enter",
+	cancel: "cancel",
 };
 
 export const RigidItem = {
 	LINKEDIN: "linkedin",
 	GIT: "git",
 	FLOOR: "floor",
+	IPOD: "ipod",
 };

@@ -9,14 +9,14 @@ import { GLTFResult } from "@/components/AppCanvas/componnets/Social/GitLogo/typ
 import useSocialAnim from "@/components/AppCanvas/componnets/Social/hooks/useSocialAnim.tsx";
 import StarPortal from "@/components/AppCanvas/componnets/StarPortal/StarPortal.tsx";
 
-import useAnimationStore from "@/store/animationsStore.ts";
+import useAppStore from "@/store/appSrore.ts";
 import createSelectors from "@/store/createSelectors.ts";
 
 const GitLogo = (props: JSX.IntrinsicElements["group"]) => {
 	const { nodes, materials } = useGLTF("/models/3d_github_logo/scene.gltf") as GLTFResult;
 	const { intensity, rotation, positionY, active } = useSocialAnim(RigidItem.GIT);
 
-	const updateSocialActive = createSelectors(useAnimationStore).use.updateSocialActive();
+	const updateSocialActive = createSelectors(useAppStore).use.updateActiveItem();
 
 	const handleOpen = () => {
 		window.open(import.meta.env.VITE_GIT_URL);

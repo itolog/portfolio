@@ -9,14 +9,14 @@ import useSocialAnim from "@/components/AppCanvas/componnets/Social/hooks/useSoc
 import { GLTFResult } from "@/components/AppCanvas/componnets/Social/LinkedinLogo/types.ts";
 import StarPortal from "@/components/AppCanvas/componnets/StarPortal/StarPortal.tsx";
 
-import useAnimationStore from "@/store/animationsStore.ts";
+import useAppStore from "@/store/appSrore.ts";
 import createSelectors from "@/store/createSelectors.ts";
 
 const LinkedinLogo = (props: JSX.IntrinsicElements["group"]) => {
 	const { nodes, materials } = useGLTF("/models/3d_linkedin_logo/scene.gltf") as GLTFResult;
 
 	const { intensity, rotation, positionY, active } = useSocialAnim(RigidItem.LINKEDIN);
-	const updateSocialActive = createSelectors(useAnimationStore).use.updateSocialActive();
+	const updateSocialActive = createSelectors(useAppStore).use.updateActiveItem();
 
 	const handleOpen = () => {
 		window.open(import.meta.env.VITE_LINKEDIN_URL);

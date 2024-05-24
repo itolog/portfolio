@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 import { RigidItem } from "@/constants";
 
-import useAnimationStore from "@/store/animationsStore.ts";
+import useAppStore from "@/store/appSrore.ts";
 import createSelectors from "@/store/createSelectors.ts";
 
 interface ReturnType {
@@ -15,7 +15,7 @@ interface ReturnType {
 }
 
 const useSocialAnim = (name: string): ReturnType => {
-	const active = createSelectors(useAnimationStore).use.socialActive();
+	const active = createSelectors(useAppStore).use.activeItem();
 	const [sub] = useKeyboardControls();
 
 	useEffect(() => {

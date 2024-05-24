@@ -18,7 +18,7 @@ const HeroController = () => {
 			ccd
 			capsuleHalfHeight={0.6}
 			camTargetPos={{ x: 0, y: 4, z: -1 }}
-			camInitDis={-8}
+			camInitDis={-7}
 			camMaxDis={-11}
 			animated>
 			<EcctrlAnimation characterURL={characterURL} animationSet={animationSet}>
