@@ -1,3 +1,4 @@
+import { a, config, useSpring } from "@react-spring/three";
 import { PositionalAudio, useGLTF, useKeyboardControls } from "@react-three/drei";
 import { CuboidCollider, RigidBody } from "@react-three/rapier";
 import { useEffect, useRef } from "react";
@@ -20,6 +21,11 @@ const Ipod = (props: JSX.IntrinsicElements["group"]) => {
 	const active = createSelectors(useAppStore).use.activeItem();
 	const enter = useKeyboardControls((state) => state[Controls.enter]);
 	const cancel = useKeyboardControls((state) => state[Controls.cancel]);
+
+	const { intensity } = useSpring({
+		intensity: active === RigidItem.IPOD ? 30 : 0,
+		config: config.stiff,
+	});
 
 	useEffect(() => {
 		(async () => {
@@ -50,6 +56,7 @@ const Ipod = (props: JSX.IntrinsicElements["group"]) => {
 				onIntersectionEnter={handleIntersectionEnter}
 				onIntersectionExit={handleIntersectionExit}
 			/>
+
 			<group
 				dispose={null}
 				scale={0.3}
@@ -57,6 +64,7 @@ const Ipod = (props: JSX.IntrinsicElements["group"]) => {
 				rotation={[-Math.PI / 2, Math.PI, Math.PI * 0.5]}
 				{...props}>
 				<PositionalAudio ref={audioRef} url={damagedAudio1Url} distance={2} autoplay loop />
+				<a.pointLight color={"#5402f7"} distance={2} intensity={intensity} />
 
 				<mesh
 					castShadow
