@@ -11,7 +11,6 @@ import HeroController from "@/components/AppCanvas/componnets/HeroController/Her
 import HeroTitle from "@/components/AppCanvas/componnets/HeroTitle/HeroTitle.tsx";
 import Ipod from "@/components/AppCanvas/componnets/Ipod/Ipod.tsx";
 import JustForFun from "@/components/AppCanvas/componnets/JustForFun/JustForFun.tsx";
-import Rig from "@/components/AppCanvas/componnets/Rig/Rig.tsx";
 import Skills from "@/components/AppCanvas/componnets/Skills/Skills.tsx";
 import SkyBox from "@/components/AppCanvas/componnets/SkyBox/SkyBox.tsx";
 import GitLogo from "@/components/AppCanvas/componnets/Social/GitLogo/GitLogo.tsx";
@@ -52,7 +51,7 @@ const MainPage = () => {
 				{/*  TITLE */}
 				<HeroTitle />
 
-				<Rig />
+				{/* <Rig /> */}
 
 				<Center>
 					<Ground />
