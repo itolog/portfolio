@@ -16,4 +16,5 @@ export const RigidItem = {
 	GIT: "git",
 	FLOOR: "floor",
 	IPOD: "ipod",
+	SKILLS: "skills",
 };

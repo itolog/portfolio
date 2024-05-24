@@ -12,7 +12,7 @@ const HeroTitle = () => {
 				castShadow
 				rotation-x={rotationX}
 				rotation-y={rotationY}
-				position={[6, 4, 6]}
+				position={[6, 5, 6]}
 				font={fontUrl}>
 				Serhii Romanichenko
 				<meshNormalMaterial />
@@ -21,7 +21,7 @@ const HeroTitle = () => {
 				castShadow
 				rotation-x={rotationX}
 				rotation-y={rotationY}
-				position={[6, 2, 6]}
+				position={[6, 3, 6]}
 				font={fontUrl}>
 				FrontEnd Developer
 				<meshNormalMaterial />
