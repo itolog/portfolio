@@ -34,7 +34,7 @@ const MainPage = () => {
 			<SkyBox />
 
 			<Physics gravity={[0, -9.81, 0]}>
-				<ambientLight intensity={3} />
+				<ambientLight intensity={4} />
 				<KeyboardControls map={map}>
 					<GitLogo />
 					<LinkedinLogo />

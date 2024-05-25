@@ -1,7 +1,7 @@
 import { a } from "@react-spring/three";
 import { useGLTF } from "@react-three/drei";
 import { Euler } from "@react-three/fiber";
-import { CuboidCollider, RigidBody } from "@react-three/rapier";
+import { CuboidCollider } from "@react-three/rapier";
 
 import { RigidItem } from "@/constants";
 
@@ -63,9 +63,8 @@ const GitLogo = (props: JSX.IntrinsicElements["group"]) => {
 					material={materials.github}
 				/>
 			</a.group>
-			<RigidBody type={"fixed"} position={[4, 0, 4]} colliders={"hull"} name={RigidItem.GIT}>
-				<StarPortal playAnimation={active === RigidItem.GIT} />
-			</RigidBody>
+
+			<StarPortal position={[4, 0, 4]} scale={0.7} playAnimation={active === RigidItem.GIT} />
 		</group>
 	);
 };
