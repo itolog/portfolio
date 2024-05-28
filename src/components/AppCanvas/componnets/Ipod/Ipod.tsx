@@ -66,42 +66,12 @@ const Ipod = (props: JSX.IntrinsicElements["group"]) => {
 				<PositionalAudio ref={audioRef} url={damagedAudio1Url} distance={2} autoplay loop />
 				<a.pointLight color={"#5402f7"} distance={2} intensity={intensity} />
 
-				<mesh
-					castShadow
-					receiveShadow
-					geometry={nodes.Object_4.geometry}
-					material={materials["Material.006"]}
-				/>
-				<mesh
-					castShadow
-					receiveShadow
-					geometry={nodes.Object_5.geometry}
-					material={materials.Shiney_Back}
-				/>
-				<mesh
-					castShadow
-					receiveShadow
-					geometry={nodes.Object_6.geometry}
-					material={materials.Port}
-				/>
-				<mesh
-					castShadow
-					receiveShadow
-					geometry={nodes.Object_7.geometry}
-					material={materials.Screen}
-				/>
-				<mesh
-					castShadow
-					receiveShadow
-					geometry={nodes.Object_8.geometry}
-					material={materials.Wheel}
-				/>
-				<mesh
-					castShadow
-					receiveShadow
-					geometry={nodes.Object_9.geometry}
-					material={materials["Material.016"]}
-				/>
+				<mesh geometry={nodes.Object_4.geometry} material={materials["Material.006"]} />
+				<mesh geometry={nodes.Object_5.geometry} material={materials.Shiney_Back} />
+				<mesh geometry={nodes.Object_6.geometry} material={materials.Port} />
+				<mesh geometry={nodes.Object_7.geometry} material={materials.Screen} />
+				<mesh geometry={nodes.Object_8.geometry} material={materials.Wheel} />
+				<mesh geometry={nodes.Object_9.geometry} material={materials["Material.016"]} />
 			</group>
 		</RigidBody>
 	);

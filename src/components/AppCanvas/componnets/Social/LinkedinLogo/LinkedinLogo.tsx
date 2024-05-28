@@ -50,18 +50,8 @@ const LinkedinLogo = (props: JSX.IntrinsicElements["group"]) => {
 				rotation={rotation as unknown as Euler}
 				{...props}>
 				<a.pointLight color={"lime"} distance={2} intensity={intensity} />
-				<mesh
-					castShadow
-					receiveShadow
-					geometry={nodes.Object_4.geometry}
-					material={materials.glossy_linkedin}
-				/>
-				<mesh
-					castShadow
-					receiveShadow
-					geometry={nodes.Object_5.geometry}
-					material={materials.glossy_putih}
-				/>
+				<mesh geometry={nodes.Object_4.geometry} material={materials.glossy_linkedin} />
+				<mesh geometry={nodes.Object_5.geometry} material={materials.glossy_putih} />
 			</a.group>
 			<StarPortal position={[-4, 0, 4]} scale={0.7} playAnimation={active === RigidItem.LINKEDIN} />
 		</group>

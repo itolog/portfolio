@@ -42,7 +42,6 @@ const GitLogo = (props: JSX.IntrinsicElements["group"]) => {
 			<a.group
 				onClick={handleOpen}
 				scale={10}
-				receiveShadow
 				position-x={4}
 				position-y={positionY}
 				position-z={4}
@@ -50,18 +49,8 @@ const GitLogo = (props: JSX.IntrinsicElements["group"]) => {
 				dispose={null}
 				{...props}>
 				<a.pointLight color={"red"} distance={2} intensity={intensity} />
-				<mesh
-					castShadow
-					receiveShadow
-					geometry={nodes.Object_4.geometry}
-					material={materials.glossy_putih}
-				/>
-				<mesh
-					castShadow
-					receiveShadow
-					geometry={nodes.Object_5.geometry}
-					material={materials.github}
-				/>
+				<mesh geometry={nodes.Object_4.geometry} material={materials.glossy_putih} />
+				<mesh geometry={nodes.Object_5.geometry} material={materials.github} />
 			</a.group>
 
 			<StarPortal position={[4, 0, 4]} scale={0.7} playAnimation={active === RigidItem.GIT} />
