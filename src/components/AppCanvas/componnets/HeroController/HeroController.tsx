@@ -15,11 +15,10 @@ const characterURL = "./models/rick.glb";
 const HeroController = () => {
 	return (
 		<Ecctrl
-			ccd
 			capsuleHalfHeight={0.6}
 			camTargetPos={{ x: 0, y: 4, z: -1 }}
 			camInitDis={-7}
-			camMaxDis={-11}
+			position={[-100, 0, 20]}
 			animated>
 			<EcctrlAnimation characterURL={characterURL} animationSet={animationSet}>
 				<Hero scale={0.5} />

@@ -2,8 +2,8 @@ import { Text3D } from "@react-three/drei";
 
 import { fontUrl } from "@/config";
 
-const rotationX = 0.3;
-const rotationY = -Math.PI;
+const rotationX = -0.1;
+const rotationY = 3.6;
 
 const HeroTitle = () => {
 	return (
@@ -12,7 +12,7 @@ const HeroTitle = () => {
 				castShadow
 				rotation-x={rotationX}
 				rotation-y={rotationY}
-				position={[6, 5, 6]}
+				position={[-95, -5, 30]}
 				font={fontUrl}>
 				Serhii Romanichenko
 				<meshNormalMaterial />
@@ -21,7 +21,7 @@ const HeroTitle = () => {
 				castShadow
 				rotation-x={rotationX}
 				rotation-y={rotationY}
-				position={[6, 3, 6]}
+				position={[-95, -7, 30]}
 				font={fontUrl}>
 				FrontEnd Developer
 				<meshNormalMaterial />
