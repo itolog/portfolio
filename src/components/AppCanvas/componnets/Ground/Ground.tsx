@@ -2,15 +2,15 @@ import { useAnimations, useGLTF } from "@react-three/drei";
 import { RigidBody } from "@react-three/rapier";
 import { useEffect, useRef } from "react";
 
+import { mapUrl } from "@/config";
 import * as THREE from "three";
 
 import { ActionName, GLTFResult } from "@/components/AppCanvas/componnets/Ground/types.ts";
 
 const action: ActionName = "ufo_01";
-
 const Ground = (props: JSX.IntrinsicElements["group"]) => {
 	const group = useRef<THREE.Group>(null);
-	const { nodes, materials, animations } = useGLTF("/models/invasion/scene.gltf") as GLTFResult;
+	const { nodes, materials, animations } = useGLTF(mapUrl) as GLTFResult;
 	const { actions } = useAnimations(animations, group);
 
 	useEffect(() => {
@@ -20,7 +20,7 @@ const Ground = (props: JSX.IntrinsicElements["group"]) => {
 	return (
 		<RigidBody type="fixed" colliders="trimesh" ccd>
 			<group ref={group} {...props} dispose={null}>
-				<group name="Sketchfab_Scene">
+				<group name="Scene">
 					<group name="Sketchfab_model" rotation={[-Math.PI / 2, 0, 0]}>
 						<group name="root">
 							<group name="GLTF_SceneRootNode" rotation={[Math.PI / 2, 0, 0]}>
@@ -329,15 +329,7 @@ const Ground = (props: JSX.IntrinsicElements["group"]) => {
 											</group>
 										</group>
 										<group name="Cars_66">
-											<group name="Cars_01_210_62" position={[0.43, 0, 0]}>
-												<mesh
-													name="Object_73"
-													castShadow
-													receiveShadow
-													geometry={nodes.Object_73.geometry}
-													material={materials.city_tex}
-												/>
-											</group>
+											<group name="Cars_01_210_62" position={[0.43, 0, 0]} />
 											<group name="Cars_02_212_63">
 												<mesh
 													name="Object_75"
@@ -347,15 +339,7 @@ const Ground = (props: JSX.IntrinsicElements["group"]) => {
 													material={materials.city_tex}
 												/>
 											</group>
-											<group name="Cars_03_214_64">
-												<mesh
-													name="Object_77"
-													castShadow
-													receiveShadow
-													geometry={nodes.Object_77.geometry}
-													material={materials.city_tex}
-												/>
-											</group>
+											<group name="Cars_03_214_64" />
 											<group name="Cars_04_216_65" position={[0.733, 0, 0]}>
 												<mesh
 													name="Object_79"
@@ -468,13 +452,6 @@ const Ground = (props: JSX.IntrinsicElements["group"]) => {
 													geometry={nodes.Object_101.geometry}
 													material={materials.city_tex}
 												/>
-												<mesh
-													name="Object_102"
-													castShadow
-													receiveShadow
-													geometry={nodes.Object_102.geometry}
-													material={materials.police_station_tex}
-												/>
 											</group>
 										</group>
 									</group>
@@ -500,6 +477,6 @@ const Ground = (props: JSX.IntrinsicElements["group"]) => {
 	);
 };
 
-useGLTF.preload("/models/invasion/scene.gltf");
+useGLTF.preload(mapUrl);
 
 export default Ground;

@@ -37,9 +37,7 @@ export type GLTFResult = GLTF & {
 		Object_67: THREE.Mesh;
 		Object_68: THREE.Mesh;
 		Object_70: THREE.Mesh;
-		Object_73: THREE.Mesh;
 		Object_75: THREE.Mesh;
-		Object_77: THREE.Mesh;
 		Object_79: THREE.Mesh;
 		Object_82: THREE.Mesh;
 		Object_83: THREE.Mesh;
@@ -53,7 +51,6 @@ export type GLTFResult = GLTF & {
 		Object_97: THREE.Mesh;
 		Object_99: THREE.Mesh;
 		Object_101: THREE.Mesh;
-		Object_102: THREE.Mesh;
 		Object_104: THREE.Mesh;
 	};
 	materials: {
