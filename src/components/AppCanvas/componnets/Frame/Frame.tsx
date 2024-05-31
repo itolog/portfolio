@@ -17,6 +17,7 @@ interface Props {
 	height?: number;
 	title: string;
 	position: [number, number, number];
+	rotation?: [number, number, number];
 	fontSize?: number;
 	fontColor?: string;
 }
@@ -31,6 +32,7 @@ const Frame: FC<PropsWithChildren<Props>> = ({
 	children,
 	position,
 	fontSize = 0.2,
+	rotation,
 }) => {
 	const portal = useRef(null);
 	const [, setLocation] = useLocation();
@@ -49,7 +51,7 @@ const Frame: FC<PropsWithChildren<Props>> = ({
 
 	return (
 		<RigidBody type={"fixed"} name={RigidItem.SKILLS}>
-			<group rotation-y={Math.PI} position={position}>
+			<group rotation={rotation} position={position}>
 				<Text
 					font={"/fonts/get_schwifty.ttf"}
 					fontSize={fontSize}

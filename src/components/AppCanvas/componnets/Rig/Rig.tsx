@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { Vector3 } from "three";
 import { useRoute } from "wouter";
 
-const Rig = ({ position = new Vector3(0, 0, 2), focus = new Vector3(0, 0, 0) }) => {
+const Rig = ({ position = new Vector3(0, 1, 2), focus = new Vector3(0, 0, 0) }) => {
 	const { controls, scene } = useThree();
 	const [, params] = useRoute("/item/:id");
 
@@ -13,8 +13,11 @@ const Rig = ({ position = new Vector3(0, 0, 2), focus = new Vector3(0, 0, 0) }) 
 		const active = scene.getObjectByName(params?.id as string);
 
 		if (active) {
-			active?.parent?.localToWorld(position.set(0, 0.5, 0.25));
+			active?.parent?.localToWorld(position.set(0, 0, 0.25));
 			active?.parent?.localToWorld(focus.set(0, 0, -2));
+		} else {
+			position.set(0, 1, 2);
+			focus.set(0, 0, 0);
 		}
 
 		(controls as unknown as CameraControls)?.setLookAt(

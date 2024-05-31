@@ -35,7 +35,7 @@ const useSocialAnim = (name: string): ReturnType => {
 	const { intensity, rotation, positionY } = useSpring({
 		intensity: active === name ? 20 : 1,
 		rotation: active === name ? [-1.4, Math.PI, 0] : [0, Math.PI, 0],
-		positionY: active === name ? 3 : 0.5,
+		positionY: active === name ? -15 : -18,
 		config: config.molasses,
 	});
 

@@ -34,7 +34,7 @@ const LinkedinLogo = (props: JSX.IntrinsicElements["group"]) => {
 		<group>
 			<CuboidCollider
 				args={[0.8, 0.4, 1]}
-				position={[-4, 0.4, 4]}
+				position={[-82, -18, 38]}
 				sensor
 				onIntersectionEnter={handleIntersectionEnter}
 				onIntersectionExit={handleIntersectionExit}
@@ -43,9 +43,9 @@ const LinkedinLogo = (props: JSX.IntrinsicElements["group"]) => {
 			<a.group
 				onClick={handleOpen}
 				scale={0.28}
-				position-x={-4}
+				position-x={-82}
 				position-y={positionY}
-				position-z={4}
+				position-z={38.2}
 				dispose={null}
 				rotation={rotation as unknown as Euler}
 				{...props}>
@@ -53,7 +53,11 @@ const LinkedinLogo = (props: JSX.IntrinsicElements["group"]) => {
 				<mesh geometry={nodes.Object_4.geometry} material={materials.glossy_linkedin} />
 				<mesh geometry={nodes.Object_5.geometry} material={materials.glossy_putih} />
 			</a.group>
-			<StarPortal position={[-4, 0, 4]} scale={0.7} playAnimation={active === RigidItem.LINKEDIN} />
+			<StarPortal
+				position={[-82, -18, 38]}
+				scale={0.7}
+				playAnimation={active === RigidItem.LINKEDIN}
+			/>
 		</group>
 	);
 };
