@@ -15,7 +15,7 @@ const characterURL = "./models/rick.glb";
 const HeroController = () => {
 	return (
 		<Ecctrl
-			sprintMult={5}
+			sprintMult={4}
 			ccd
 			capsuleHalfHeight={0.6}
 			camTargetPos={{ x: 0, y: 4, z: -1 }}

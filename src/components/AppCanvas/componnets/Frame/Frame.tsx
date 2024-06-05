@@ -20,7 +20,6 @@ interface Props {
 	rotation?: [number, number, number];
 	fontSize?: number;
 	fontColor?: string;
-	borderColor?: string;
 }
 
 const Frame: FC<PropsWithChildren<Props>> = ({
@@ -34,7 +33,6 @@ const Frame: FC<PropsWithChildren<Props>> = ({
 	position,
 	fontSize = 0.2,
 	rotation,
-	borderColor = "#080a01",
 }) => {
 	const portal = useRef(null);
 	const [, setLocation] = useLocation();
@@ -74,12 +72,6 @@ const Frame: FC<PropsWithChildren<Props>> = ({
 						<color attach="background" args={[bg]} />
 						{children}
 					</MeshPortalMaterial>
-				</mesh>
-				<mesh name={id} position={[0, 0, -0.001]}>
-					{/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-					{/* @ts-expect-error */}
-					<roundedPlaneGeometry args={[width + 0.05, height + 0.05, 0.12]} />
-					<meshBasicMaterial color={borderColor} />
 				</mesh>
 			</group>
 		</RigidBody>
