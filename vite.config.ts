@@ -2,9 +2,11 @@ import react from "@vitejs/plugin-react-swc";
 
 import { resolve } from "node:path";
 import { defineConfig } from "vite";
-// @ts-ignore
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
 import eslintPlugin from "vite-plugin-eslint";
-// @ts-ignore
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
 import oxlintPlugin from "vite-plugin-oxlint";
 import stylelint from "vite-plugin-stylelint";
 
