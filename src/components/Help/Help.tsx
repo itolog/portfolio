@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import styles from "./help.module.scss";
 
 const controlOptions = [
@@ -12,23 +10,6 @@ const controlOptions = [
 	{ keys: ["Shift"], action: "Turbo Boost" },
 	{ keys: ["R"], action: "Cancel/Back" },
 ];
-
-export function Help(): JSX.Element {
-	const [help, setHelp] = useState<boolean>(false);
-	return (
-		<div className={styles.help}>
-			{!help && <button onClick={() => setHelp(true)}>i</button>}
-			<div className={`popup ${help ? "open" : ""}`}>
-				<button className="popup-close" onClick={() => setHelp(false)}>
-					i
-				</button>
-				<div className="popup-content">
-					<Keys />
-				</div>
-			</div>
-		</div>
-	);
-}
 
 export function Keys(): JSX.Element {
 	return (

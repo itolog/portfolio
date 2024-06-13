@@ -17,7 +17,7 @@ const Rig = ({ position = new Vector3(0, 1, 2), focus = new Vector3(0, 0, 0) }) 
 			active?.parent?.localToWorld(position.set(0, 0, 0.25));
 			active?.parent?.localToWorld(focus.set(0, 0, -2));
 		} else {
-			position.set(0, 0, 0);
+			position.set(0, 1, 2);
 			focus.set(0, 0, 0);
 		}
 

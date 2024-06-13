@@ -1,12 +1,15 @@
 import { MeshPortalMaterial, Text } from "@react-three/drei";
 import { extend, ThreeEvent, useFrame } from "@react-three/fiber";
-import { RigidBody } from "@react-three/rapier";
+import { CuboidCollider, RigidBody } from "@react-three/rapier";
 import { FC, PropsWithChildren, useRef } from "react";
 
 import { RigidItem } from "@/constants";
 import { easing, geometry } from "maath";
 import * as THREE from "three";
 import { useLocation, useRoute } from "wouter";
+
+import useAppStore from "@/store/appSrore.ts";
+import createSelectors from "@/store/createSelectors.ts";
 
 extend(geometry);
 
@@ -37,6 +40,7 @@ const Frame: FC<PropsWithChildren<Props>> = ({
 	const portal = useRef(null);
 	const [, setLocation] = useLocation();
 	const [, params] = useRoute("/item/:id");
+	const updateSocialActive = createSelectors(useAppStore).use.updateActiveItem();
 
 	useFrame((_state, dt) => {
 		if (portal.current) {
@@ -46,11 +50,27 @@ const Frame: FC<PropsWithChildren<Props>> = ({
 
 	const handleDoubleClick = (e: ThreeEvent<MouseEvent>) => {
 		e.stopPropagation();
+
 		setLocation("/item/" + e.object.name);
+	};
+
+	const handleIntersectionEnter = () => {
+		updateSocialActive(RigidItem.SKILLS);
+	};
+
+	const handleIntersectionExit = () => {
+		updateSocialActive("");
 	};
 
 	return (
 		<RigidBody type={"fixed"} name={RigidItem.SKILLS}>
+			<CuboidCollider
+				args={[3, 2.4, height]}
+				position={position}
+				sensor
+				onIntersectionEnter={handleIntersectionEnter}
+				onIntersectionExit={handleIntersectionExit}
+			/>
 			<group rotation={rotation} position={position} scale={3}>
 				<Text
 					font={"/fonts/get_schwifty.ttf"}

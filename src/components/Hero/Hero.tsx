@@ -8,6 +8,7 @@ import { GLTFResult } from "@/components/Hero/types.ts";
 
 const Hero = (props: JSX.IntrinsicElements["group"]) => {
 	const group = useRef<THREE.Group>(null);
+
 	const { nodes, materials } = useGLTF("/models/rick.glb") as GLTFResult;
 
 	return (
