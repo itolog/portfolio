@@ -3,6 +3,7 @@ import { useGLTF } from "@react-three/drei";
 import { Euler } from "@react-three/fiber";
 import { CuboidCollider } from "@react-three/rapier";
 
+import { gitUrl } from "@/config";
 import { RigidItem } from "@/constants";
 
 import { GLTFResult } from "@/components/AppCanvas/componnets/Social/GitLogo/types.ts";
@@ -13,7 +14,7 @@ import useAppStore from "@/store/appSrore.ts";
 import createSelectors from "@/store/createSelectors.ts";
 
 const GitLogo = (props: JSX.IntrinsicElements["group"]) => {
-	const { nodes, materials } = useGLTF("/models/3d_github_logo/scene.gltf") as GLTFResult;
+	const { nodes, materials } = useGLTF(gitUrl) as GLTFResult;
 	const { intensity, rotation, positionY, active } = useSocialAnim(RigidItem.GIT);
 
 	const updateSocialActive = createSelectors(useAppStore).use.updateActiveItem();
@@ -58,6 +59,6 @@ const GitLogo = (props: JSX.IntrinsicElements["group"]) => {
 	);
 };
 
-useGLTF.preload("/models/3d_github_logo/scene.gltf");
+useGLTF.preload(gitUrl);
 
 export default GitLogo;

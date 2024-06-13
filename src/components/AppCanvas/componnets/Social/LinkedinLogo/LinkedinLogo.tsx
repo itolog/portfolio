@@ -3,6 +3,7 @@ import { useGLTF } from "@react-three/drei";
 import { Euler } from "@react-three/fiber";
 import { CuboidCollider } from "@react-three/rapier";
 
+import { linkedinUrl } from "@/config";
 import { RigidItem } from "@/constants";
 
 import useSocialAnim from "@/components/AppCanvas/componnets/Social/hooks/useSocialAnim.tsx";
@@ -13,7 +14,7 @@ import useAppStore from "@/store/appSrore.ts";
 import createSelectors from "@/store/createSelectors.ts";
 
 const LinkedinLogo = (props: JSX.IntrinsicElements["group"]) => {
-	const { nodes, materials } = useGLTF("/models/3d_linkedin_logo/scene.gltf") as GLTFResult;
+	const { nodes, materials } = useGLTF(linkedinUrl) as GLTFResult;
 
 	const { intensity, rotation, positionY, active } = useSocialAnim(RigidItem.LINKEDIN);
 	const updateSocialActive = createSelectors(useAppStore).use.updateActiveItem();
@@ -62,6 +63,6 @@ const LinkedinLogo = (props: JSX.IntrinsicElements["group"]) => {
 	);
 };
 
-useGLTF.preload("/models/3d_linkedin_logo/scene.gltf");
+useGLTF.preload(linkedinUrl);
 
 export default LinkedinLogo;

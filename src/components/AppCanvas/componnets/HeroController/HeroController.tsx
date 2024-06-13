@@ -1,3 +1,4 @@
+import { heroUrl } from "@/config";
 import Ecctrl, { EcctrlAnimation } from "ecctrl";
 
 import Hero from "@/components/AppCanvas/componnets/Hero/Hero.tsx";
@@ -10,7 +11,6 @@ const animationSet = {
 	jumpLand: "jumpLand",
 	jump: "jumpIdle",
 };
-const characterURL = "./models/rick.glb";
 
 const HeroController = () => {
 	return (
@@ -22,7 +22,7 @@ const HeroController = () => {
 			camInitDis={-7}
 			position={[-100, 0, 20]}
 			animated>
-			<EcctrlAnimation characterURL={characterURL} animationSet={animationSet}>
+			<EcctrlAnimation characterURL={heroUrl} animationSet={animationSet}>
 				<Hero scale={0.5} />
 			</EcctrlAnimation>
 		</Ecctrl>

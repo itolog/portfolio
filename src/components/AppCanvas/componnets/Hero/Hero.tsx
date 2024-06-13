@@ -1,6 +1,7 @@
 import { useGLTF } from "@react-three/drei";
 import { useRef } from "react";
 
+import { RigidItem } from "@/constants";
 import * as THREE from "three";
 
 import { GLTFResult } from "@/components/AppCanvas/componnets/Hero/types.ts";
@@ -10,7 +11,7 @@ const Hero = (props: JSX.IntrinsicElements["group"]) => {
 	const { nodes, materials } = useGLTF("/models/rick.glb") as GLTFResult;
 
 	return (
-		<group position={[0, -0.9, 0]} ref={group} {...props} dispose={null}>
+		<group name={RigidItem.HERO} position={[0, -0.9, 0]} ref={group} {...props} dispose={null}>
 			<group name="Scene">
 				<group name="Armature">
 					<group name="Rick">
