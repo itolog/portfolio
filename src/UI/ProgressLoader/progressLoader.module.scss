@@ -1,13 +1,4 @@
-$color-black: hsl(0deg 0% 5%);
 $color-scss: hsl(300deg 100% 60%);
-
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: $color-black;
-}
 
 .containerProgressbars {
   display: flex;
@@ -42,6 +33,7 @@ $color-scss: hsl(300deg 100% 60%);
   stroke: hsl(0deg 0% 100%);
   stroke-linecap: round;
   transform: translate(5px, 5px);
+  transition: 0.4s;
 }
 
 .shadowScss {

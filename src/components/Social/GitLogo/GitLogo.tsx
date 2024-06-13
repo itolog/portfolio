@@ -6,9 +6,9 @@ import { CuboidCollider } from "@react-three/rapier";
 import { gitUrl } from "@/config";
 import { RigidItem } from "@/constants";
 
-import { GLTFResult } from "@/components/AppCanvas/componnets/Social/GitLogo/types.ts";
-import useSocialAnim from "@/components/AppCanvas/componnets/Social/hooks/useSocialAnim.tsx";
-import StarPortal from "@/components/AppCanvas/componnets/StarPortal/StarPortal.tsx";
+import { GLTFResult } from "@/components/Social/GitLogo/types.ts";
+import useSocialAnim from "@/components/Social/hooks/useSocialAnim.tsx";
+import StarPortal from "@/components/StarPortal/StarPortal.tsx";
 
 import useAppStore from "@/store/appSrore.ts";
 import createSelectors from "@/store/createSelectors.ts";

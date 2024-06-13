@@ -5,15 +5,15 @@ import { Controls, IS_DEV } from "@/constants";
 import PerformanceMonitor from "@/utils/PerformanceMonitor/PerformanceMonitor.tsx";
 
 import AppCanvas from "@/components/AppCanvas/AppCanvas.tsx";
-import Ground from "@/components/AppCanvas/componnets/Ground/Ground.tsx";
-import HeroController from "@/components/AppCanvas/componnets/HeroController/HeroController.tsx";
-import HeroTitle from "@/components/AppCanvas/componnets/HeroTitle/HeroTitle.tsx";
-import Ipod from "@/components/AppCanvas/componnets/Ipod/Ipod.tsx";
-import JustForFun from "@/components/AppCanvas/componnets/JustForFun/JustForFun.tsx";
-import Rig from "@/components/AppCanvas/componnets/Rig/Rig.tsx";
-import Skills from "@/components/AppCanvas/componnets/Skills/Skills.tsx";
-import GitLogo from "@/components/AppCanvas/componnets/Social/GitLogo/GitLogo.tsx";
-import LinkedinLogo from "@/components/AppCanvas/componnets/Social/LinkedinLogo/LinkedinLogo.tsx";
+import Ground from "@/components/Ground/Ground.tsx";
+import HeroController from "@/components/HeroController/HeroController.tsx";
+import HeroTitle from "@/components/HeroTitle/HeroTitle.tsx";
+import Ipod from "@/components/Ipod/Ipod.tsx";
+import JustForFun from "@/components/JustForFun/JustForFun.tsx";
+import Rig from "@/components/Rig/Rig.tsx";
+import Skills from "@/components/Skills/Skills.tsx";
+import GitLogo from "@/components/Social/GitLogo/GitLogo.tsx";
+import LinkedinLogo from "@/components/Social/LinkedinLogo/LinkedinLogo.tsx";
 
 const map = [
 	{ name: Controls.forward, keys: ["ArrowUp", "KeyW"] },

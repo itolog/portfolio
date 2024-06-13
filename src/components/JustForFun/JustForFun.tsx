@@ -2,7 +2,7 @@ import { Sky, Text } from "@react-three/drei";
 
 import { fontBaseUrl } from "@/config";
 
-import Frame from "@/components/AppCanvas/componnets/Frame/Frame.tsx";
+import Frame from "@/components/Frame/Frame.tsx";
 
 const JustForFun = () => {
 	return (

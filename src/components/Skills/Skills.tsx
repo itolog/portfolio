@@ -2,7 +2,7 @@ import { Text3D } from "@react-three/drei";
 
 import { fontUrl } from "@/config";
 
-import Frame from "@/components/AppCanvas/componnets/Frame/Frame.tsx";
+import Frame from "@/components/Frame/Frame.tsx";
 
 const Skills = () => {
 	return (

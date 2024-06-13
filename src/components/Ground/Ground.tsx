@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 import { mapUrl } from "@/config";
 import * as THREE from "three";
 
-import { ActionName, GLTFResult } from "@/components/AppCanvas/componnets/Ground/types.ts";
+import { ActionName, GLTFResult } from "@/components/Ground/types.ts";
 
 const action: ActionName = "ufo_01";
 const Ground = (props: JSX.IntrinsicElements["group"]) => {

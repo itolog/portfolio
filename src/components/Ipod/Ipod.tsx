@@ -7,7 +7,7 @@ import { damagedAudio1Url, ipodlUrl } from "@/config";
 import { Controls, RigidItem } from "@/constants";
 import * as THREE from "three";
 
-import { GLTFResult } from "@/components/AppCanvas/componnets/Ipod/types.ts";
+import { GLTFResult } from "@/components/Ipod/types.ts";
 
 import useAppStore from "@/store/appSrore.ts";
 import createSelectors from "@/store/createSelectors.ts";

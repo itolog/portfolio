@@ -1,0 +1,39 @@
+.keysContainer {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ flex:1;
+ padding: calc(var(--base-unit) * .5);
+}
+
+.popupItem {
+ display: flex;
+ justify-content: space-between;
+ width: 250px;
+ margin: 0;
+}
+
+.popupItemKeys {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+}
+
+.popupItemKey {
+ font-size: 0.7em;
+ min-width: 24px;
+ border: 1px solid transparent;
+ border-bottom: 3px solid #a0a0a0;
+ border-radius: 3px;
+ padding: 2px 5px;
+ margin: 2px;
+ background: white;
+ color: black;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+}
+
+.action {
+ color: white;
+}

@@ -4,7 +4,7 @@ import { FC, useEffect, useRef } from "react";
 import { starPortalUrl } from "@/config";
 import * as THREE from "three";
 
-import { ActionName, GLTFResult } from "@/components/AppCanvas/componnets/StarPortal/types.ts";
+import { ActionName, GLTFResult } from "@/components/StarPortal/types.ts";
 
 interface Props {
 	playAnimation?: boolean;

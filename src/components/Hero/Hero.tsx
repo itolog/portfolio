@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { RigidItem } from "@/constants";
 import * as THREE from "three";
 
-import { GLTFResult } from "@/components/AppCanvas/componnets/Hero/types.ts";
+import { GLTFResult } from "@/components/Hero/types.ts";
 
 const Hero = (props: JSX.IntrinsicElements["group"]) => {
 	const group = useRef<THREE.Group>(null);

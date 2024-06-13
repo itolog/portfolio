@@ -1,7 +1,7 @@
 import { heroUrl } from "@/config";
 import Ecctrl, { EcctrlAnimation } from "ecctrl";
 
-import Hero from "@/components/AppCanvas/componnets/Hero/Hero.tsx";
+import Hero from "@/components/Hero/Hero.tsx";
 
 const animationSet = {
 	idle: "idle",
