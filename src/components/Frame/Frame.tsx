@@ -3,7 +3,6 @@ import { extend, ThreeEvent, useFrame } from "@react-three/fiber";
 import { CuboidCollider, RigidBody } from "@react-three/rapier";
 import { FC, PropsWithChildren, useRef } from "react";
 
-import { RigidItem } from "@/constants";
 import { easing, geometry } from "maath";
 import * as THREE from "three";
 import { useLocation, useRoute } from "wouter";
@@ -55,7 +54,7 @@ const Frame: FC<PropsWithChildren<Props>> = ({
 	};
 
 	const handleIntersectionEnter = () => {
-		updateSocialActive(RigidItem.SKILLS);
+		updateSocialActive(id);
 	};
 
 	const handleIntersectionExit = () => {
@@ -63,7 +62,7 @@ const Frame: FC<PropsWithChildren<Props>> = ({
 	};
 
 	return (
-		<RigidBody type={"fixed"} name={RigidItem.SKILLS}>
+		<RigidBody type={"fixed"} name={id}>
 			<CuboidCollider
 				args={[3, 2.4, height]}
 				position={position}

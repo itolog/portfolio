@@ -17,5 +17,6 @@ export const RigidItem = {
 	FLOOR: "floor",
 	IPOD: "ipod",
 	SKILLS: "skills",
+	JUST_FOR_FUN: "justForFun",
 	HERO: "hero",
 };

@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 
 import { RigidItem } from "@/constants";
+import SvgIcons from "@/UI/SvgIcon/SvgIcons.tsx";
 import { useLocation, useRoute } from "wouter";
 
 import useAppStore from "@/store/appSrore.ts";
@@ -13,6 +14,17 @@ const PoHint = () => {
 	const [, setLocation] = useLocation();
 	const active = createSelectors(useAppStore).use.activeItem();
 
+	const BackToMainPage = () => {
+		return (
+			<div className={styles.container}>
+				<button className={styles.button} onClick={() => setLocation("/")}>
+					<SvgIcons name={"arrow"} />
+				</button>
+				<span>press R</span>
+			</div>
+		);
+	};
+
 	const hintText = useMemo(() => {
 		if (active === RigidItem.IPOD) {
 			return "Press Enter to play music and R to turn it off.";
@@ -22,20 +34,19 @@ const PoHint = () => {
 			return "Press Enter to open the link";
 		}
 
-		if (active === RigidItem.SKILLS) {
+		if (active === RigidItem.SKILLS || active === RigidItem.JUST_FOR_FUN) {
 			return "To open the portal press Enter or click on the portal";
 		}
 
 		return "";
 	}, [active]);
 
-	if (!active) return null;
+	if (!active && !params) return null;
 
 	return (
 		<div className={styles.hint}>
-			<button className={styles.button} onClick={() => setLocation("/")}>
-				{params ? "< back" : hintText}
-			</button>
+			{params && <BackToMainPage />}
+			{!params && <div className={styles.container}>{hintText}</div>}
 		</div>
 	);
 };

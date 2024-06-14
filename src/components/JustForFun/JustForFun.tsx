@@ -1,13 +1,17 @@
 import { Sky, Text } from "@react-three/drei";
 
 import { fontBaseUrl } from "@/config";
+import { RigidItem } from "@/constants";
+import useSkillsRouting from "@/hooks/useSkillsRouting.tsx";
 
 import Frame from "@/components/Frame/Frame.tsx";
 
 const JustForFun = () => {
+	useSkillsRouting();
+
 	return (
 		<Frame
-			id={"2"}
+			id={RigidItem.JUST_FOR_FUN}
 			fontSize={0.15}
 			title={"Just for fun"}
 			rotation={[0, 4.7, 0]}

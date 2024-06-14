@@ -40,13 +40,13 @@ const MainPage = () => {
 					<GitLogo />
 					<LinkedinLogo />
 					<Ipod />
+					{/* SKILLS */}
+					<Skills />
+					<JustForFun />
 
 					<HeroController />
 				</KeyboardControls>
 
-				{/* SKILLS */}
-				<Skills />
-				<JustForFun />
 				{/*  TITLE */}
 				<HeroTitle />
 				<Rig />
