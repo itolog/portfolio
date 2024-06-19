@@ -2,7 +2,7 @@ import { useAnimations, useGLTF, useVideoTexture } from "@react-three/drei";
 import { RigidBody } from "@react-three/rapier";
 import { useEffect, useRef } from "react";
 
-import { mapUrl } from "@/config";
+import { mapUrl, videoUrl } from "@/config";
 import * as THREE from "three";
 
 import { ActionName, GLTFResult } from "@/components/Ground/types.ts";
@@ -16,10 +16,9 @@ const Ground = (props: JSX.IntrinsicElements["group"]) => {
 	useEffect(() => {
 		actions[action]?.play();
 	}, [actions]);
-	const texture = useVideoTexture("https://www.youtube.com/embed/K8c7Es7msUs?si=VAxSgUy0HPPQcVzL", {
-		crossOrigin: "anonymous",
-		playsInline: true,
-	});
+
+	const texture = useVideoTexture(videoUrl);
+
 	return (
 		<RigidBody type="fixed" colliders="trimesh">
 			<group ref={group} {...props} dispose={null}>
