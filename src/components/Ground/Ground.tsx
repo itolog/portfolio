@@ -1,11 +1,12 @@
-import { useAnimations, useGLTF, useVideoTexture } from "@react-three/drei";
+import { useAnimations, useGLTF } from "@react-three/drei";
 import { RigidBody } from "@react-three/rapier";
 import { useEffect, useRef } from "react";
 
-import { mapUrl, videoUrl } from "@/config";
+import { mapUrl } from "@/config";
 import * as THREE from "three";
 
 import { ActionName, GLTFResult } from "@/components/Ground/types.ts";
+import VideoMaterial from "@/components/VideoMaterial/VideoMaterial.tsx";
 
 const action: ActionName = "ufo_01";
 const Ground = (props: JSX.IntrinsicElements["group"]) => {
@@ -16,8 +17,6 @@ const Ground = (props: JSX.IntrinsicElements["group"]) => {
 	useEffect(() => {
 		actions[action]?.play();
 	}, [actions]);
-
-	const texture = useVideoTexture(videoUrl);
 
 	return (
 		<RigidBody type="fixed" colliders="trimesh">
@@ -359,7 +358,7 @@ const Ground = (props: JSX.IntrinsicElements["group"]) => {
 													castShadow
 													receiveShadow
 													geometry={nodes.Object_82.geometry}>
-													<meshBasicMaterial map={texture} toneMapped={false} />
+													<VideoMaterial />
 												</mesh>
 												<mesh
 													name="Object_83"
