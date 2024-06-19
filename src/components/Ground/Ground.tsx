@@ -1,4 +1,4 @@
-import { useAnimations, useGLTF } from "@react-three/drei";
+import { useAnimations, useGLTF, useVideoTexture } from "@react-three/drei";
 import { RigidBody } from "@react-three/rapier";
 import { useEffect, useRef } from "react";
 
@@ -16,7 +16,10 @@ const Ground = (props: JSX.IntrinsicElements["group"]) => {
 	useEffect(() => {
 		actions[action]?.play();
 	}, [actions]);
-
+	const texture = useVideoTexture("https://www.youtube.com/embed/K8c7Es7msUs?si=VAxSgUy0HPPQcVzL", {
+		crossOrigin: "anonymous",
+		playsInline: true,
+	});
 	return (
 		<RigidBody type="fixed" colliders="trimesh">
 			<group ref={group} {...props} dispose={null}>
@@ -356,9 +359,9 @@ const Ground = (props: JSX.IntrinsicElements["group"]) => {
 													name="Object_82"
 													castShadow
 													receiveShadow
-													geometry={nodes.Object_82.geometry}
-													material={materials.Logo_1}
-												/>
+													geometry={nodes.Object_82.geometry}>
+													<meshBasicMaterial map={texture} toneMapped={false} />
+												</mesh>
 												<mesh
 													name="Object_83"
 													castShadow
