@@ -28,7 +28,7 @@ const map = [
 
 const MainPage = () => {
 	return (
-		<AppCanvas>
+		<AppCanvas dpr={[1, 2]}>
 			{IS_DEV && <PerformanceMonitor />}
 
 			<Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade />
@@ -49,6 +49,7 @@ const MainPage = () => {
 
 				{/*  TITLE */}
 				<HeroTitle />
+
 				<Rig />
 				<Center>
 					<Ground />
