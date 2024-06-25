@@ -1,4 +1,11 @@
-import { Center, KeyboardControls, Sky, Stars } from "@react-three/drei";
+import {
+	AdaptiveDpr,
+	AdaptiveEvents,
+	Center,
+	KeyboardControls,
+	Sky,
+	Stars,
+} from "@react-three/drei";
 import { Physics } from "@react-three/rapier";
 
 import { Controls, IS_DEV } from "@/constants";
@@ -30,6 +37,8 @@ const MainPage = () => {
 	return (
 		<AppCanvas dpr={[1, 2]}>
 			{IS_DEV && <PerformanceMonitor />}
+			<AdaptiveDpr pixelated />
+			<AdaptiveEvents />
 
 			<Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade />
 			<Sky />
