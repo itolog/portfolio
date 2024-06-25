@@ -43,12 +43,7 @@ const Word: FC<PropsWithChildren<Props>> = ({ children, ...props }) => {
 
 	return (
 		<Billboard {...props}>
-			<Text
-				ref={ref}
-				onPointerOver={over}
-				onPointerOut={out}
-				// onClick={() => console.log("clicked")}
-				{...fontProps}>
+			<Text ref={ref} onPointerOver={over} onPointerOut={out} {...fontProps}>
 				{children}
 			</Text>
 		</Billboard>

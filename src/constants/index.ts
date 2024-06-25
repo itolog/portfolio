@@ -19,4 +19,5 @@ export const RigidItem = {
 	SKILLS: "skills",
 	JUST_FOR_FUN: "justForFun",
 	HERO: "hero",
+	HERO_CONTROLLER: "heroController",
 };
