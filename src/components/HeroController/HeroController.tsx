@@ -21,6 +21,7 @@ const HeroController = () => {
 			camTargetPos={{ x: 0, y: 4, z: -1 }}
 			camInitDis={-7}
 			position={[-100, 0, 20]}
+			mode="FixedCamera"
 			animated>
 			<EcctrlAnimation characterURL={heroUrl} animationSet={animationSet}>
 				<Hero scale={0.5} />

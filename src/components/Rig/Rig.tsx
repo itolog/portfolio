@@ -33,7 +33,6 @@ const Rig = ({ position = new Vector3(0, 1, 2), focus = new Vector3(0, 0, 0) }) 
 				minDistance={1}
 				maxPolarAngle={Math.PI / 2}
 			/>
-			{/* <TrackballControls makeDefault /> */}
 		</>
 	);
 };

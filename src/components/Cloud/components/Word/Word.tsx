@@ -47,7 +47,7 @@ const Word: FC<PropsWithChildren<Props>> = ({ children, ...props }) => {
 				ref={ref}
 				onPointerOver={over}
 				onPointerOut={out}
-				onClick={() => console.log("clicked")}
+				// onClick={() => console.log("clicked")}
 				{...fontProps}>
 				{children}
 			</Text>
