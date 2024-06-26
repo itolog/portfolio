@@ -35,7 +35,7 @@ const map = [
 
 const MainPage = () => {
 	return (
-		<AppCanvas dpr={[1, 2]}>
+		<AppCanvas>
 			{IS_DEV && <PerformanceMonitor />}
 			<AdaptiveDpr pixelated />
 			<AdaptiveEvents />
