@@ -23,7 +23,7 @@ const SkillsModal = () => {
 			open: false,
 			type: null,
 		});
-	}, []);
+	}, [updateFrameVisibility]);
 
 	const words = useMemo(() => {
 		if (skillsModal.type === "skills") {
