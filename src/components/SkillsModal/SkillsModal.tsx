@@ -1,3 +1,4 @@
+import { a, config, useSpring } from "@react-spring/web";
 import { TrackballControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { useCallback, useMemo } from "react";
@@ -31,11 +32,20 @@ const SkillsModal = () => {
 		return justForFun;
 	}, [skillsModal]);
 
-	if (!skillsModal.open) return;
+	const { size, ...rest } = useSpring({
+		config: config.stiff,
+		from: { size: "0%", opacity: 0 },
+		to: {
+			size: skillsModal.open ? "100%" : "0%",
+			opacity: skillsModal.open ? 1 : 0,
+		},
+	});
 
 	return (
-		<div className={styles.skillsModal}>
-			<BackToMainPageButton onClick={handleCloseModal} />
+		<a.div style={{ ...rest, width: size, height: size }} className={styles.skillsModal}>
+			<div className={styles.back}>
+				<BackToMainPageButton onClick={handleCloseModal} />
+			</div>
 
 			<Canvas dpr={[1, 2]} camera={{ position: [0, 0, 35], fov: 90 }}>
 				<fog attach="fog" args={["#27282c", 0, 80]} />
@@ -44,7 +54,7 @@ const SkillsModal = () => {
 				</group>
 				<TrackballControls />
 			</Canvas>
-		</div>
+		</a.div>
 	);
 };
 
