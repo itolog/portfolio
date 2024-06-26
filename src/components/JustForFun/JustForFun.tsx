@@ -1,7 +1,6 @@
 import { Sky, Text } from "@react-three/drei";
 
 import { fontBaseUrl } from "@/config";
-import { RigidItem } from "@/constants";
 import useSkillsRouting from "@/hooks/useSkillsRouting.tsx";
 
 import Frame from "@/components/Frame/Frame.tsx";
@@ -11,7 +10,7 @@ const JustForFun = () => {
 
 	return (
 		<Frame
-			id={RigidItem.JUST_FOR_FUN}
+			id={"justForFun"}
 			fontSize={0.15}
 			title={"Just for fun"}
 			rotation={[0, 4.7, 0]}

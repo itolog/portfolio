@@ -1,8 +1,6 @@
 import { useMemo } from "react";
 
 import { RigidItem } from "@/constants";
-import SvgIcons from "@/UI/SvgIcon/SvgIcons.tsx";
-import { useLocation, useRoute } from "wouter";
 
 import useAppStore from "@/store/appSrore.ts";
 import createSelectors from "@/store/createSelectors.ts";
@@ -10,20 +8,7 @@ import createSelectors from "@/store/createSelectors.ts";
 import styles from "./poHint.module.scss";
 
 const PoHint = () => {
-	const [, params] = useRoute("/item/:id");
-	const [, setLocation] = useLocation();
 	const active = createSelectors(useAppStore).use.activeItem();
-
-	const BackToMainPage = () => {
-		return (
-			<div className={styles.container}>
-				<button className={styles.button} onClick={() => setLocation("/")}>
-					<SvgIcons name={"arrow"} />
-				</button>
-				<span>press R</span>
-			</div>
-		);
-	};
 
 	const hintText = useMemo(() => {
 		if (active === RigidItem.IPOD) {
@@ -41,12 +26,11 @@ const PoHint = () => {
 		return "";
 	}, [active]);
 
-	if (!active && !params) return null;
+	if (!active) return null;
 
 	return (
 		<div className={styles.hint}>
-			{params && <BackToMainPage />}
-			{!params && <div className={styles.container}>{hintText}</div>}
+			{hintText && <div className={styles.container}>{hintText}</div>}
 		</div>
 	);
 };

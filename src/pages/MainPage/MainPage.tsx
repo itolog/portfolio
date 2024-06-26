@@ -17,7 +17,6 @@ import HeroController from "@/components/HeroController/HeroController.tsx";
 import HeroTitle from "@/components/HeroTitle/HeroTitle.tsx";
 import Ipod from "@/components/Ipod/Ipod.tsx";
 import JustForFun from "@/components/JustForFun/JustForFun.tsx";
-import Rig from "@/components/Rig/Rig.tsx";
 import Skills from "@/components/Skills/Skills.tsx";
 import GitLogo from "@/components/Social/GitLogo/GitLogo.tsx";
 import LinkedinLogo from "@/components/Social/LinkedinLogo/LinkedinLogo.tsx";
@@ -59,7 +58,6 @@ const MainPage = () => {
 				{/*  TITLE */}
 				<HeroTitle />
 
-				<Rig />
 				<Center>
 					<Ground />
 				</Center>

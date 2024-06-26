@@ -2,31 +2,39 @@ import { useKeyboardControls } from "@react-three/drei";
 import { useEffect } from "react";
 
 import { RigidItem } from "@/constants";
-import { useLocation, useRoute } from "wouter";
 
 import useAppStore from "@/store/appSrore.ts";
 import createSelectors from "@/store/createSelectors.ts";
 
 const useSkillsRouting = () => {
-	const [, setLocation] = useLocation();
-	const [, params] = useRoute("/item/:id");
 	const active = createSelectors(useAppStore).use.activeItem();
 	const enter = useKeyboardControls((state) => state.enter);
 	const cancel = useKeyboardControls((state) => state.cancel);
 
+	const updateFrameVisibility = createSelectors(useAppStore).use.updateFrameVisibility();
+
 	useEffect(() => {
 		if (enter && active === RigidItem.SKILLS) {
-			setLocation("/item/" + RigidItem.SKILLS);
+			updateFrameVisibility({
+				open: true,
+				type: "skills",
+			});
 		}
 
 		if (enter && active === RigidItem.JUST_FOR_FUN) {
-			setLocation("/item/" + RigidItem.JUST_FOR_FUN);
+			updateFrameVisibility({
+				open: true,
+				type: "justForFun",
+			});
 		}
 
-		if (cancel && params) {
-			setLocation("/");
+		if (cancel) {
+			updateFrameVisibility({
+				open: false,
+				type: null,
+			});
 		}
-	}, [active, cancel, enter, params, setLocation]);
+	}, [active, cancel, enter, updateFrameVisibility]);
 };
 
 export default useSkillsRouting;

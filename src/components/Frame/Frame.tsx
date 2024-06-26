@@ -1,19 +1,18 @@
 import { MeshPortalMaterial, Text } from "@react-three/drei";
-import { extend, ThreeEvent, useFrame } from "@react-three/fiber";
+import { extend, ThreeEvent } from "@react-three/fiber";
 import { CuboidCollider, RigidBody } from "@react-three/rapier";
 import { FC, PropsWithChildren, useRef } from "react";
 
-import { easing, geometry } from "maath";
+import { geometry } from "maath";
 import * as THREE from "three";
-import { useLocation, useRoute } from "wouter";
 
-import useAppStore from "@/store/appSrore.ts";
+import useAppStore, { SkillsModalType } from "@/store/appSrore.ts";
 import createSelectors from "@/store/createSelectors.ts";
 
 extend(geometry);
 
 interface Props {
-	id: string;
+	id: SkillsModalType;
 	bg?: string;
 	width?: number;
 	height?: number;
@@ -37,20 +36,17 @@ const Frame: FC<PropsWithChildren<Props>> = ({
 	rotation,
 }) => {
 	const portal = useRef(null);
-	const [, setLocation] = useLocation();
-	const [, params] = useRoute("/item/:id");
-	const updateSocialActive = createSelectors(useAppStore).use.updateActiveItem();
 
-	useFrame((_state, dt) => {
-		if (portal.current) {
-			return easing.damp(portal.current, "blend", params?.id === id ? 1 : 0, 0.2, dt);
-		}
-	});
+	const updateSocialActive = createSelectors(useAppStore).use.updateActiveItem();
+	const updateFrameVisibility = createSelectors(useAppStore).use.updateFrameVisibility();
 
 	const handleDoubleClick = (e: ThreeEvent<MouseEvent>) => {
 		e.stopPropagation();
 
-		setLocation("/item/" + e.object.name);
+		updateFrameVisibility({
+			open: true,
+			type: id,
+		});
 	};
 
 	const handleIntersectionEnter = () => {
@@ -90,7 +86,7 @@ const Frame: FC<PropsWithChildren<Props>> = ({
 					<MeshPortalMaterial
 						ref={portal}
 						worldUnits
-						events={params?.id === id}
+						// events={params?.id === id}
 						side={THREE.DoubleSide}>
 						<color attach="background" args={[bg]} />
 						{children}
