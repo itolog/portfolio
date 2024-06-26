@@ -1,23 +1,19 @@
+import { FC, MouseEventHandler } from "react";
+
 import SvgIcons from "@/UI/SvgIcon/SvgIcons.tsx";
+import { SvgIconType } from "@/UI/SvgIcon/types.ts";
 
-import styles from "@/components/PoHint/poHint.module.scss";
+import styles from "./styles.module.scss";
 
-import useAppStore from "@/store/appSrore.ts";
-import createSelectors from "@/store/createSelectors.ts";
+interface Props {
+	onClick: MouseEventHandler<HTMLButtonElement> | undefined;
+	icon?: SvgIconType;
+}
 
-const BackToMainPageButton = () => {
-	const updateFrameVisibility = createSelectors(useAppStore).use.updateFrameVisibility();
-
+const BackToMainPageButton: FC<Props> = ({ onClick, icon = "arrow" }) => {
 	return (
-		<button
-			className={styles.button}
-			onClick={() => {
-				updateFrameVisibility({
-					open: false,
-					type: null,
-				});
-			}}>
-			<SvgIcons name={"arrow"} />
+		<button className={styles.button} onClick={onClick}>
+			<SvgIcons name={icon} />
 		</button>
 	);
 };

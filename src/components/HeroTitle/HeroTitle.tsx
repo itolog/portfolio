@@ -7,17 +7,15 @@ const rotationY = 3.5;
 
 const HeroTitle = () => {
 	return (
-		<group>
-			<Text3D
-				castShadow
-				rotation-x={rotationX}
-				rotation-y={rotationY}
-				position={[-95, -5, 37]}
-				font={fontUrl}>
-				Serhii Romanichenko{"\n"}FrontEnd Developer
-				<meshNormalMaterial />
-			</Text3D>
-		</group>
+		<Text3D
+			castShadow
+			rotation-x={rotationX}
+			rotation-y={rotationY}
+			position={[-95, -5, 37]}
+			font={fontUrl}>
+			Serhii Romanichenko{"\n"}FrontEnd Developer
+			<meshNormalMaterial />
+		</Text3D>
 	);
 };
 

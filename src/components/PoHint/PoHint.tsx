@@ -8,6 +8,7 @@ import createSelectors from "@/store/createSelectors.ts";
 import styles from "./poHint.module.scss";
 
 const PoHint = () => {
+	// const isLoading = createSelectors(useAppStore).use.isLoading();
 	const active = createSelectors(useAppStore).use.activeItem();
 
 	const hintText = useMemo(() => {
