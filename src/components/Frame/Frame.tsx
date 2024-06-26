@@ -3,10 +3,11 @@ import { extend, ThreeEvent } from "@react-three/fiber";
 import { CuboidCollider, RigidBody } from "@react-three/rapier";
 import { FC, PropsWithChildren, useRef } from "react";
 
+import { SkillsModalType } from "@/types";
 import { geometry } from "maath";
 import * as THREE from "three";
 
-import useAppStore, { SkillsModalType } from "@/store/appSrore.ts";
+import useAppStore from "@/store/appSrore.ts";
 import createSelectors from "@/store/createSelectors.ts";
 
 extend(geometry);

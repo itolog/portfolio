@@ -1,17 +1,20 @@
 import { FC, useMemo } from "react";
 
+import { Skill, Skills } from "@/types";
 import { Vector3 } from "three";
 
 import Word from "@/components/Cloud/components/Word/Word.tsx";
 
 interface Props {
-	words: string[];
+	words: Skills;
 	radius: number;
 }
 
+type Temp = [Vector3, Skill][];
+
 const Cloud: FC<Props> = ({ words = [], radius = 20 }) => {
 	const wordPositions = useMemo(() => {
-		const temp = [];
+		const temp: Temp = [];
 
 		const phiSpan = Math.PI * (3 - Math.sqrt(5));
 		for (let i = 0; i < words.length; i++) {
@@ -25,9 +28,9 @@ const Cloud: FC<Props> = ({ words = [], radius = 20 }) => {
 		return temp;
 	}, [words, radius]);
 
-	return wordPositions.map(([pos, word], index) => (
-		<Word key={index} position={pos as Vector3}>
-			{word}
+	return wordPositions.map(([pos, item], index) => (
+		<Word key={index} item={item} position={pos}>
+			{item.name}
 		</Word>
 	));
 };

@@ -1,6 +1,5 @@
+import { SkillsModalType } from "@/types";
 import { create } from "zustand";
-
-export type SkillsModalType = "skills" | "justForFun";
 
 interface SkillsModal {
 	open: boolean;

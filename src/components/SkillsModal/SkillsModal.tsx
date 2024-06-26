@@ -1,28 +1,28 @@
 import { TrackballControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { Suspense } from "react";
+import { Suspense, useMemo } from "react";
 
 import Loader from "@/UI/Loader/Loader.tsx";
 
 import Cloud from "@/components/Cloud/Cloud.tsx";
+import { justForFun, skills } from "@/components/SkillsModal/data";
+
+import useAppStore from "@/store/appSrore.ts";
+import createSelectors from "@/store/createSelectors.ts";
 
 import styles from "./skillsModal.module.scss";
 
-const words = [
-	"JavaScript",
-	"HTML5",
-	"SCSS",
-	"React",
-	"Typescript",
-	"Apollo GraphQL",
-	"Redux",
-	"Next.js",
-	"Material UI",
-	"SurveyJS",
-	"Vue",
-];
-
 const SkillsModal = () => {
+	const skillsModal = createSelectors(useAppStore).use.skillsModal();
+
+	const words = useMemo(() => {
+		if (skillsModal.type === "skills") {
+			return skills;
+		}
+
+		return justForFun;
+	}, [skillsModal]);
+
 	return (
 		<div className={styles.skillsModal}>
 			<Suspense fallback={<Loader />}>

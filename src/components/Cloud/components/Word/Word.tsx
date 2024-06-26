@@ -3,13 +3,15 @@ import { ThreeEvent, useFrame } from "@react-three/fiber";
 import { FC, PropsWithChildren, useEffect, useRef, useState } from "react";
 
 import { fontBaseUrl } from "@/config";
+import { Skill } from "@/types";
 import { Color, Vector3 } from "three";
 
 interface Props {
 	position: Vector3 | undefined;
+	item: Skill;
 }
 
-const Word: FC<PropsWithChildren<Props>> = ({ children, ...props }) => {
+const Word: FC<PropsWithChildren<Props>> = ({ children, item, ...props }) => {
 	const color = new Color();
 	const fontProps = {
 		font: fontBaseUrl,
@@ -25,6 +27,12 @@ const Word: FC<PropsWithChildren<Props>> = ({ children, ...props }) => {
 		setHovered(true);
 	};
 	const out = () => setHovered(false);
+
+	const handleClick = () => {
+		if (item.link) {
+			window.open(item.link);
+		}
+	};
 	// Change the mouse cursor on hover¨
 	useEffect(() => {
 		if (hovered) document.body.style.cursor = "pointer";
@@ -43,7 +51,7 @@ const Word: FC<PropsWithChildren<Props>> = ({ children, ...props }) => {
 
 	return (
 		<Billboard {...props}>
-			<Text ref={ref} onPointerOver={over} onPointerOut={out} {...fontProps}>
+			<Text ref={ref} onPointerOver={over} onPointerOut={out} onClick={handleClick} {...fontProps}>
 				{children}
 			</Text>
 		</Billboard>
