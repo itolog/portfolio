@@ -49,7 +49,6 @@ const SkillsModal = () => {
 			</div>
 
 			<Canvas dpr={[1, 2]} camera={{ position: [0, 0, 35], fov: 90 }}>
-				<fog attach="fog" args={["#27282c", 0, 80]} />
 				<ModalEnvironment />
 				<group rotation={[10, 10.5, 10]}>
 					<Cloud1 words={words} radius={20} />
