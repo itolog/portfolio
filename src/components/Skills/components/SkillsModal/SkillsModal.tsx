@@ -5,9 +5,8 @@ import { useCallback, useMemo } from "react";
 
 import BackToMainPageButton from "@/UI/BackToMainPageButton/BackToMainPageButton.tsx";
 
-import SkillsCloud from "@/components/Cloud/Cloud.tsx";
-import { justForFun, skills } from "@/components/SkillsModal/data";
-import ModalEnvironment from "@/components/SkillsModal/ModalEnvironment/ModalEnvironment.tsx";
+import { justForFun, skills } from "@/components/Skills/components/SkillsModal/data";
+import SkillsWrapper from "@/components/Skills/components/SkillsWrapper/SkillsWrapper.tsx";
 
 import useAppStore from "@/store/appSrore.ts";
 import createSelectors from "@/store/createSelectors.ts";
@@ -49,10 +48,7 @@ const SkillsModal = () => {
 			</div>
 
 			<Canvas dpr={[1, 2]} camera={{ position: [0, 0, 35], fov: 90 }}>
-				<ModalEnvironment />
-				<group rotation={[10, 10.5, 10]}>
-					<SkillsCloud words={words} radius={20} />
-				</group>
+				<SkillsWrapper words={words} />
 				<TrackballControls />
 			</Canvas>
 		</a.div>

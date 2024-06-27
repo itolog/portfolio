@@ -6,7 +6,7 @@ import Loader from "@/UI/Loader/Loader.tsx";
 
 import Joystick from "@/components/Joystick/Joystick.tsx";
 import PoHint from "@/components/PoHint/PoHint.tsx";
-import SkillsModal from "@/components/SkillsModal/SkillsModal.tsx";
+import SkillsModal from "@/components/Skills/components/SkillsModal/SkillsModal.tsx";
 
 interface Props extends CanvasProps {}
 

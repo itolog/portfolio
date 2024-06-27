@@ -1,1 +1,1 @@
-export type SvgIconType = "arrow";
+export type SvgIconType = "arrow" | "info";

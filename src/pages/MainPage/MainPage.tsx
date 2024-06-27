@@ -16,8 +16,8 @@ import Ground from "@/components/Ground/Ground.tsx";
 import HeroController from "@/components/HeroController/HeroController.tsx";
 import HeroTitle from "@/components/HeroTitle/HeroTitle.tsx";
 import Ipod from "@/components/Ipod/Ipod.tsx";
-import JustForFun from "@/components/JustForFun/JustForFun.tsx";
-import Skills from "@/components/Skills/Skills.tsx";
+import CommercialSkillsPortal from "@/components/Skills/components/portals/CommercialSkillsPortal/CommercialSkillsPortal.tsx";
+import JustForFunSkillsPortal from "@/components/Skills/components/portals/JustForFunSkillsPortal/JustForFunSkillsPortal.tsx";
 import GitLogo from "@/components/Social/GitLogo/GitLogo.tsx";
 import LinkedinLogo from "@/components/Social/LinkedinLogo/LinkedinLogo.tsx";
 
@@ -49,8 +49,8 @@ const MainPage = () => {
 					<LinkedinLogo />
 					<Ipod />
 					{/* SKILLS */}
-					<Skills />
-					<JustForFun />
+					<CommercialSkillsPortal />
+					<JustForFunSkillsPortal />
 
 					<HeroController />
 				</KeyboardControls>
