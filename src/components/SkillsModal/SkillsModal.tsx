@@ -5,7 +5,7 @@ import { useCallback, useMemo } from "react";
 
 import BackToMainPageButton from "@/UI/BackToMainPageButton/BackToMainPageButton.tsx";
 
-import Cloud1 from "@/components/Cloud/Cloud.tsx";
+import SkillsCloud from "@/components/Cloud/Cloud.tsx";
 import { justForFun, skills } from "@/components/SkillsModal/data";
 import ModalEnvironment from "@/components/SkillsModal/ModalEnvironment/ModalEnvironment.tsx";
 
@@ -51,7 +51,7 @@ const SkillsModal = () => {
 			<Canvas dpr={[1, 2]} camera={{ position: [0, 0, 35], fov: 90 }}>
 				<ModalEnvironment />
 				<group rotation={[10, 10.5, 10]}>
-					<Cloud1 words={words} radius={20} />
+					<SkillsCloud words={words} radius={20} />
 				</group>
 				<TrackballControls />
 			</Canvas>

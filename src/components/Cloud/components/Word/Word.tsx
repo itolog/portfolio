@@ -33,19 +33,19 @@ const Word: FC<PropsWithChildren<Props>> = ({ children, item, ...props }) => {
 			window.open(item.link);
 		}
 	};
-	// Change the mouse cursor on hover¨
+
 	useEffect(() => {
 		if (hovered) document.body.style.cursor = "pointer";
 		return () => {
 			document.body.style.cursor = "auto";
 		};
 	}, [hovered]);
-	// Tie component to the render-loop
+
 	useFrame(() => {
 		if (ref) {
 			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 			// @ts-expect-error
-			ref.current.material.color.lerp(color.set(hovered ? "#fa2720" : "white"), 0.1);
+			ref.current.material.color.lerp(color.set(hovered ? "#fa2720" : "#61dafb"), 0.1);
 		}
 	});
 
