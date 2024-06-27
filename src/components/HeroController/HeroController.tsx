@@ -1,5 +1,8 @@
+import { useMemo } from "react";
+
 import { heroUrl } from "@/config";
 import { RigidItem } from "@/constants";
+import { hasTouchSupport } from "@/utils/bowser.ts";
 import Ecctrl, { EcctrlAnimation } from "ecctrl";
 
 import Hero from "@/components/Hero/Hero.tsx";
@@ -14,6 +17,10 @@ const animationSet = {
 };
 
 const HeroController = () => {
+	const mode = useMemo(() => {
+		return hasTouchSupport() ? undefined : "FixedCamera";
+	}, []);
+
 	return (
 		<Ecctrl
 			name={RigidItem.HERO_CONTROLLER}
@@ -24,7 +31,7 @@ const HeroController = () => {
 			camInitDis={-7}
 			fixedCamRotMult={0.8}
 			position={[-100, 0, 20]}
-			mode="FixedCamera"
+			mode={mode}
 			animated>
 			<EcctrlAnimation characterURL={heroUrl} animationSet={animationSet}>
 				<Hero scale={0.5} />
