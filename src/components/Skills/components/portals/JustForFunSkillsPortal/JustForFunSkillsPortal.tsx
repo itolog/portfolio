@@ -14,10 +14,8 @@ const JustForFunSkillsPortal = () => {
 			title={"Just for fun"}
 			description={"Pet Projects"}
 			rotation={[0, 4.7, 0]}
-			position={[-45, -15.5, 70]}>
-			<group position={[40, -15, 70]}>
-				<SkillsWrapper words={justForFun} />
-			</group>
+			position={[35, 2, 23]}>
+			<SkillsWrapper words={justForFun} />
 		</Frame>
 	);
 };

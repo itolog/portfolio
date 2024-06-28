@@ -34,8 +34,8 @@ const GitLogo = (props: JSX.IntrinsicElements["group"]) => {
 	return (
 		<group>
 			<CuboidCollider
-				args={[0.8, 0.4, 1]}
-				position={[-77, -18, 38]}
+				args={[0.8, 0.4, 1.2]}
+				position={[-1, 0, -7]}
 				sensor
 				onIntersectionEnter={handleIntersectionEnter}
 				onIntersectionExit={handleIntersectionExit}
@@ -43,9 +43,9 @@ const GitLogo = (props: JSX.IntrinsicElements["group"]) => {
 			<a.group
 				onClick={handleOpen}
 				scale={10}
-				position-x={-76.9}
+				position-x={-1}
 				position-y={positionY}
-				position-z={38.2}
+				position-z={-7}
 				rotation={rotation as unknown as Euler}
 				dispose={null}
 				{...props}>
@@ -54,7 +54,7 @@ const GitLogo = (props: JSX.IntrinsicElements["group"]) => {
 				<mesh geometry={nodes.Object_5.geometry} material={materials.github} />
 			</a.group>
 
-			<StarPortal position={[-77, -18, 38]} scale={0.7} playAnimation={active === RigidItem.GIT} />
+			<StarPortal position={[-1, 0, -7]} scale={0.7} playAnimation={active === RigidItem.GIT} />
 		</group>
 	);
 };

@@ -51,7 +51,7 @@ const Ipod = (props: JSX.IntrinsicElements["group"]) => {
 		<RigidBody type={"fixed"} name={RigidItem.IPOD}>
 			<CuboidCollider
 				args={[0.5, 0.6, 0.4]}
-				position={[-109.5, -15, 42.5]}
+				position={[-32, 3, -5.5]}
 				rotation={[-Math.PI / 2, Math.PI, 0.85]}
 				sensor
 				onIntersectionEnter={handleIntersectionEnter}
@@ -61,7 +61,7 @@ const Ipod = (props: JSX.IntrinsicElements["group"]) => {
 			<group
 				dispose={null}
 				scale={0.3}
-				position={[-110, -15, 43]}
+				position={[-32.5, 3, -5]}
 				rotation={[-Math.PI / 2, Math.PI, 0.85]}
 				{...props}>
 				<PositionalAudio ref={audioRef} url={damagedAudio1Url} distance={2} autoplay loop />

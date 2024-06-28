@@ -1,11 +1,4 @@
-import {
-	AdaptiveDpr,
-	AdaptiveEvents,
-	Center,
-	KeyboardControls,
-	Sky,
-	Stars,
-} from "@react-three/drei";
+import { AdaptiveDpr, AdaptiveEvents, KeyboardControls, Sky, Stars } from "@react-three/drei";
 import { Physics } from "@react-three/rapier";
 
 import { Controls, IS_DEV } from "@/constants";
@@ -34,7 +27,10 @@ const map = [
 
 const MainPage = () => {
 	return (
-		<AppCanvas>
+		<AppCanvas
+			camera={{
+				far: 20,
+			}}>
 			{IS_DEV && <PerformanceMonitor />}
 			<AdaptiveDpr pixelated />
 			<AdaptiveEvents />
@@ -54,13 +50,9 @@ const MainPage = () => {
 
 					<HeroController />
 				</KeyboardControls>
-
 				{/*  TITLE */}
 				<HeroTitle />
-
-				<Center>
-					<Ground />
-				</Center>
+				<Ground />
 			</Physics>
 		</AppCanvas>
 	);

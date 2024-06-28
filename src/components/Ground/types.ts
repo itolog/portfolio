@@ -3,12 +3,7 @@ import { GLTF } from "three-stdlib";
 
 export type GLTFResult = GLTF & {
 	nodes: {
-		Object_8: THREE.Mesh;
-		Object_10: THREE.Mesh;
-		Object_12: THREE.Mesh;
 		Object_14: THREE.Mesh;
-		Object_16: THREE.Mesh;
-		Object_18: THREE.Mesh;
 		Object_21: THREE.Mesh;
 		Object_22: THREE.Mesh;
 		Object_23: THREE.Mesh;
@@ -17,8 +12,6 @@ export type GLTFResult = GLTF & {
 		Object_28: THREE.Mesh;
 		Object_29: THREE.Mesh;
 		Object_30: THREE.Mesh;
-		Object_33: THREE.Mesh;
-		Object_35: THREE.Mesh;
 		Object_37: THREE.Mesh;
 		Object_41: THREE.Mesh;
 		Object_43: THREE.Mesh;
@@ -37,7 +30,6 @@ export type GLTFResult = GLTF & {
 		Object_67: THREE.Mesh;
 		Object_68: THREE.Mesh;
 		Object_70: THREE.Mesh;
-		Object_75: THREE.Mesh;
 		Object_79: THREE.Mesh;
 		Object_82: THREE.Mesh;
 		Object_83: THREE.Mesh;

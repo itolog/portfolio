@@ -26,12 +26,11 @@ const HeroController = () => {
 			name={RigidItem.HERO_CONTROLLER}
 			sprintMult={4}
 			ccd
-			capsuleHalfHeight={0.6}
 			camTargetPos={{ x: 0, y: 4, z: -1 }}
 			camInitDis={-7}
 			fixedCamRotMult={0.8}
 			mode={mode}
-			position={[-100, 0, 20]}
+			position={[-26, 2.4, -25]}
 			animated>
 			<EcctrlAnimation characterURL={heroUrl} animationSet={animationSet}>
 				<Hero scale={0.5} />

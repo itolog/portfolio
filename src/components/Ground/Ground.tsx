@@ -29,33 +29,9 @@ const Ground = (props: JSX.IntrinsicElements["group"]) => {
 									<group name="invasion_77">
 										<group name="Background_Decor_37">
 											<group name="Background_Buildings_34">
-												<group name="Background_Building_1_30">
-													<mesh
-														name="Object_8"
-														castShadow
-														receiveShadow
-														geometry={nodes.Object_8.geometry}
-														material={materials.city_tex}
-													/>
-												</group>
-												<group name="Background_Building_2_31">
-													<mesh
-														name="Object_10"
-														castShadow
-														receiveShadow
-														geometry={nodes.Object_10.geometry}
-														material={materials.city_tex}
-													/>
-												</group>
-												<group name="Background_Building_3_32">
-													<mesh
-														name="Object_12"
-														castShadow
-														receiveShadow
-														geometry={nodes.Object_12.geometry}
-														material={materials.city_tex}
-													/>
-												</group>
+												<group name="Background_Building_1_30" />
+												<group name="Background_Building_2_31" />
+												<group name="Background_Building_3_32" />
 												<group name="UFO_33" position={[0, 31, -1]} scale={0.691}>
 													<mesh
 														name="Object_14"
@@ -66,24 +42,8 @@ const Ground = (props: JSX.IntrinsicElements["group"]) => {
 													/>
 												</group>
 											</group>
-											<group name="tree_1_35">
-												<mesh
-													name="Object_16"
-													castShadow
-													receiveShadow
-													geometry={nodes.Object_16.geometry}
-													material={materials.city_tex}
-												/>
-											</group>
-											<group name="tree_2_36">
-												<mesh
-													name="Object_18"
-													castShadow
-													receiveShadow
-													geometry={nodes.Object_18.geometry}
-													material={materials.city_tex}
-												/>
-											</group>
+											<group name="tree_1_35" />
+											<group name="tree_2_36" />
 										</group>
 										<group name="Base_45">
 											<group name="gbase_01_38">
@@ -149,24 +109,8 @@ const Ground = (props: JSX.IntrinsicElements["group"]) => {
 												/>
 											</group>
 											<group name="Grass_tiles_43">
-												<group name="grass_tile_1_41">
-													<mesh
-														name="Object_33"
-														castShadow
-														receiveShadow
-														geometry={nodes.Object_33.geometry}
-														material={materials.city_tex}
-													/>
-												</group>
-												<group name="grass_tile_2_42">
-													<mesh
-														name="Object_35"
-														castShadow
-														receiveShadow
-														geometry={nodes.Object_35.geometry}
-														material={materials.city_tex}
-													/>
-												</group>
+												<group name="grass_tile_1_41" />
+												<group name="grass_tile_2_42" />
 											</group>
 											<group name="ground_44" position={[-27.83, 69.149, -25.04]}>
 												<mesh
@@ -331,15 +275,7 @@ const Ground = (props: JSX.IntrinsicElements["group"]) => {
 										</group>
 										<group name="Cars_66">
 											<group name="Cars_01_210_62" position={[0.43, 0, 0]} />
-											<group name="Cars_02_212_63">
-												<mesh
-													name="Object_75"
-													castShadow
-													receiveShadow
-													geometry={nodes.Object_75.geometry}
-													material={materials.city_tex}
-												/>
-											</group>
+											<group name="Cars_02_212_63" />
 											<group name="Cars_03_214_64" />
 											<group name="Cars_04_216_65" position={[0.733, 0, 0]}>
 												<mesh
@@ -357,7 +293,8 @@ const Ground = (props: JSX.IntrinsicElements["group"]) => {
 													name="Object_82"
 													castShadow
 													receiveShadow
-													geometry={nodes.Object_82.geometry}>
+													geometry={nodes.Object_82.geometry}
+													material={materials.Logo_1}>
 													<VideoMaterial />
 												</mesh>
 												<mesh

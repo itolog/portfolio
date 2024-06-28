@@ -13,10 +13,8 @@ const CommercialSkillsPortal = () => {
 			title={"Skills"}
 			description={"Commercial Experience"}
 			rotation={[0, 4.7, 0]}
-			position={[-45, -15.5, 65]}>
-			<group position={[40, -15, 70]}>
-				<SkillsWrapper words={skills} />
-			</group>
+			position={[35, 2, 17]}>
+			<SkillsWrapper words={skills} />
 		</Frame>
 	);
 };
