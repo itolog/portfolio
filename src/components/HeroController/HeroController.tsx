@@ -23,6 +23,7 @@ const HeroController = () => {
 
 	return (
 		<Ecctrl
+			ccd
 			name={RigidItem.HERO_CONTROLLER}
 			sprintMult={4}
 			camTargetPos={{ x: 0, y: 4, z: -1 }}

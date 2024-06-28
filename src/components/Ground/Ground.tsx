@@ -19,7 +19,7 @@ const Ground = (props: JSX.IntrinsicElements["group"]) => {
 	}, [actions]);
 
 	return (
-		<RigidBody type="fixed" colliders="trimesh" ccd>
+		<RigidBody type="fixed" colliders="trimesh">
 			<group ref={group} {...props} dispose={null}>
 				<group name="Scene">
 					<group name="Sketchfab_model" rotation={[-Math.PI / 2, 0, 0]}>
