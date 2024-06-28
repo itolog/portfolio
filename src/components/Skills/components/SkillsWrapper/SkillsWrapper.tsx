@@ -1,4 +1,3 @@
-import { Center } from "@react-three/drei";
 import { FC } from "react";
 
 import { Skills } from "@/types";
@@ -12,12 +11,11 @@ interface Props {
 
 const SkillsWrapper: FC<Props> = ({ words }) => {
 	return (
-		<Center>
+		<>
 			<ModalEnvironment />
-			<group rotation={[10, 10.5, 10]}>
-				<SkillsCloud words={words} radius={20} />
-			</group>
-		</Center>
+
+			<SkillsCloud words={words} radius={20} />
+		</>
 	);
 };
 

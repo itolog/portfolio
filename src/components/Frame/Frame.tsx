@@ -100,11 +100,7 @@ const Frame: FC<PropsWithChildren<Props>> = ({
 					{/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
 					{/* @ts-expect-error */}
 					<roundedPlaneGeometry args={[width, height, 0.1]} />
-					<MeshPortalMaterial
-						ref={portal}
-						worldUnits
-						// events={params?.id === id}
-						side={THREE.DoubleSide}>
+					<MeshPortalMaterial ref={portal} worldUnits side={THREE.DoubleSide}>
 						<color attach="background" args={[bg]} />
 						{children}
 					</MeshPortalMaterial>
