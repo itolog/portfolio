@@ -29,7 +29,7 @@ const HeroController = () => {
 			camInitDis={-7}
 			fixedCamRotMult={0.8}
 			mode={mode}
-			position={[-26, 2.5, -25]}
+			position={[-26, 7, -25]}
 			animated>
 			<EcctrlAnimation characterURL={heroUrl} animationSet={animationSet}>
 				<Hero scale={0.5} />

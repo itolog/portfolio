@@ -38,7 +38,7 @@ const MainPage = () => {
 			<Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade />
 			<Sky />
 
-			<Physics gravity={[0, -9.81, 0]}>
+			<Physics timeStep="vary" gravity={[0, -9.81, 0]}>
 				<ambientLight intensity={4} />
 				<KeyboardControls map={map}>
 					<GitLogo />
