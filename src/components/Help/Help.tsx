@@ -9,6 +9,7 @@ const controlOptions = [
 	{ keys: ["Space"], action: "Jump" },
 	{ keys: ["Shift"], action: "Turbo Boost" },
 	{ keys: ["R"], action: "Cancel/Back" },
+	{ keys: ["E"], action: "Change camera mode" },
 ];
 
 export function Keys(): JSX.Element {

@@ -4,6 +4,7 @@
  align-items: center;
  flex:1;
  padding: calc(var(--base-unit) * .5);
+ background: var(--app-bg);
 }
 
 .popupItem {

@@ -23,6 +23,7 @@ const map = [
 	{ name: Controls.run, keys: ["Shift"] },
 	{ name: Controls.enter, keys: ["Enter"] },
 	{ name: Controls.cancel, keys: ["KeyR"] },
+	{ name: Controls.camera, keys: ["KeyE"] },
 ];
 
 const MainPage = () => {
@@ -50,6 +51,7 @@ const MainPage = () => {
 
 					<HeroController />
 				</KeyboardControls>
+
 				{/*  TITLE */}
 				<HeroTitle />
 				<Ground />

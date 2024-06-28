@@ -1,8 +1,8 @@
-import { useMemo } from "react";
+import { useKeyboardControls } from "@react-three/drei";
+import { useEffect, useMemo, useState } from "react";
 
 import { heroUrl } from "@/config";
 import { RigidItem } from "@/constants";
-import { hasTouchSupport } from "@/utils/bowser.ts";
 import Ecctrl, { EcctrlAnimation } from "ecctrl";
 
 import Hero from "@/components/Hero/Hero.tsx";
@@ -17,9 +17,18 @@ const animationSet = {
 };
 
 const HeroController = () => {
+	const [cameraFirstPerson, setCameraFirstPerson] = useState(false);
+	const camera = useKeyboardControls((state) => state.camera);
+
+	useEffect(() => {
+		if (camera) {
+			setCameraFirstPerson((prevState) => !prevState);
+		}
+	}, [camera]);
+
 	const mode = useMemo(() => {
-		return hasTouchSupport() ? undefined : "FixedCamera";
-	}, []);
+		return cameraFirstPerson ? "FixedCamera" : undefined;
+	}, [cameraFirstPerson]);
 
 	return (
 		<Ecctrl
