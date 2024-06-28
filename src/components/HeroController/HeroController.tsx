@@ -1,9 +1,9 @@
-import { useMemo } from "react";
-
+// import { useMemo } from "react";
 import { heroUrl } from "@/config";
 import { RigidItem } from "@/constants";
-import { hasTouchSupport } from "@/utils/bowser.ts";
+// import { hasTouchSupport } from "@/utils/bowser.ts";
 import Ecctrl, { EcctrlAnimation } from "ecctrl";
+import { useControls } from "leva";
 
 import Hero from "@/components/Hero/Hero.tsx";
 
@@ -17,9 +17,13 @@ const animationSet = {
 };
 
 const HeroController = () => {
-	const mode = useMemo(() => {
-		return hasTouchSupport() ? undefined : "FixedCamera";
-	}, []);
+	// const mode = useMemo(() => {
+	// 	return hasTouchSupport() ? undefined : "FixedCamera";
+	// }, []);
+
+	const { position } = useControls("op", {
+		position: [-26, 0, -25],
+	});
 
 	return (
 		<Ecctrl
@@ -30,8 +34,8 @@ const HeroController = () => {
 			camTargetPos={{ x: 0, y: 4, z: -1 }}
 			camInitDis={-7}
 			fixedCamRotMult={0.8}
-			mode={mode}
-			position={[-100, 0, 20]}
+			// mode={mode}
+			position={position}
 			animated>
 			<EcctrlAnimation characterURL={heroUrl} animationSet={animationSet}>
 				<Hero scale={0.5} />
