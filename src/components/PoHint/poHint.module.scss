@@ -16,8 +16,9 @@
 }
 
 .container {
+  position: relative;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   text-align: center;
   border-radius: 5px;
@@ -28,6 +29,17 @@
   box-shadow: 0 4px 30px rgb(0 0 0 / 10%);
   backdrop-filter: blur(10.3px);
   width: 100%;
-  min-height: 18px;
-  min-width: 18px;
+  min-height: 26px;
+  min-width: 26px;
 }
+
+.text {
+  padding-left: 26px;
+}
+
+.icon {
+  position: absolute;
+  left: 4px;
+  top: 4px;
+}
+

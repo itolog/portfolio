@@ -1,11 +1,14 @@
 import { useKeyboardControls } from "@react-three/drei";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo } from "react";
 
 import { heroUrl } from "@/config";
 import { RigidItem } from "@/constants";
 import Ecctrl, { EcctrlAnimation } from "ecctrl";
 
 import Hero from "@/components/Hero/Hero.tsx";
+
+import useAppStore from "@/store/appSrore.ts";
+import createSelectors from "@/store/createSelectors.ts";
 
 const animationSet = {
 	idle: "idle",
@@ -17,14 +20,16 @@ const animationSet = {
 };
 
 const HeroController = () => {
-	const [cameraFirstPerson, setCameraFirstPerson] = useState(false);
 	const camera = useKeyboardControls((state) => state.camera);
+	const cameraFirstPerson = createSelectors(useAppStore).use.cameraFirstPerson();
+	const active = createSelectors(useAppStore).use.activeItem();
+	const updateCameraFirstPerson = createSelectors(useAppStore).use.updateCameraFirstPerson();
 
 	useEffect(() => {
-		if (camera) {
-			setCameraFirstPerson((prevState) => !prevState);
+		if (camera && !active) {
+			updateCameraFirstPerson();
 		}
-	}, [camera]);
+	}, [camera, updateCameraFirstPerson, active]);
 
 	const mode = useMemo(() => {
 		return cameraFirstPerson ? "FixedCamera" : undefined;

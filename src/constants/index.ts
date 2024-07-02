@@ -10,6 +10,7 @@ export const Controls = {
 	enter: "enter",
 	cancel: "cancel",
 	camera: "camera",
+	info: "info",
 };
 
 export const RigidItem = {

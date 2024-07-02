@@ -24,6 +24,7 @@ const map = [
 	{ name: Controls.enter, keys: ["Enter"] },
 	{ name: Controls.cancel, keys: ["KeyR"] },
 	{ name: Controls.camera, keys: ["KeyE"] },
+	{ name: Controls.info, keys: ["KeyI"] },
 ];
 
 const MainPage = () => {

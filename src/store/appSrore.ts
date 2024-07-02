@@ -13,6 +13,8 @@ interface AppState {
 	updateActiveItem: (active: string) => void;
 	skillsModal: SkillsModal;
 	updateFrameVisibility: (payload: SkillsModal) => void;
+	cameraFirstPerson: boolean;
+	updateCameraFirstPerson: () => void;
 }
 
 const useAppStore = create<AppState>((set) => ({
@@ -28,6 +30,11 @@ const useAppStore = create<AppState>((set) => ({
 		set({
 			skillsModal: payload,
 		}),
+	cameraFirstPerson: false,
+	updateCameraFirstPerson: () =>
+		set((state) => ({
+			cameraFirstPerson: !state.cameraFirstPerson,
+		})),
 }));
 
 export default useAppStore;
