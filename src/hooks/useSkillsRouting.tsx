@@ -8,33 +8,43 @@ import createSelectors from "@/store/createSelectors.ts";
 
 const useSkillsRouting = () => {
 	const active = createSelectors(useAppStore).use.activeItem();
-	const enter = useKeyboardControls((state) => state.enter);
-	const cancel = useKeyboardControls((state) => state.cancel);
 
 	const updateFrameVisibility = createSelectors(useAppStore).use.updateFrameVisibility();
 
+	const [sub] = useKeyboardControls();
+
 	useEffect(() => {
-		if (enter && active === RigidItem.SKILLS) {
-			updateFrameVisibility({
-				open: true,
-				type: "skills",
-			});
-		}
+		return sub(
+			(state) => state.enter,
+			() => {
+				if (active === RigidItem.SKILLS) {
+					updateFrameVisibility({
+						open: true,
+						type: "skills",
+					});
+				}
 
-		if (enter && active === RigidItem.JUST_FOR_FUN) {
-			updateFrameVisibility({
-				open: true,
-				type: "justForFun",
-			});
-		}
+				if (active === RigidItem.JUST_FOR_FUN) {
+					updateFrameVisibility({
+						open: true,
+						type: "justForFun",
+					});
+				}
+			},
+		);
+	}, [active, sub, updateFrameVisibility]);
 
-		if (cancel) {
-			updateFrameVisibility({
-				open: false,
-				type: null,
-			});
-		}
-	}, [active, cancel, enter, updateFrameVisibility]);
+	useEffect(() => {
+		return sub(
+			(state) => state.cancel,
+			() => {
+				updateFrameVisibility({
+					open: false,
+					type: null,
+				});
+			},
+		);
+	}, [sub, updateFrameVisibility]);
 };
 
 export default useSkillsRouting;
