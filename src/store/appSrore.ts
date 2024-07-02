@@ -15,6 +15,8 @@ interface AppState {
 	updateFrameVisibility: (payload: SkillsModal) => void;
 	cameraFirstPerson: boolean;
 	updateCameraFirstPerson: () => void;
+	showInfo: boolean;
+	updateShowInfo: () => void;
 }
 
 const useAppStore = create<AppState>((set) => ({
@@ -34,6 +36,11 @@ const useAppStore = create<AppState>((set) => ({
 	updateCameraFirstPerson: () =>
 		set((state) => ({
 			cameraFirstPerson: !state.cameraFirstPerson,
+		})),
+	showInfo: false,
+	updateShowInfo: () =>
+		set((state) => ({
+			showInfo: !state.showInfo,
 		})),
 }));
 

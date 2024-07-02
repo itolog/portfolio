@@ -12,19 +12,19 @@ import styles from "./poHint.module.scss";
 const PoHint = () => {
 	const isLoading = createSelectors(useAppStore).use.isLoading();
 
-	const { active, cameraUpdated, hintText } = useHint();
+	const { cameraUpdated, hintText } = useHint();
 
 	const { size, ...rest } = useSpring({
 		config: config.stiff,
 		from: { size: "30px" },
 		to: {
-			size: active || cameraUpdated ? "320px" : "30px",
+			size: hintText || cameraUpdated ? "320px" : "30px",
 		},
 	});
 
 	const { x } = useSpring({
 		from: { x: 0 },
-		x: active || cameraUpdated ? 1 : 0,
+		x: hintText || cameraUpdated ? 1 : 0,
 		config: { duration: 1000 },
 	});
 

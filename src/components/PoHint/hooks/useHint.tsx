@@ -1,15 +1,18 @@
-import { useEffect, useMemo, useState } from "react";
+import { ReactElement, useEffect, useMemo, useState } from "react";
 
 import { RigidItem } from "@/constants";
+
+import { Keys } from "@/components/Help/Help.tsx";
 
 import useAppStore from "@/store/appSrore.ts";
 import createSelectors from "@/store/createSelectors.ts";
 
 const useHint = () => {
 	const active = createSelectors(useAppStore).use.activeItem();
+	const showInfo = createSelectors(useAppStore).use.showInfo();
 	const cameraFirstPerson = createSelectors(useAppStore).use.cameraFirstPerson();
 
-	const [hintText, setHintText] = useState("");
+	const [hintText, setHintText] = useState<string | ReactElement>("");
 	const [cameraUpdated, setCameraUpdated] = useState(false);
 
 	useEffect(() => {
@@ -19,10 +22,12 @@ const useHint = () => {
 			setHintText("Press Enter to open the link");
 		} else if (active === RigidItem.SKILLS || active === RigidItem.JUST_FOR_FUN) {
 			setHintText("To open the portal press Enter or click on the portal");
+		} else if (showInfo && !active) {
+			setHintText(<Keys />);
 		} else {
 			setHintText("");
 		}
-	}, [active]);
+	}, [active, showInfo]);
 
 	useEffect(() => {
 		if (cameraFirstPerson) {

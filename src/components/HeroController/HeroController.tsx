@@ -21,15 +21,23 @@ const animationSet = {
 
 const HeroController = () => {
 	const camera = useKeyboardControls((state) => state.camera);
+	const info = useKeyboardControls((state) => state.info);
 	const cameraFirstPerson = createSelectors(useAppStore).use.cameraFirstPerson();
 	const active = createSelectors(useAppStore).use.activeItem();
 	const updateCameraFirstPerson = createSelectors(useAppStore).use.updateCameraFirstPerson();
+	const updateShowInfo = createSelectors(useAppStore).use.updateShowInfo();
 
 	useEffect(() => {
 		if (camera && !active) {
 			updateCameraFirstPerson();
 		}
 	}, [camera, updateCameraFirstPerson, active]);
+
+	useEffect(() => {
+		if (info && !active) {
+			updateShowInfo();
+		}
+	}, [active, info, updateShowInfo]);
 
 	const mode = useMemo(() => {
 		return cameraFirstPerson ? "FixedCamera" : undefined;
