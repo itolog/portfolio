@@ -7,4 +7,5 @@ export const heroUrl = "/models/rick.glb";
 export const linkedinUrl = "/models/3d_linkedin_logo/scene.gltf";
 export const gitUrl = "/models/3d_github_logo/scene.gltf";
 export const videoUrl =
-	"https://firebasestorage.googleapis.com/v0/b/yodi-9dd71.appspot.com/o/videoplayback.mp4?alt=media&token=f5bc37be-3706-48d8-be74-01165d1ddc5f";
+	"http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4";
+export const arrowUrl = "/models/arrow/scene.gltf";

@@ -8,6 +8,7 @@ import { Controls, RigidItem } from "@/constants";
 import * as THREE from "three";
 
 import { GLTFResult } from "@/components/Ipod/types.ts";
+import SectionTooltip from "@/components/SectionTooltip/SectionTooltip.tsx";
 
 import useAppStore from "@/store/appSrore.ts";
 import createSelectors from "@/store/createSelectors.ts";
@@ -49,6 +50,7 @@ const Ipod = (props: JSX.IntrinsicElements["group"]) => {
 
 	return (
 		<RigidBody type={"fixed"} name={RigidItem.IPOD}>
+			<SectionTooltip text={"Music"} position={[-32.5, 6, -5]} />
 			<CuboidCollider
 				args={[0.5, 0.6, 0.4]}
 				position={[-32, 3, -5.5]}
