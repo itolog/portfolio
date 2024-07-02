@@ -13,9 +13,11 @@ import StarPortal from "@/components/StarPortal/StarPortal.tsx";
 import useAppStore from "@/store/appSrore.ts";
 import createSelectors from "@/store/createSelectors.ts";
 
+const COLOR = "red";
+
 const GitLogo = (props: JSX.IntrinsicElements["group"]) => {
 	const { nodes, materials } = useGLTF(gitUrl) as GLTFResult;
-	const { intensity, rotation, positionY, active } = useSocialAnim(RigidItem.GIT);
+	const { intensity, rotation, positionY } = useSocialAnim(RigidItem.GIT);
 
 	const updateSocialActive = createSelectors(useAppStore).use.updateActiveItem();
 
@@ -49,12 +51,12 @@ const GitLogo = (props: JSX.IntrinsicElements["group"]) => {
 				rotation={rotation as unknown as Euler}
 				dispose={null}
 				{...props}>
-				<a.pointLight color={"red"} distance={2} intensity={intensity} />
+				<a.pointLight color={COLOR} distance={2} intensity={intensity} />
 				<mesh geometry={nodes.Object_4.geometry} material={materials.glossy_putih} />
 				<mesh geometry={nodes.Object_5.geometry} material={materials.github} />
 			</a.group>
 
-			<StarPortal position={[-1, 0, -7]} scale={0.7} playAnimation={active === RigidItem.GIT} />
+			<StarPortal color={COLOR} position={[-1, 0, -7]} scale={0.7} />
 		</group>
 	);
 };

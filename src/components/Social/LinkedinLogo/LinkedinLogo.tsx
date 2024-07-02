@@ -13,10 +13,12 @@ import StarPortal from "@/components/StarPortal/StarPortal.tsx";
 import useAppStore from "@/store/appSrore.ts";
 import createSelectors from "@/store/createSelectors.ts";
 
+const COLOR = "lime";
+
 const LinkedinLogo = (props: JSX.IntrinsicElements["group"]) => {
 	const { nodes, materials } = useGLTF(linkedinUrl) as GLTFResult;
 
-	const { intensity, rotation, positionY, active } = useSocialAnim(RigidItem.LINKEDIN);
+	const { intensity, rotation, positionY } = useSocialAnim(RigidItem.LINKEDIN);
 	const updateSocialActive = createSelectors(useAppStore).use.updateActiveItem();
 
 	const handleOpen = () => {
@@ -50,15 +52,11 @@ const LinkedinLogo = (props: JSX.IntrinsicElements["group"]) => {
 				dispose={null}
 				rotation={rotation as unknown as Euler}
 				{...props}>
-				<a.pointLight color={"lime"} distance={2} intensity={intensity} />
+				<a.pointLight color={COLOR} distance={2} intensity={intensity} />
 				<mesh geometry={nodes.Object_4.geometry} material={materials.glossy_linkedin} />
 				<mesh geometry={nodes.Object_5.geometry} material={materials.glossy_putih} />
 			</a.group>
-			<StarPortal
-				position={[-4, 0, -7]}
-				scale={0.7}
-				playAnimation={active === RigidItem.LINKEDIN}
-			/>
+			<StarPortal color={COLOR} position={[-4, 0, -7]} scale={0.7} />
 		</group>
 	);
 };
