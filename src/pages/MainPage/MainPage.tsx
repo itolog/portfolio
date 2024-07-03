@@ -1,8 +1,7 @@
 import { AdaptiveDpr, AdaptiveEvents, KeyboardControls, Stars } from "@react-three/drei";
 import { Physics } from "@react-three/rapier";
 
-import { Controls, IS_DEV } from "@/constants";
-import PerformanceMonitor from "@/utils/PerformanceMonitor/PerformanceMonitor.tsx";
+import { Controls } from "@/constants";
 
 import AppCanvas from "@/components/AppCanvas/AppCanvas.tsx";
 import Ground from "@/components/Ground/Ground.tsx";
@@ -30,11 +29,7 @@ const map = [
 
 const MainPage = () => {
 	return (
-		<AppCanvas
-			camera={{
-				far: 20,
-			}}>
-			{IS_DEV && <PerformanceMonitor />}
+		<AppCanvas>
 			<AdaptiveDpr pixelated />
 			<AdaptiveEvents />
 
