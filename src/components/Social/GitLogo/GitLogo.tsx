@@ -22,7 +22,7 @@ const GitLogo = (props: JSX.IntrinsicElements["group"]) => {
 	const updateSocialActive = createSelectors(useAppStore).use.updateActiveItem();
 
 	const handleOpen = () => {
-		window.open(import.meta.env.VITE_GIT_URL);
+		window.open(import.meta.env.VITE_GIT_URL ?? process.env.VITE_GIT_URL);
 	};
 
 	const handleIntersectionEnter = () => {

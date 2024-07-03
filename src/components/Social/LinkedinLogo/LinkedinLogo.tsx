@@ -22,7 +22,7 @@ const LinkedinLogo = (props: JSX.IntrinsicElements["group"]) => {
 	const updateSocialActive = createSelectors(useAppStore).use.updateActiveItem();
 
 	const handleOpen = () => {
-		window.open(import.meta.env.VITE_LINKEDIN_URL);
+		window.open(import.meta.env.VITE_LINKEDIN_URL ?? process.env.VITE_LINKEDIN_URL);
 	};
 
 	const handleIntersectionEnter = () => {
