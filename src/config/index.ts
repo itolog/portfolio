@@ -8,5 +8,5 @@ export const linkedinUrl = "/models/3d_linkedin_logo/scene.gltf";
 export const gitUrl = "/models/3d_github_logo/scene.gltf";
 export const videoUrl =
 	"https://firebasestorage.googleapis.com/v0/b/yodi-b787d.appspot.com/o/videoplayback.mp4?alt=media&token=" +
-		import.meta.env.VITE_STORAGE_TOKEN ?? process.env.VITE_STORAGE_TOKEN;
+		import.meta.env.VITE_STORAGE_TOKEN || process.env.VITE_STORAGE_TOKEN;
 export const arrowUrl = "/models/arrow/scene.gltf";

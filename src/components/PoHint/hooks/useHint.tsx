@@ -21,7 +21,7 @@ const useHint = () => {
 		} else if (active === RigidItem.LINKEDIN || active === RigidItem.GIT) {
 			setHintText("Press Enter to open the link");
 		} else if (active === RigidItem.SKILLS || active === RigidItem.JUST_FOR_FUN) {
-			setHintText("To open the portal press Enter or click on the portal");
+			setHintText("To open the portal press Enter or double click on the portal");
 		} else if (showInfo && !active) {
 			setHintText(<Keys />);
 		} else {
