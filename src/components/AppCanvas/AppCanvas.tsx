@@ -8,14 +8,14 @@ import PoHint from "@/components/PoHint/PoHint.tsx";
 import SkillsModal from "@/components/Skills/components/SkillsModal/SkillsModal.tsx";
 
 const AppCanvas: FC<PropsWithChildren> = ({ children }) => {
-	return (
-		<Suspense fallback={<Loader />}>
-			<Joystick />
-			<PoHint />
-			<SkillsModal />
-			<Canvas shadows>{children}</Canvas>
-		</Suspense>
-	);
+  return (
+    <Suspense fallback={<Loader />}>
+      <Joystick />
+      <PoHint />
+      <SkillsModal />
+      <Canvas shadows>{children}</Canvas>
+    </Suspense>
+  );
 };
 
 export default AppCanvas;

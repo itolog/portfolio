@@ -16,49 +16,49 @@ import createSelectors from "@/store/createSelectors.ts";
 const COLOR = "lime";
 
 const LinkedinLogo = (props: JSX.IntrinsicElements["group"]) => {
-	const { nodes, materials } = useGLTF(linkedinUrl) as GLTFResult;
+  const { nodes, materials } = useGLTF(linkedinUrl) as GLTFResult;
 
-	const { intensity, rotation, positionY } = useSocialAnim(RigidItem.LINKEDIN);
-	const updateSocialActive = createSelectors(useAppStore).use.updateActiveItem();
+  const { intensity, rotation, positionY } = useSocialAnim(RigidItem.LINKEDIN);
+  const updateSocialActive = createSelectors(useAppStore).use.updateActiveItem();
 
-	const handleOpen = () => {
-		window.open(import.meta.env.VITE_LINKEDIN_URL || process.env.VITE_LINKEDIN_URL);
-	};
+  const handleOpen = () => {
+    window.open(import.meta.env.VITE_LINKEDIN_URL || process.env.VITE_LINKEDIN_URL);
+  };
 
-	const handleIntersectionEnter = () => {
-		updateSocialActive(RigidItem.LINKEDIN);
-	};
+  const handleIntersectionEnter = () => {
+    updateSocialActive(RigidItem.LINKEDIN);
+  };
 
-	const handleIntersectionExit = () => {
-		updateSocialActive("");
-	};
+  const handleIntersectionExit = () => {
+    updateSocialActive("");
+  };
 
-	return (
-		<group>
-			<CuboidCollider
-				args={[0.8, 0.4, 1.2]}
-				position={[-4, 0, -7]}
-				sensor
-				onIntersectionEnter={handleIntersectionEnter}
-				onIntersectionExit={handleIntersectionExit}
-			/>
+  return (
+    <group>
+      <CuboidCollider
+        args={[0.8, 0.4, 1.2]}
+        position={[-4, 0, -7]}
+        sensor
+        onIntersectionEnter={handleIntersectionEnter}
+        onIntersectionExit={handleIntersectionExit}
+      />
 
-			<a.group
-				onClick={handleOpen}
-				scale={0.28}
-				position-x={-4}
-				position-y={positionY}
-				position-z={-7}
-				dispose={null}
-				rotation={rotation as unknown as Euler}
-				{...props}>
-				<a.pointLight color={COLOR} distance={2} intensity={intensity} />
-				<mesh geometry={nodes.Object_4.geometry} material={materials.glossy_linkedin} />
-				<mesh geometry={nodes.Object_5.geometry} material={materials.glossy_putih} />
-			</a.group>
-			<StarPortal color={COLOR} position={[-4, 0, -7]} scale={0.7} />
-		</group>
-	);
+      <a.group
+        onClick={handleOpen}
+        scale={0.28}
+        position-x={-4}
+        position-y={positionY}
+        position-z={-7}
+        dispose={null}
+        rotation={rotation as unknown as Euler}
+        {...props}>
+        <a.pointLight color={COLOR} distance={2} intensity={intensity} />
+        <mesh geometry={nodes.Object_4.geometry} material={materials.glossy_linkedin} />
+        <mesh geometry={nodes.Object_5.geometry} material={materials.glossy_putih} />
+      </a.group>
+      <StarPortal color={COLOR} position={[-4, 0, -7]} scale={0.7} />
+    </group>
+  );
 };
 
 useGLTF.preload(linkedinUrl);

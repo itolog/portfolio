@@ -22,11 +22,12 @@ $line-size: 40px;
     background: $color;
     pointer-events: none;
     border-radius: 2px;
-    box-shadow: 0 0 10px $color,
-    0 0 20px $color,
-    0 0 30px $color,
-    0 0 50px $color,
-    0 0 100px $color;
+    box-shadow:
+      0 0 10px $color,
+      0 0 20px $color,
+      0 0 30px $color,
+      0 0 50px $color,
+      0 0 100px $color;
     transition: 0.5s ease-in-out;
     transition-delay: 0.25s;
     width: $line-size;
@@ -61,7 +62,7 @@ $line-size: 40px;
 }
 
 .button::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -76,9 +77,10 @@ $line-size: 40px;
 .button:hover::before {
   transform: scale(1);
   transition-delay: 0.5s;
-  box-shadow: 0 0 10px $color,
-  0 0 30px $color,
-  0 0 60px $color;
+  box-shadow:
+    0 0 10px $color,
+    0 0 30px $color,
+    0 0 60px $color;
 }
 
 .button:hover span {

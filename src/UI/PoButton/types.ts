@@ -1,3 +1,3 @@
 export interface PoButtonProps {
-	visible?: boolean;
+  visible?: boolean;
 }

@@ -7,24 +7,24 @@ import cl from "classnames";
 import styles from "./svgIcon.module.scss";
 
 interface Classes {
-	root?: string;
+  root?: string;
 }
 
 interface Props {
-	name: SvgIconType;
-	color?: string;
-	size?: string;
-	classes?: Classes;
+  name: SvgIconType;
+  color?: string;
+  size?: string;
+  classes?: Classes;
 }
 
 const SvgIcons: FC<Props> = ({ name, color = "white", classes, size = "100%" }) => {
-	const containerClass = cl(styles.svgIconContainer, classes?.root);
+  const containerClass = cl(styles.svgIconContainer, classes?.root);
 
-	return (
-		<div style={{ color, width: size, height: size }} className={containerClass}>
-			{icons[name]}
-		</div>
-	);
+  return (
+    <div style={{ color, width: size, height: size }} className={containerClass}>
+      {icons[name]}
+    </div>
+  );
 };
 
 export default SvgIcons;

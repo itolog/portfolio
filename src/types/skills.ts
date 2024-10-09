@@ -1,8 +1,8 @@
 export type SkillsModalType = "skills" | "justForFun";
 
 export interface Skill {
-	name: string;
-	link?: string;
+  name: string;
+  link?: string;
 }
 
 export type Skills = Skill[];

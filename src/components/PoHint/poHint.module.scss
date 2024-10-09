@@ -24,7 +24,7 @@
   border-radius: 5px;
   border: none;
   padding: 4px;
-  font-size: calc(var(--base-unit) * .8);
+  font-size: calc(var(--base-unit) * 0.8);
   background: rgb(6 102 105 / 50%);
   box-shadow: 0 4px 30px rgb(0 0 0 / 10%);
   backdrop-filter: blur(10.3px);
@@ -42,4 +42,3 @@
   left: 4px;
   top: 4px;
 }
-

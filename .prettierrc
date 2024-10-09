@@ -1,7 +1,7 @@
 {
   "trailingComma": "all",
   "tabWidth": 2,
-  "useTabs":  true,
+  "useTabs": false,
   "semi": true,
   "printWidth": 100,
   "bracketSpacing": true,
@@ -26,12 +26,11 @@
     "^@/components/(.*)$",
     "^@/store/(.*)$",
     "^[./]",
-    "^(?!.*[.]scss$)[./].*$", ".scss$"
+    "^(?!.*[.]scss$)[./].*$",
+    ".scss$"
   ],
   "importOrderSeparation": true,
   "importOrderCaseInsensitive": true,
   "importOrderSortSpecifiers": true,
-  "plugins": [
-    "@trivago/prettier-plugin-sort-imports"
-  ]
+  "plugins": ["@trivago/prettier-plugin-sort-imports"]
 }
