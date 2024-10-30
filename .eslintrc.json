@@ -20,26 +20,14 @@
     },
     "import/resolver": {
       "node": {
-        "paths": [
-          "src"
-        ],
-        "extensions": [
-          ".js",
-          ".jsx",
-          ".ts",
-          ".tsx"
-        ]
+        "paths": ["src"],
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
       }
     }
   },
-  "ignorePatterns": [
-    "dist",
-    ".eslintrc.json"
-  ],
+  "ignorePatterns": ["dist", ".eslintrc.json"],
   "parser": "@typescript-eslint/parser",
-  "plugins": [
-    "react-refresh"
-  ],
+  "plugins": ["react-refresh"],
   "rules": {
     "react/no-unknown-property": "off",
     "react/prop-types": "off",
@@ -69,10 +57,7 @@
         "allowConstantExport": true
       }
     ],
-    "semi": [
-      "warn",
-      "always"
-    ],
+    "semi": ["warn", "always"],
     "no-console": ["warn", { "allow": ["warn", "error"] }],
     "quotes": [
       "warn",

@@ -30,7 +30,7 @@
       "@/styles/*": ["./src/styles/*"],
       "@/ui/*": ["./src/ui/*"],
       "@/types/*": ["./src/types/*"],
-      "@/constants/*": ["./src/constants/*"],
+      "@/constants/*": ["./src/constants/*"]
     }
   },
   "include": ["src"],
