@@ -22,7 +22,7 @@ export default defineConfig({
     }),
     VitePluginRadar({
       analytics: {
-        id: process.env.VITE_G_TAG || "",
+        id: "G-SK973JG06T",
       },
     }),
   ],
