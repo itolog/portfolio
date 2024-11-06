@@ -10,6 +10,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 html,
 body {
   width: 100%;
@@ -26,11 +30,19 @@ body {
 }
 
 #root {
+  position: relative;
   width: 100%;
   height: 100%;
 }
 
 .stats {
-  left: 10% !important;
-  top: 10% !important;
+  position: absolute;
+  right: 2% !important;
+  top: 2% !important;
+}
+
+.app-canvas {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
 }

@@ -1,13 +1,46 @@
-import ProgressLoader from "@/UI/ProgressLoader/ProgressLoader.tsx";
+import { useProgress } from "@react-three/drei";
+import { useMemo } from "react";
 
-import { Keys } from "@/components/Help/Help.tsx";
+import cl from "clsx";
+
+import { Keys } from "@/components/Help/Help";
 
 import styles from "./styles.module.scss";
 
+const radius = 40;
+
 const Loader = () => {
+  const { progress, active } = useProgress();
+
+  const loading = useMemo(() => {
+    const c = Math.PI * (radius * 2);
+
+    return ((100 - progress) / 100) * c;
+  }, [progress]);
+
+  const rootClass = cl(styles.container, {
+    [styles.containerHidden]: !active,
+  });
+
   return (
-    <div className={styles.container}>
-      <ProgressLoader />
+    <div className={rootClass}>
+      <div className={styles.containerProgressbars}>
+        <div className={styles.progressbar}>
+          <svg className={styles.progressbarSvg}>
+            <circle
+              cx="80"
+              cy="80"
+              r="70"
+              strokeDashoffset={loading}
+              className={`${styles.progressbarSvgCircle} ${styles.shadowScss}`}
+            />
+          </svg>
+          <span className={`${styles.progressbarText} ${styles.shadowScss}`}>
+            {Math.round(progress)}%
+          </span>
+        </div>
+      </div>
+
       <Keys />
     </div>
   );

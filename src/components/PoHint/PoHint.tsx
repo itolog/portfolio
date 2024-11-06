@@ -4,21 +4,16 @@ import SvgIcons from "@/UI/SvgIcon/SvgIcons.tsx";
 
 import useHint from "@/components/PoHint/hooks/useHint.tsx";
 
-import useAppStore from "@/store/appSrore.ts";
-import createSelectors from "@/store/createSelectors.ts";
-
 import styles from "./poHint.module.scss";
 
 const PoHint = () => {
-  const isLoading = createSelectors(useAppStore).use.isLoading();
-
   const { cameraUpdated, hintText } = useHint();
 
   const { size, ...rest } = useSpring({
     config: config.stiff,
-    from: { size: "30px" },
+    from: { size: "40px" },
     to: {
-      size: hintText || cameraUpdated ? "320px" : "30px",
+      size: hintText || cameraUpdated ? "320px" : "40px",
     },
   });
 
@@ -28,8 +23,6 @@ const PoHint = () => {
     config: { duration: 1000 },
   });
 
-  if (isLoading) return null;
-
   return (
     <a.div style={{ ...rest, width: size }} className={styles.hint}>
       <a.div className={styles.container}>
@@ -37,7 +30,7 @@ const PoHint = () => {
           classes={{
             root: styles.icon,
           }}
-          size={"24px"}
+          size={"20px"}
           name={"info"}
         />
 
