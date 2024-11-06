@@ -21,7 +21,7 @@ const Loader = () => {
   const rootClass = cl(styles.container, {
     [styles.containerHidden]: !active,
   });
-  console.log(progress);
+
   return (
     <div className={rootClass}>
       <div className={styles.containerProgressbars}>
@@ -36,7 +36,7 @@ const Loader = () => {
             />
           </svg>
           <span className={`${styles.progressbarText} ${styles.shadowScss}`}>
-            {parseInt(progress.toString())}%
+            {Math.round(progress)}%
           </span>
         </div>
       </div>
