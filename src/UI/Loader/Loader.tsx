@@ -21,7 +21,7 @@ const Loader = () => {
   const rootClass = cl(styles.container, {
     [styles.containerHidden]: !active,
   });
-
+  console.log(progress);
   return (
     <div className={rootClass}>
       <div className={styles.containerProgressbars}>
