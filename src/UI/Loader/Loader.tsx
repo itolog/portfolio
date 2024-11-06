@@ -7,7 +7,7 @@ import { Keys } from "@/components/Help/Help";
 
 import styles from "./styles.module.scss";
 
-const radius = 40;
+const radius = 70;
 
 const Loader = () => {
   const { progress, active } = useProgress();
@@ -36,7 +36,7 @@ const Loader = () => {
             />
           </svg>
           <span className={`${styles.progressbarText} ${styles.shadowScss}`}>
-            {Math.round(progress)}%
+            {parseInt(progress.toString())}%
           </span>
         </div>
       </div>
