@@ -10,16 +10,22 @@ import PerformanceMonitor from "@/utils/PerformanceMonitor/PerformanceMonitor.ts
 import Ground from "@/components/Ground/Ground";
 import HeroController from "@/components/HeroController/HeroController";
 import HeroTitle from "@/components/HeroTitle/HeroTitle";
-import Ipod from "@/components/Ipod/Ipod";
 import SectionTooltip from "@/components/SectionTooltip/SectionTooltip";
-import CommercialSkillsPortal from "@/components/Skills/components/portals/CommercialSkillsPortal/CommercialSkillsPortal";
-import JustForFunSkillsPortal from "@/components/Skills/components/portals/JustForFunSkillsPortal/JustForFunSkillsPortal";
-import GitLogo from "@/components/Social/GitLogo/GitLogo";
-import LinkedinLogo from "@/components/Social/LinkedinLogo/LinkedinLogo";
 
 const PoHint = lazy(() => import("@/components/PoHint/PoHint"));
 const Joystick = lazy(() => import("@/components/Joystick/Joystick"));
 const SkillsModal = lazy(() => import("@/components/Skills/components/SkillsModal/SkillsModal"));
+const GitLogo = lazy(() => import("@/components/Social/GitLogo/GitLogo"));
+const LinkedinLogo = lazy(() => import("@/components/Social/LinkedinLogo/LinkedinLogo"));
+const Ipod = lazy(() => import("@/components/Ipod/Ipod"));
+const CommercialSkillsPortal = lazy(
+  () =>
+    import("@/components/Skills/components/portals/CommercialSkillsPortal/CommercialSkillsPortal"),
+);
+const JustForFunSkillsPortal = lazy(
+  () =>
+    import("@/components/Skills/components/portals/JustForFunSkillsPortal/JustForFunSkillsPortal"),
+);
 
 const AppCanvas = () => {
   return (
@@ -32,7 +38,6 @@ const AppCanvas = () => {
 
       <Loader />
 
-      {/* <Suspense fallback={null}> */}
       <Canvas>
         <PerformanceMonitor />
         <AdaptiveDpr pixelated />
@@ -60,7 +65,6 @@ const AppCanvas = () => {
           <Ground />
         </Physics>
       </Canvas>
-      {/* </Suspense> */}
     </div>
   );
 };
