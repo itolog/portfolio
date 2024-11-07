@@ -1,10 +1,11 @@
-import { AdaptiveDpr, AdaptiveEvents, KeyboardControls, Loader, Stars } from "@react-three/drei";
+import { AdaptiveDpr, AdaptiveEvents, KeyboardControls, Stars } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Physics } from "@react-three/rapier";
+import { Suspense } from "react";
 
 import { keysMap } from "@/config";
+import Loader from "@/UI/Loader/Loader";
 
-// import Loader from "@/UI/Loader/Loader";
 import Ground from "@/components/Ground/Ground";
 import HeroController from "@/components/HeroController/HeroController";
 import HeroTitle from "@/components/HeroTitle/HeroTitle";
@@ -25,38 +26,34 @@ const AppCanvas = () => {
       <PoHint />
       <SkillsModal />
 
-      <Loader
-        barStyles={{
-          background: "hsl(300deg 100% 60%)",
-        }}
-      />
+      <Suspense fallback={<Loader />}>
+        <Canvas>
+          <AdaptiveDpr pixelated />
+          <AdaptiveEvents />
+          <ambientLight intensity={4} />
+          <Stars radius={100} depth={50} count={3000} factor={4} saturation={0} fade />
 
-      <Canvas>
-        <AdaptiveDpr pixelated />
-        <AdaptiveEvents />
-        <ambientLight intensity={4} />
-        <Stars radius={100} depth={50} count={3000} factor={4} saturation={0} fade />
+          <Physics timeStep="vary">
+            <KeyboardControls map={keysMap}>
+              <GitLogo />
+              <LinkedinLogo />
+              <Ipod />
+              {/* SKILLS */}
+              <CommercialSkillsPortal />
+              <JustForFunSkillsPortal />
 
-        <Physics timeStep="vary">
-          <KeyboardControls map={keysMap}>
-            <GitLogo />
-            <LinkedinLogo />
-            <Ipod />
-            {/* SKILLS */}
-            <CommercialSkillsPortal />
-            <JustForFunSkillsPortal />
+              <HeroController />
+            </KeyboardControls>
 
-            <HeroController />
-          </KeyboardControls>
+            <SectionTooltip text={"Social"} textSize={8} position={[-1, 13, -7]} />
+            <SectionTooltip text={"Skills"} textSize={8} position={[35, 16, 17]} />
 
-          <SectionTooltip text={"Social"} textSize={8} position={[-1, 13, -7]} />
-          <SectionTooltip text={"Skills"} textSize={8} position={[35, 16, 17]} />
-
-          {/*  TITLE */}
-          <HeroTitle />
-          <Ground />
-        </Physics>
-      </Canvas>
+            {/*  TITLE */}
+            <HeroTitle />
+            <Ground />
+          </Physics>
+        </Canvas>
+      </Suspense>
     </div>
   );
 };
