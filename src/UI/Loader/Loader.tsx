@@ -35,8 +35,9 @@ const Loader = () => {
               className={`${styles.progressbarSvgCircle} ${styles.shadowScss}`}
             />
           </svg>
+
           <span className={`${styles.progressbarText} ${styles.shadowScss}`}>
-            {Math.round(progress)}%
+            {parseInt(progress.toString())}%
           </span>
         </div>
       </div>

@@ -1,10 +1,10 @@
-import { AdaptiveDpr, AdaptiveEvents, KeyboardControls, Stars } from "@react-three/drei";
+import { AdaptiveDpr, AdaptiveEvents, KeyboardControls, Loader, Stars } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Physics } from "@react-three/rapier";
 
 import { keysMap } from "@/config";
-import Loader from "@/UI/Loader/Loader";
 
+// import Loader from "@/UI/Loader/Loader";
 import Ground from "@/components/Ground/Ground";
 import HeroController from "@/components/HeroController/HeroController";
 import HeroTitle from "@/components/HeroTitle/HeroTitle";
@@ -25,7 +25,11 @@ const AppCanvas = () => {
       <PoHint />
       <SkillsModal />
 
-      <Loader />
+      <Loader
+        barStyles={{
+          background: "hsl(300deg 100% 60%)",
+        }}
+      />
 
       <Canvas>
         <AdaptiveDpr pixelated />
