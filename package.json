@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc --showConfig && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "check-deps": "ncu",
@@ -54,6 +54,7 @@
     "stylelint-config-standard-scss": "^13.1.0",
     "typescript": "^5.6.3",
     "vite": "^5.4.11",
+    "vite-plugin-checker": "^0.8.0",
     "vite-plugin-eslint2": "^5.0.2",
     "vite-plugin-oxlint": "^1.1.0",
     "vite-plugin-radar": "^0.9.6",
