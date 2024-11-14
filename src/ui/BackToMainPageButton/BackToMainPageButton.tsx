@@ -1,7 +1,7 @@
 import { FC, MouseEventHandler } from "react";
 
-import SvgIcons from "@/UI/SvgIcon/SvgIcons.tsx";
-import { SvgIconType } from "@/UI/SvgIcon/types.ts";
+import SvgIcons from "@/ui/SvgIcon/SvgIcons.tsx";
+import { SvgIconType } from "@/ui/SvgIcon/types.ts";
 
 import styles from "./styles.module.scss";
 

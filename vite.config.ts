@@ -36,7 +36,7 @@ export default defineConfig({
       "@pages": resolve(__dirname, "./src/pages"),
       "@router": resolve(__dirname, "./src/router"),
       "@styles": resolve(__dirname, "./src/styles"),
-      "@ui": resolve(__dirname, "./src/UI"),
+      "@ui": resolve(__dirname, "./src/ui"),
       "@types": resolve(__dirname, "./src/types"),
       "@constants": resolve(__dirname, "./src/constants"),
     },

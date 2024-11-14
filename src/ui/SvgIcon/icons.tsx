@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 
-import { SvgIconType } from "@/UI/SvgIcon/types.ts";
+import { SvgIconType } from "@/ui/SvgIcon/types.ts";
 
 export const icons: Record<SvgIconType, ReactElement> = {
   arrow: (

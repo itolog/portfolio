@@ -3,7 +3,7 @@ import { TrackballControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { useCallback, useMemo } from "react";
 
-import BackToMainPageButton from "@/UI/BackToMainPageButton/BackToMainPageButton.tsx";
+import BackToMainPageButton from "@/ui/BackToMainPageButton/BackToMainPageButton.tsx";
 
 import { justForFun, skills } from "@/components/Skills/components/SkillsModal/data";
 import SkillsWrapper from "@/components/Skills/components/SkillsWrapper/SkillsWrapper.tsx";

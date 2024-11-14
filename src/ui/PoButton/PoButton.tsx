@@ -1,6 +1,6 @@
 import { FC, PropsWithChildren } from "react";
 
-import { PoButtonProps } from "@/UI/PoButton/types.ts";
+import { PoButtonProps } from "@/ui/PoButton/types.ts";
 
 import styles from "./poButton.module.scss";
 

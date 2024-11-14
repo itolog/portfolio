@@ -3,13 +3,13 @@ import { useMemo } from "react";
 
 import cl from "clsx";
 
-import { Keys } from "@/components/Help/Help";
+import { Keys } from "@/components/Help/Help.tsx";
 
 import styles from "./styles.module.scss";
 
 const radius = 70;
 
-const Loader = () => {
+const CanvasLoader = () => {
   const { progress, active } = useProgress();
 
   const loading = useMemo(() => {
@@ -47,4 +47,4 @@ const Loader = () => {
   );
 };
 
-export default Loader;
+export default CanvasLoader;

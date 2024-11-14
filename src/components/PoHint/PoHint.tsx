@@ -1,6 +1,6 @@
 import { a, config, useSpring } from "@react-spring/web";
 
-import SvgIcons from "@/UI/SvgIcon/SvgIcons.tsx";
+import SvgIcons from "@/ui/SvgIcon/SvgIcons.tsx";
 
 import useHint from "@/components/PoHint/hooks/useHint.tsx";
 

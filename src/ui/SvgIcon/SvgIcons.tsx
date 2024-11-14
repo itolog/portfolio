@@ -1,8 +1,9 @@
 import { FC } from "react";
 
-import { icons } from "@/UI/SvgIcon/icons.tsx";
-import { SvgIconType } from "@/UI/SvgIcon/types.ts";
 import cl from "clsx";
+
+import { icons } from "@/ui/SvgIcon/icons.tsx";
+import { SvgIconType } from "@/ui/SvgIcon/types.ts";
 
 import styles from "./svgIcon.module.scss";
 
