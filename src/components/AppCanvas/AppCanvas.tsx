@@ -1,4 +1,4 @@
-import { AdaptiveDpr, AdaptiveEvents, KeyboardControls, Stars } from "@react-three/drei";
+import { KeyboardControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Physics } from "@react-three/rapier";
 import { Suspense } from "react";
@@ -6,6 +6,7 @@ import { Suspense } from "react";
 import { keysMap } from "@/config";
 import Loader from "@/UI/Loader/Loader";
 
+import CanvasCommon from "@/components/AppCanvas/components/CanvasCommon/CanvasCommon.tsx";
 import Ground from "@/components/Ground/Ground";
 import HeroController from "@/components/HeroController/HeroController";
 import HeroTitle from "@/components/HeroTitle/HeroTitle";
@@ -28,11 +29,7 @@ const AppCanvas = () => {
 
       <Suspense fallback={<Loader />}>
         <Canvas>
-          <AdaptiveDpr pixelated />
-          <AdaptiveEvents />
-          <ambientLight intensity={4} />
-          <Stars radius={100} depth={50} count={3000} factor={4} saturation={0} fade />
-
+          <CanvasCommon />
           <Physics timeStep="vary">
             <KeyboardControls map={keysMap}>
               <GitLogo />

@@ -1,43 +1,26 @@
-import { SkillsModalType } from "@/types";
+import { IS_DEV } from "@/constants";
 import { create } from "zustand";
+import { devtools } from "zustand/middleware";
 
-interface SkillsModal {
-  open: boolean;
-  type: SkillsModalType | null;
-}
+import { ActiveItemState, createActiveItemSlice } from "@/store/activeItem";
+import { CameraState, createCameraSlice } from "@/store/camera";
+import { ConfigState, createConfigSlice } from "@/store/canvasConfig";
+import { CommonState, createCommonSlice } from "@/store/common";
 
-interface AppState {
-  activeItem: string;
-  updateActiveItem: (active: string) => void;
-  skillsModal: SkillsModal;
-  updateFrameVisibility: (payload: SkillsModal) => void;
-  cameraFirstPerson: boolean;
-  updateCameraFirstPerson: () => void;
-  showInfo: boolean;
-  updateShowInfo: () => void;
-}
+export type AppStoreState = CameraState & ConfigState & ActiveItemState & CommonState;
 
-const useAppStore = create<AppState>((set) => ({
-  activeItem: "",
-  updateActiveItem: (active: string) => set({ activeItem: active }),
-  skillsModal: {
-    open: false,
-    type: "skills",
-  },
-  updateFrameVisibility: (payload: SkillsModal) =>
-    set({
-      skillsModal: payload,
+const useAppStore = create<AppStoreState>()(
+  devtools(
+    (...a) => ({
+      ...createConfigSlice(...a),
+      ...createActiveItemSlice(...a),
+      ...createCommonSlice(...a),
+      ...createCameraSlice(...a),
     }),
-  cameraFirstPerson: false,
-  updateCameraFirstPerson: () =>
-    set((state) => ({
-      cameraFirstPerson: !state.cameraFirstPerson,
-    })),
-  showInfo: false,
-  updateShowInfo: () =>
-    set((state) => ({
-      showInfo: !state.showInfo,
-    })),
-}));
+    {
+      enabled: IS_DEV,
+    },
+  ),
+);
 
 export default useAppStore;

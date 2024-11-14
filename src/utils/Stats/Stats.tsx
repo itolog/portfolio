@@ -1,7 +1,7 @@
 import { StatsGl } from "@react-three/drei";
 
-const PerformanceMonitor = () => {
+const Stats = () => {
   return <StatsGl className="stats" />;
 };
 
-export default PerformanceMonitor;
+export default Stats;
