@@ -3,7 +3,7 @@ import react from "@vitejs/plugin-react-swc";
 import { resolve } from "node:path";
 import { defineConfig } from "vite";
 // import { checker } from "vite-plugin-checker";
-import eslintPlugin from "vite-plugin-eslint2";
+import eslint from "vite-plugin-eslint";
 import oxlintPlugin from "vite-plugin-oxlint";
 import { VitePluginRadar } from "vite-plugin-radar";
 import stylelint from "vite-plugin-stylelint";
@@ -19,7 +19,7 @@ export default defineConfig({
       path: "src",
       configFile: "eslintrc.json",
     }),
-    eslintPlugin(),
+    eslint(),
     stylelint({
       fix: true,
       lintInWorker: true,
