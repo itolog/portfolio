@@ -6,7 +6,8 @@ import { mapUrl } from "@/config";
 import * as THREE from "three";
 
 import { ActionName, GLTFResult } from "@/components/Ground/types.ts";
-import VideoMaterial from "@/components/VideoMaterial/VideoMaterial.tsx";
+
+// import VideoMaterial from "@/components/VideoMaterial/VideoMaterial.tsx";
 
 const action: ActionName = "ufo_01";
 const CAST_SHADOW = true;
@@ -298,7 +299,7 @@ const Ground = (props: JSX.IntrinsicElements["group"]) => {
                           receiveShadow={RECEIVE_SHADOW}
                           geometry={nodes.Object_82.geometry}
                           material={materials.Logo_1}>
-                          <VideoMaterial />
+                          {/* <VideoMaterial /> */}
                         </mesh>
                         <mesh
                           name="Object_83"
